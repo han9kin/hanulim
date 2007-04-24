@@ -14,6 +14,7 @@
 		CF194D7E05649DBB00CD5F4F /* HIMMessageSend.h in Headers */ = {isa = PBXBuildFile; fileRef = CF194D7C05649DBB00CD5F4F /* HIMMessageSend.h */; };
 		CF194D7F05649DBB00CD5F4F /* HIMMessageSend.c in Sources */ = {isa = PBXBuildFile; fileRef = CF194D7D05649DBB00CD5F4F /* HIMMessageSend.c */; };
 		CF1950020566286A00CD5F4F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF1950010566286A00CD5F4F /* InfoPlist.strings */; };
+		CF35F6710BDE34EB00D123BA /* COPYING in Resources */ = {isa = PBXBuildFile; fileRef = CF35F6700BDE34EB00D123BA /* COPYING */; };
 		CF528A85055C841200A89F66 /* PencilMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = CF528A83055C841200A89F66 /* PencilMenu.nib */; };
 		CF5F5927054638B200953D4A /* HIM.r in Rez */ = {isa = PBXBuildFile; fileRef = CF5F5926054638B200953D4A /* HIM.r */; };
 		CF6B76BE0580F6DE0036BC54 /* HIMPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6B76BC0580F6DD0036BC54 /* HIMPreferences.h */; };
@@ -62,6 +63,7 @@
 		CF194D7D05649DBB00CD5F4F /* HIMMessageSend.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HIMMessageSend.c; sourceTree = "<group>"; };
 		CF194FFD0566284900CD5F4F /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CF1950030566287F00CD5F4F /* Korean */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Korean; path = Korean.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CF35F6700BDE34EB00D123BA /* COPYING */ = {isa = PBXFileReference; fileEncoding = "-2147483645"; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
 		CF528A84055C841200A89F66 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/PencilMenu.nib; sourceTree = "<group>"; };
 		CF528A86055C841B00A89F66 /* Korean */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Korean; path = Korean.lproj/PencilMenu.nib; sourceTree = "<group>"; };
 		CF54416A0563909B0086DC0F /* HIMLaunchServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIMLaunchServer.h; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 		089C166AFE841209C02AAC07 /* Hanulim */ = {
 			isa = PBXGroup;
 			children = (
+				CF35F6700BDE34EB00D123BA /* COPYING */,
 				CF194C870564461C00CD5F4F /* Hanulim.h */,
 				08FB77ADFE841716C02AAC07 /* Haulim.component */,
 				CF194BFD05643F4E00CD5F4F /* HanulimServer.app */,
@@ -283,6 +286,7 @@
 				CF528A85055C841200A89F66 /* PencilMenu.nib in Resources */,
 				CF1950020566286A00CD5F4F /* InfoPlist.strings in Resources */,
 				CFC4C4010AF66550000199A7 /* Hanulim.tif in Resources */,
+				CF35F6710BDE34EB00D123BA /* COPYING in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
