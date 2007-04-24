@@ -70,7 +70,7 @@
 		CF6B76BC0580F6DD0036BC54 /* HIMPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIMPreferences.h; sourceTree = "<group>"; };
 		CF6B76BD0580F6DE0036BC54 /* HIMPreferences.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HIMPreferences.c; sourceTree = "<group>"; };
 		CF9108AD05540464001E4F3D /* HIMMethodTables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIMMethodTables.h; sourceTree = "<group>"; };
-		CF93A459057F6EF900F823F8 /* HanulimServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HanulimServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF93A459057F6EF900F823F8 /* HanulimServer.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = HanulimServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFA146F5055235E700D9312F /* HIMInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIMInput.h; sourceTree = "<group>"; };
 		CFA146F6055235E700D9312F /* HIMInput.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HIMInput.c; sourceTree = "<group>"; };
 		CFA1482B0552BD2F00D9312F /* HIMMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIMMethod.h; sourceTree = "<group>"; };
@@ -477,10 +477,6 @@
 		CFFB7200087769C300271B4F /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
 				COPY_PHASE_STRIP = NO;
 				DEBUGGING_SYMBOLS = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -519,10 +515,6 @@
 		CFFB7201087769C300271B4F /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -557,10 +549,6 @@
 		CFFB7202087769C300271B4F /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_ENABLE_TRIGRAPHS = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -592,18 +580,30 @@
 		CFFB7204087769C300271B4F /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
 			};
 			name = Development;
 		};
 		CFFB7205087769C300271B4F /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
 			};
 			name = Deployment;
 		};
 		CFFB7206087769C300271B4F /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
 			};
 			name = Default;
 		};
