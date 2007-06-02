@@ -3,109 +3,198 @@
 #include "HIMInput.h"
 #include "HIMScript.h"
 
-Boolean HIMInputDocumentHasProperty(OSType propertyTag) {
-    UInt32 size, buffer;
-    OSStatus result = TSMGetDocumentProperty(TSMGetActiveDocument(), propertyTag, sizeof(buffer), &size, &buffer);
-    return (result == noErr) ? true : false;
+
+Boolean HIMInputDocumentHasProperty(OSType aPropertyTag)
+{
+    UInt32   sSize;
+    UInt32   sBuffer;
+    OSStatus sResult;
+
+    sResult = TSMGetDocumentProperty(TSMGetActiveDocument(),
+                                    aPropertyTag,
+                                    sizeof(sBuffer),
+                                    &sSize,
+                                    &sBuffer);
+
+    return (sResult == noErr) ? true : false;
 }
 
-OSErr HIMInput(HIMSessionHandle inSessionHandle, Boolean inFix) {
-    UInt32 length = (*inSessionHandle)->fCharBufferCount * sizeof(UniChar);
-    UInt32 fixLength = inFix ? length : 0;
-    EventRef event;
-    OSErr error = noErr;
+OSErr HIMInput(HIMSessionHandle aSessionHandle, Boolean aFix)
+{
+    UInt32   sLength;
+    UInt32   sFixLength;
+    EventRef sEvent;
+    OSErr    sErr = noErr;
 
-    // create a new text input event (carbon event)
-    error = CreateEvent(NULL, kEventClassTextInput, kEventTextInputUpdateActiveInputArea, GetCurrentEventTime(), kEventAttributeUserEvent, &event);
-    
-    // text service component instance 
-    if (error == noErr) {
-        ComponentInstance componentInstance = (*inSessionHandle)->fComponentInstance;
-        error = SetEventParameter(event, kEventParamTextInputSendComponentInstance, typeComponentInstance, sizeof(ComponentInstance), &componentInstance);
+    sLength    = (*aSessionHandle)->mCharBufferCount * sizeof(UniChar);
+    sFixLength = aFix ? sLength : 0;
+
+    /*
+     * create a new text input event (carbon event)
+     */
+    sErr = CreateEvent(NULL,
+                       kEventClassTextInput,
+                       kEventTextInputUpdateActiveInputArea,
+                       GetCurrentEventTime(),
+                       kEventAttributeUserEvent,
+                       &sEvent);
+
+    /*
+     * text service component instance
+     */
+    if (sErr == noErr)
+    {
+        ComponentInstance sComponentInstance = (*aSessionHandle)->mComponentInstance;
+
+        sErr = SetEventParameter(sEvent,
+                                 kEventParamTextInputSendComponentInstance,
+                                 typeComponentInstance,
+                                 sizeof(ComponentInstance),
+                                 &sComponentInstance);
     }
-    
-    // script information record
-    if (error == noErr) {
-        ScriptLanguageRecord scriptLanguageRecord;
-        scriptLanguageRecord.fScript = kHIMScript;
-        scriptLanguageRecord.fLanguage = kHIMLanguage;
-        error = SetEventParameter(event, kEventParamTextInputSendSLRec, typeIntlWritingCode, sizeof(ScriptLanguageRecord), &scriptLanguageRecord);
+
+    /*
+     * script information record
+     */
+    if (sErr == noErr)
+    {
+        ScriptLanguageRecord sScriptLanguageRecord;
+
+        sScriptLanguageRecord.fScript   = kHIMScript;
+        sScriptLanguageRecord.fLanguage = kHIMLanguage;
+
+        sErr = SetEventParameter(sEvent,
+                                 kEventParamTextInputSendSLRec,
+                                 typeIntlWritingCode,
+                                 sizeof(ScriptLanguageRecord),
+                                 &sScriptLanguageRecord);
     }
-    
-    // fix length
-    if (error == noErr) {
-        error = SetEventParameter(event, kEventParamTextInputSendFixLen, typeLongInteger, sizeof(long), &fixLength);
+
+    /*
+     * fix length
+     */
+    if (sErr == noErr)
+    {
+        sErr = SetEventParameter(sEvent,
+                                 kEventParamTextInputSendFixLen,
+                                 typeLongInteger,
+                                 sizeof(long),
+                                 &sFixLength);
     }
-    
-    // input text
-    if (error == noErr) {
-        error = SetEventParameter(event, kEventParamTextInputSendText, typeUnicodeText, length, (*inSessionHandle)->fCharBuffer);
+
+    /*
+     * input text
+     */
+    if (sErr == noErr)
+    {
+        sErr = SetEventParameter(sEvent,
+                                 kEventParamTextInputSendText,
+                                 typeUnicodeText,
+                                 sLength,
+                                 (*aSessionHandle)->mCharBuffer);
     }
-    
-    // update region
-    if (error == noErr) {
-        TextRangeArrayPtr updateRangePtr = (TextRangeArrayPtr)NewPtrClear(sizeof(short) + sizeof(TextRange) * 2);
-        
-        if (updateRangePtr) {
-            updateRangePtr->fNumOfRanges = 2;
-            updateRangePtr->fRange[0].fStart = 0;
-            updateRangePtr->fRange[0].fEnd = (*inSessionHandle)->fLastUpdateLength;
-            updateRangePtr->fRange[0].fHiliteStyle = 0;
-            updateRangePtr->fRange[1].fStart = 0;
-            updateRangePtr->fRange[1].fEnd = length;
-            updateRangePtr->fRange[1].fHiliteStyle = 0;
-            
-            (*inSessionHandle)->fLastUpdateLength = length;
-            
-            error = SetEventParameter(event, kEventParamTextInputSendUpdateRng, typeTextRangeArray, sizeof(short) + sizeof(TextRange) * 2, updateRangePtr);
-            
-            DisposePtr((Ptr)updateRangePtr);
-        } else {
-            error = memFullErr;
+
+    /*
+     * update region
+     */
+    if (sErr == noErr)
+    {
+        TextRangeArrayPtr sUpdateRangePtr;
+
+        sUpdateRangePtr = (TextRangeArrayPtr)NewPtrClear(sizeof(short) + sizeof(TextRange) * 2);
+
+        if (sUpdateRangePtr)
+        {
+            sUpdateRangePtr->fNumOfRanges           = 2;
+            sUpdateRangePtr->fRange[0].fStart       = 0;
+            sUpdateRangePtr->fRange[0].fEnd         = (*aSessionHandle)->mLastUpdateLength;
+            sUpdateRangePtr->fRange[0].fHiliteStyle = 0;
+            sUpdateRangePtr->fRange[1].fStart       = 0;
+            sUpdateRangePtr->fRange[1].fEnd         = sLength;
+            sUpdateRangePtr->fRange[1].fHiliteStyle = 0;
+
+            (*aSessionHandle)->mLastUpdateLength    = sLength;
+
+            sErr = SetEventParameter(sEvent,
+                                     kEventParamTextInputSendUpdateRng,
+                                     typeTextRangeArray,
+                                     sizeof(short) + sizeof(TextRange) * 2,
+                                     sUpdateRangePtr);
+
+            DisposePtr((Ptr)sUpdateRangePtr);
+        }
+        else
+        {
+            sErr = memFullErr;
         }
     }
-    
-    if (error == noErr) {
-        TextRangeArrayPtr hiliteRangePtr = (TextRangeArrayPtr)NewPtrClear(sizeof(short) + sizeof(TextRange) * 2);
-        
-        if (hiliteRangePtr) {
-            hiliteRangePtr->fNumOfRanges = 2;
-            hiliteRangePtr->fRange[0].fStart = 0;
-            hiliteRangePtr->fRange[0].fEnd = length;
-            hiliteRangePtr->fRange[0].fHiliteStyle = inFix ? kTSMHiliteConvertedText : kTSMHiliteRawText;
-            
-            hiliteRangePtr->fRange[1].fStart = length;
-            hiliteRangePtr->fRange[1].fEnd = length;
-            hiliteRangePtr->fRange[1].fHiliteStyle = kTSMHiliteCaretPosition;
-            
-            error = SetEventParameter(event, kEventParamTextInputSendHiliteRng, typeTextRangeArray, sizeof(short) + sizeof(TextRange) * 2, hiliteRangePtr);
-            
-            DisposePtr((Ptr)hiliteRangePtr);
-        } else {
-            error = memFullErr;
+
+    if (sErr == noErr)
+    {
+        TextRangeArrayPtr sHiliteRangePtr;
+
+        sHiliteRangePtr = (TextRangeArrayPtr)NewPtrClear(sizeof(short) + sizeof(TextRange) * 2);
+
+        if (sHiliteRangePtr)
+        {
+            sHiliteRangePtr->fNumOfRanges           = 2;
+            sHiliteRangePtr->fRange[0].fStart       = 0;
+            sHiliteRangePtr->fRange[0].fEnd         = sLength;
+            sHiliteRangePtr->fRange[0].fHiliteStyle = aFix ? kTSMHiliteConvertedText : kTSMHiliteRawText;
+            sHiliteRangePtr->fRange[1].fStart       = sLength;
+            sHiliteRangePtr->fRange[1].fEnd         = sLength;
+            sHiliteRangePtr->fRange[1].fHiliteStyle = kTSMHiliteCaretPosition;
+
+            sErr = SetEventParameter(sEvent,
+                                     kEventParamTextInputSendHiliteRng,
+                                     typeTextRangeArray,
+                                     sizeof(short) + sizeof(TextRange) * 2,
+                                     sHiliteRangePtr);
+
+            DisposePtr((Ptr)sHiliteRangePtr);
+        }
+        else
+        {
+            sErr = memFullErr;
         }
     }
-    
-    if (error == noErr) {
-        TextRange pinRange;
-        pinRange.fStart = 0;
-        pinRange.fEnd = length;
-        error = SetEventParameter(event, kEventParamTextInputSendPinRng, typeTextRange, sizeof(TextRange), &pinRange);
-    }
-    
-    if (inFix) {
-        (*inSessionHandle)->fLastUpdateLength = 0;
-        (*inSessionHandle)->fCharBufferCount = 0;
+
+    if (sErr == noErr)
+    {
+        TextRange sPinRange;
+
+        sPinRange.fStart = 0;
+        sPinRange.fEnd   = sLength;
+
+        sErr = SetEventParameter(sEvent,
+                                 kEventParamTextInputSendPinRng,
+                                 typeTextRange,
+                                 sizeof(TextRange),
+                                 &sPinRange);
     }
 
-    if (error == noErr)
-        error = SendTextInputEvent(event);
-    
-    if ((error == noErr) && (inFix || (length == 0)) && (TSMGetActiveDocument() == NULL)) {
-        WindowRef window = GetFrontWindowOfClass(kUtilityWindowClass, true);
-        if (window)
-            HideWindow(window);
+    if (aFix)
+    {
+        (*aSessionHandle)->mLastUpdateLength = 0;
+        (*aSessionHandle)->mCharBufferCount  = 0;
     }
 
-    return error;
+    if (sErr == noErr)
+    {
+        sErr = SendTextInputEvent(sEvent);
+    }
+
+    if ((sErr == noErr) && (aFix || (sLength == 0)) && (TSMGetActiveDocument() == NULL))
+    {
+        WindowRef sWindow;
+
+        sWindow = GetFrontWindowOfClass(kUtilityWindowClass, true);
+
+        if (sWindow)
+        {
+            HideWindow(sWindow);
+        }
+    }
+
+    return sErr;
 }

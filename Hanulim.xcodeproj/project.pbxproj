@@ -63,7 +63,7 @@
 		CF194D7D05649DBB00CD5F4F /* HIMMessageSend.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HIMMessageSend.c; sourceTree = "<group>"; };
 		CF194FFD0566284900CD5F4F /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CF1950030566287F00CD5F4F /* Korean */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Korean; path = Korean.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		CF35F6700BDE34EB00D123BA /* COPYING */ = {isa = PBXFileReference; fileEncoding = "-2147483645"; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
+		CF35F6700BDE34EB00D123BA /* COPYING */ = {isa = PBXFileReference; fileEncoding = 0; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
 		CF528A84055C841200A89F66 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/PencilMenu.nib; sourceTree = "<group>"; };
 		CF528A86055C841B00A89F66 /* Korean */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Korean; path = Korean.lproj/PencilMenu.nib; sourceTree = "<group>"; };
 		CF54416A0563909B0086DC0F /* HIMLaunchServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIMLaunchServer.h; sourceTree = "<group>"; };
@@ -588,6 +588,7 @@
 					ppc,
 					i386,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.3;
 			};
 			name = Development;
 		};
@@ -598,6 +599,7 @@
 					ppc,
 					i386,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.3;
 			};
 			name = Deployment;
 		};
@@ -608,6 +610,7 @@
 					ppc,
 					i386,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.3;
 			};
 			name = Default;
 		};

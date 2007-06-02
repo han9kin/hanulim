@@ -7,287 +7,441 @@
 #include "HIMScript.h"
 
 
-#define KIND(code) (code >> 8)
+#define KIND(code)  (code >> 8)
 #define VALUE(code) ((SInt8)code)
 
-enum {
-    kKindSymbol = 0,
+
+enum
+{
+    kKindSymbol  = 0,
     kKindInitial = 1,
-    kKindMedial = 2,
-    kKindFinal = 3
+    kKindMedial  = 2,
+    kKindFinal   = 3
 };
 
 
-UInt16 HIMKeyCode(UInt32 inKeyCode, Boolean inShiftFlag) {
-    if (inKeyCode <= keyMapMax) {
-        UInt16 code = keyMap[preferences.keyboardLayout][inKeyCode] >> (inShiftFlag ? 16 : 0);
-        UInt8 kind = KIND(code);
-        UInt8 value = VALUE(code);
-        
-        if ((kind == kKindSymbol) && ((value > symbolMax) || (symbol[value] == 0)))
+UInt16 HIMKeyCode(UInt32 aKeyCode, Boolean aShiftFlag)
+{
+    UInt16 sCode;
+    UInt8  sKind;
+    UInt8  sValue;
+
+    if (aKeyCode <= gKeyMapMax)
+    {
+        sCode  = gKeyMap[gPreferences.mKeyboardLayout][aKeyCode] >> (aShiftFlag ? 16 : 0);
+        sKind  = KIND(sCode);
+        sValue = VALUE(sCode);
+
+        if ((sKind == kKindSymbol) && ((sValue > gSymbolMax) || (gSymbol[sValue] == 0)))
+        {
             return 0;
-        
-        return code;
+        }
+
+        return sCode;
     }
+
     return 0;
 }
 
-Boolean HIMIsShift(UInt32 inModifiers) {
-    static UInt32 shiftBits = shiftKey | rightShiftKey;
-    if (preferences.handleCapsLockAsShift && (inModifiers & alphaLock))
+Boolean HIMIsShift(UInt32 aModifiers)
+{
+    static UInt32 sShiftBits = shiftKey | rightShiftKey;
+
+    if (gPreferences.mHandleCapsLockAsShift && (aModifiers & alphaLock))
+    {
         return true;
-    else
-        return (inModifiers & shiftBits) ? true : false;
-}
-
-Boolean HIMCanHandle(UInt32 inModifiers) {
-    static UInt32 otherBits = ~(shiftKey | rightShiftKey | alphaLock);
-    return (inModifiers & otherBits) ? false : true;
-}
-
-UniChar HIMQuotationMark(UniChar ch) {
-    static UniChar singleQuots[] = {0x2018, 0x2019};
-    static UniChar doubleQuots[] = {0x201c, 0x201d};
-    static Boolean singleQuot = true;
-    static Boolean doubleQuot = true;
-    
-    if (ch == 0) { // initialize
-        singleQuot = true;
-        doubleQuot = true;
-    } else if (ch == 0x27) { // single quotation mark
-        singleQuot = !singleQuot;
-        return singleQuots[singleQuot];
-    } else if (ch == 0x22) { // double quotation mark
-        doubleQuot = !doubleQuot;
-        return doubleQuots[doubleQuot];
     }
-    return ch;
+    else
+    {
+        return (aModifiers & sShiftBits) ? true : false;
+    }
 }
 
-Boolean HIMHandleKey(HIMSessionHandle inSessionHandle, UInt32 inKeyCode, UInt32 inModifiers, unsigned char inCharCode) {
-    Boolean canHandle = HIMCanHandle(inModifiers);
-    UInt16 code = canHandle ? HIMKeyCode(inKeyCode, HIMIsShift(inModifiers)) : 0;
-    
-    if (code) {
-        if (KIND(code) == kKindSymbol) {
-            UniChar ch = symbol[VALUE(code)];
-            if (preferences.smartQuotationMarks)
-                ch = HIMQuotationMark(ch);
-            (*inSessionHandle)->fCharBuffer[(*inSessionHandle)->fCharBufferCount] = ch;
-            ((*inSessionHandle)->fCharBufferCount)++;
-            HIMSessionFix(inSessionHandle);
-        } else if ((*inSessionHandle)->fKeyBufferCount < kBufferMax) {
-            (*inSessionHandle)->fKeyBuffer[(*inSessionHandle)->fKeyBufferCount] = code;
-            ((*inSessionHandle)->fKeyBufferCount)++;
-            HIMComposite(inSessionHandle);
-        } else {
+Boolean HIMCanHandle(UInt32 aModifiers)
+{
+    static UInt32 sOtherBits = ~(shiftKey | rightShiftKey | alphaLock);
+
+    return (aModifiers & sOtherBits) ? false : true;
+}
+
+UniChar HIMQuotationMark(UniChar aChar)
+{
+    static UniChar sSingleQuots[] = { 0x2018, 0x2019 };
+    static UniChar sDoubleQuots[] = { 0x201c, 0x201d };
+    static Boolean sSingleQuot    = true;
+    static Boolean sDoubleQuot    = true;
+
+    /*
+     * initialize
+     */
+    if (aChar == 0)
+    {
+        sSingleQuot = true;
+        sDoubleQuot = true;
+    }
+    /*
+     * single quotation mark
+     */
+    else if (aChar == 0x27)
+    {
+        sSingleQuot = !sSingleQuot;
+
+        return sSingleQuots[sSingleQuot];
+    }
+    /*
+     * double quotation mark
+     */
+    else if (aChar == 0x22)
+    {
+        sDoubleQuot = !sDoubleQuot;
+
+        return sDoubleQuots[sDoubleQuot];
+    }
+
+    return aChar;
+}
+
+Boolean HIMHandleKey(HIMSessionHandle aSessionHandle,
+                     UInt32           aKeyCode,
+                     UInt32           aModifiers,
+                     unsigned char    aCharCode)
+{
+    Boolean sCanHandle;
+    UInt16  sCode;
+    UniChar sChar;
+
+    sCanHandle = HIMCanHandle(aModifiers);
+    sCode      = sCanHandle ? HIMKeyCode(aKeyCode, HIMIsShift(aModifiers)) : 0;
+
+    if (sCode)
+    {
+        if (KIND(sCode) == kKindSymbol)
+        {
+            sChar = gSymbol[VALUE(sCode)];
+
+            if (gPreferences.mSmartQuotationMarks)
+            {
+                sChar = HIMQuotationMark(sChar);
+            }
+
+            (*aSessionHandle)->mCharBuffer[(*aSessionHandle)->mCharBufferCount] = sChar;
+            ((*aSessionHandle)->mCharBufferCount)++;
+
+            HIMSessionFix(aSessionHandle);
+        }
+        else if ((*aSessionHandle)->mKeyBufferCount < kBufferMax)
+        {
+            (*aSessionHandle)->mKeyBuffer[(*aSessionHandle)->mKeyBufferCount] = sCode;
+            ((*aSessionHandle)->mKeyBufferCount)++;
+
+            HIMComposite(aSessionHandle);
+        }
+        else
+        {
             fprintf(stderr, "HANULIM ERROR: Buffer overflow. Key ignored.\n");
         }
+
         return true;
-    } else if (canHandle && (*inSessionHandle)->fKeyBufferCount) {
-        if (inCharCode == 0x08) { // delete
-            ((*inSessionHandle)->fKeyBufferCount)--;
-            HIMComposite(inSessionHandle);
+    }
+    else if (sCanHandle && (*aSessionHandle)->mKeyBufferCount)
+    {
+        if (aCharCode == 0x08) /* delete */
+        {
+            ((*aSessionHandle)->mKeyBufferCount)--;
+
+            HIMComposite(aSessionHandle);
+
             return true;
-        } else if (TSMGetActiveDocument() == NULL) {
-            (*inSessionHandle)->fCharBuffer[(*inSessionHandle)->fCharBufferCount] = inCharCode;
-            ((*inSessionHandle)->fCharBufferCount)++;
-            HIMSessionFix(inSessionHandle);
+        }
+        else if (TSMGetActiveDocument() == NULL)
+        {
+            (*aSessionHandle)->mCharBuffer[(*aSessionHandle)->mCharBufferCount] = aCharCode;
+            ((*aSessionHandle)->mCharBufferCount)++;
+
+            HIMSessionFix(aSessionHandle);
+
             return true;
-        } else {
-            HIMSessionFix(inSessionHandle);
+        }
+        else
+        {
+            HIMSessionFix(aSessionHandle);
+
             return false;
         }
-    } else {
-        HIMSessionFix(inSessionHandle);
+    }
+    else
+    {
+        HIMSessionFix(aSessionHandle);
+
         return false;
     }
 }
 
-SInt8 HIMCombine(UInt8 kind, SInt8 value1, SInt8 value2) {
-    UInt32 i, count = compoundCount[kind - 1][HIMArchaicKeyboard()];
-    UInt16 factor = (value1 << 8) | value2;
-    
-    for (i = 0; i < count; i++) {
-        if (compoundFactor[kind - 1][i] == factor)
-            return compoundResult[kind - 1][i];
+SInt8 HIMCombine(UInt8 aKind, SInt8 aValue1, SInt8 aValue2)
+{
+    UInt16 sFactor;
+    UInt32 sCount;
+    UInt32 i;
+
+    sCount  = gCompoundCount[aKind - 1][HIMArchaicKeyboard()];
+    sFactor = (aValue1 << 8) | aValue2;
+
+    for (i = 0; i < sCount; i++)
+    {
+        if (gCompoundFactor[aKind - 1][i] == sFactor)
+        {
+            return gCompoundResult[aKind - 1][i];
+        }
     }
-    
+
     return -1;
 }
 
-void HIMBufferClear(SInt8 *buffer) {
-    buffer[0] = 0;
-    buffer[1] = -1;
-    buffer[2] = -1;
-    buffer[3] = -1;
+void HIMBufferClear(SInt8 *aBuffer)
+{
+    aBuffer[0] = 0;
+    aBuffer[1] = -1;
+    aBuffer[2] = -1;
+    aBuffer[3] = -1;
 }
 
-void HIMBufferCopy(SInt8 *srcBuf, SInt8 *destBuf) {
-    destBuf[0] = srcBuf[0];
-    destBuf[1] = srcBuf[1];
-    destBuf[2] = srcBuf[2];
-    destBuf[3] = srcBuf[3];
+void HIMBufferCopy(SInt8 *aSrcBuf, SInt8 *aDestBuf)
+{
+    aDestBuf[0] = aSrcBuf[0];
+    aDestBuf[1] = aSrcBuf[1];
+    aDestBuf[2] = aSrcBuf[2];
+    aDestBuf[3] = aSrcBuf[3];
 }
 
-void HIMBufferSet(SInt8 *buffer, UInt8 kind, SInt8 value) {
-    buffer[0] = kind;
-    buffer[kind] = value;
+void HIMBufferSet(SInt8 *aBuffer, UInt8 aKind, SInt8 aValue)
+{
+    aBuffer[0]     = aKind;
+    aBuffer[aKind] = aValue;
 }
 
-UInt32 HIMGenerateChar(SInt8 *inBuffer, UniChar *outChar) {
-    static const SInt8 min[4] = {0, 0, 0, 1};
-    static const SInt8 cMax[4] = {0, 89, 65, 82};
-    static const SInt8 sMax[4] = {0, 18, 20, 27};
-    static const UniChar base[4] = {0, 0x1100, 0x1161, 0x11a7};
-    static const UniChar filler[4] = {0, 0x115f, 0x1160, 0};
-    UInt32 i, length = 0;
-    
-    if (HIMInputConjoiningJamo()) {
-        for (i = kKindInitial; i <= kKindFinal; i++) {
-            if ((inBuffer[i] >= min[i]) && (inBuffer[i] <= cMax[i])) {
-                outChar[i - 1] = base[i] + inBuffer[i];
-                length = i;
-            } else {
-                outChar[i - 1] = filler[i];
+UInt32 HIMGenerateChar(SInt8 *aBuffer, UniChar *aChar)
+{
+    static const SInt8   sMin[4]    = { 0, 0, 0, 1 };
+    static const SInt8   sCMax[4]   = { 0, 89, 65, 82 };
+    static const SInt8   sSMax[4]   = { 0, 18, 20, 27 };
+    static const UniChar sBase[4]   = { 0, 0x1100, 0x1161, 0x11a7 };
+    static const UniChar sFilter[4] = { 0, 0x115f, 0x1160, 0 };
+    UInt32 sLength                  = 0;
+    UInt32 i;
+
+    if (HIMInputConjoiningJamo())
+    {
+        for (i = kKindInitial; i <= kKindFinal; i++)
+        {
+            if ((aBuffer[i] >= sMin[i]) && (aBuffer[i] <= sCMax[i]))
+            {
+                aChar[i - 1] = sBase[i] + aBuffer[i];
+                sLength = i;
             }
-        }
-    } else {
-        SInt8 buffer[4];
-        UInt8 count = 0;
-        UInt8 kind = 0;
-
-        HIMBufferCopy(inBuffer, buffer);
-
-        if (buffer[3] < 0)
-            buffer[3] = 0;
-        length = 1;
-        
-        for (i = kKindInitial; i <= kKindFinal; i++) {
-            if ((buffer[i] >= min[i]) && (buffer[i] <= sMax[i])) {
-                count++;
-                kind = i;
-            }
-        }
-
-        if (count == ((kind == kKindFinal) ? 3 : 2)) {
-            int index = (buffer[kKindInitial] * 21 * 28) + (buffer[kKindMedial] * 28) + buffer[kKindFinal];
-            if (HIMInputDocumentHasProperty(kTSMDocumentUnicodePropertyTag) || CanBeConvertedToKSC(index))
-                *outChar = 0xac00 + index;
             else
-                length = 0;
-        } else if (count == 1) {
-            *outChar = compatibilityJamo[kind - 1][buffer[kind]];
-        } else {
-            length = 0;
+            {
+                aChar[i - 1] = sFilter[i];
+            }
         }
     }
-    return length;
+    else
+    {
+        SInt8 sBuffer[4];
+        UInt8 sCount = 0;
+        UInt8 sKind  = 0;
+
+        HIMBufferCopy(aBuffer, sBuffer);
+
+        if (sBuffer[3] < 0)
+        {
+            sBuffer[3] = 0;
+        }
+
+        sLength = 1;
+
+        for (i = kKindInitial; i <= kKindFinal; i++)
+        {
+            if ((sBuffer[i] >= sMin[i]) && (sBuffer[i] <= sSMax[i]))
+            {
+                sCount++;
+                sKind = i;
+            }
+        }
+
+        if (sCount == ((sKind == kKindFinal) ? 3 : 2))
+        {
+            int sIndex = (sBuffer[kKindInitial] * 21 * 28) + (sBuffer[kKindMedial] * 28) + sBuffer[kKindFinal];
+            if (HIMInputDocumentHasProperty(kTSMDocumentUnicodePropertyTag) ||
+                CanBeConvertedToKSC(sIndex))
+            {
+                *aChar = 0xac00 + sIndex;
+            }
+            else
+            {
+                sLength = 0;
+            }
+        }
+        else if (sCount == 1)
+        {
+            *aChar = gCompatibilityJamo[sKind - 1][sBuffer[sKind]];
+        }
+        else
+        {
+            sLength = 0;
+        }
+    }
+
+    return sLength;
 }
 
-UInt32 HIMCompositeBuffer(SInt8 *buffer, UInt8 kind, SInt8 value, UniChar *outChar) {
-    UInt32 length;
-    
-    if (buffer[0] <= kind) {
-        SInt8 newValue = (buffer[kind] > -1) ? HIMCombine(kind, buffer[kind], value) : value;
-        
-        if (newValue > -1) {
-            SInt8 testBuf[4];
-        
-            HIMBufferCopy(buffer, testBuf);
-            HIMBufferSet(testBuf, kind, newValue);
+UInt32 HIMCompositeBuffer(SInt8 *aBuffer, UInt8 aKind, SInt8 aValue, UniChar *aChar)
+{
+    UInt32 sLength;
 
-            if (HIMGenerateChar(testBuf, outChar)) {
-                HIMBufferCopy(testBuf, buffer);
+    if (aBuffer[0] <= aKind)
+    {
+        SInt8 sNewValue = (aBuffer[aKind] > -1) ? HIMCombine(aKind, aBuffer[aKind], aValue) : aValue;
+
+        if (sNewValue > -1)
+        {
+            SInt8 sTestBuf[4];
+
+            HIMBufferCopy(aBuffer, sTestBuf);
+            HIMBufferSet(sTestBuf, aKind, sNewValue);
+
+            if (HIMGenerateChar(sTestBuf, aChar))
+            {
+                HIMBufferCopy(sTestBuf, aBuffer);
                 return 0;
             }
         }
     }
-    
-    length = HIMGenerateChar(buffer, outChar);
-        
-    HIMBufferClear(buffer);
-    HIMBufferSet(buffer, kind, value);
-    
-    return length;
+
+    sLength = HIMGenerateChar(aBuffer, aChar);
+
+    HIMBufferClear(aBuffer);
+    HIMBufferSet(aBuffer, aKind, aValue);
+
+    return sLength;
 }
 
-void HIMDequeueKeyBuffer(HIMSessionHandle inSessionHandle, UInt32 inCount) {
+void HIMDequeueKeyBuffer(HIMSessionHandle aSessionHandle, UInt32 aCount)
+{
     UInt32 i;
-    
-    (*inSessionHandle)->fKeyBufferCount -= inCount;
-    for (i = 0; i < (*inSessionHandle)->fKeyBufferCount; i++)
-        (*inSessionHandle)->fKeyBuffer[i] = (*inSessionHandle)->fKeyBuffer[i + inCount];
+
+    (*aSessionHandle)->mKeyBufferCount -= aCount;
+
+    for (i = 0; i < (*aSessionHandle)->mKeyBufferCount; i++)
+    {
+        (*aSessionHandle)->mKeyBuffer[i] = (*aSessionHandle)->mKeyBuffer[i + aCount];
+    }
 }
 
-void HIMComposite(HIMSessionHandle inSessionHandle) {
-    UniCharPtr charBuffer = (*inSessionHandle)->fCharBuffer;
-    SInt8 buffer[4] = {0, -1, -1, -1};
-    UInt32 length, i;
-    
-    (*inSessionHandle)->fCharBufferCount = 0;
-    
-    for (i = 0; i < (*inSessionHandle)->fKeyBufferCount; i++) {
-        UInt16 code = (*inSessionHandle)->fKeyBuffer[i];
-        UInt8 kind = KIND(code);
-        SInt8 value = VALUE(code);
-        
-        if (HIMOverloadConsonants()) {
-            if ((kind == kKindInitial) && (buffer[0] > kind)) {
-                SInt8 final = initialToFinal[value];
-                if (final && ((buffer[kKindFinal] == -1) || ((buffer[kKindFinal] != final) && ((final = HIMCombine(kKindFinal, buffer[kKindFinal], final)) > -1)))) {
-                    SInt8 testBuf[4];
-                    
-                    HIMBufferCopy(buffer, testBuf);
-                    HIMBufferSet(testBuf, kKindFinal, final);
-                    if (HIMGenerateChar(testBuf, charBuffer)) {
-                        kind = kKindFinal;
-                        value = initialToFinal[value];
+void HIMComposite(HIMSessionHandle aSessionHandle)
+{
+    UniCharPtr sCharBuffer = (*aSessionHandle)->mCharBuffer;
+    SInt8      sBuffer[4]  = {0, -1, -1, -1};
+    UInt32     sLength;
+    UInt32     i;
+
+    (*aSessionHandle)->mCharBufferCount = 0;
+
+    for (i = 0; i < (*aSessionHandle)->mKeyBufferCount; i++)
+    {
+        UInt16 sCode  = (*aSessionHandle)->mKeyBuffer[i];
+        UInt8  sKind  = KIND(sCode);
+        SInt8  sValue = VALUE(sCode);
+
+        if (HIMOverloadConsonants())
+        {
+            if ((sKind == kKindInitial) && (sBuffer[0] > sKind))
+            {
+                SInt8 sFinal = gInitialToFinal[sValue];
+
+                if (sFinal &&
+                    ((sBuffer[kKindFinal] == -1) ||
+                     ((sBuffer[kKindFinal] != sFinal) &&
+                      ((sFinal = HIMCombine(kKindFinal, sBuffer[kKindFinal], sFinal)) > -1))))
+                {
+                    SInt8 sTestBuf[4];
+
+                    HIMBufferCopy(sBuffer, sTestBuf);
+                    HIMBufferSet(sTestBuf, kKindFinal, sFinal);
+
+                    if (HIMGenerateChar(sTestBuf, sCharBuffer))
+                    {
+                        sKind = kKindFinal;
+                        sValue = gInitialToFinal[sValue];
                     }
                 }
-            } else if ((kind == kKindMedial) && (buffer[0] == kKindFinal)) {
-                SInt8 initial = VALUE((*inSessionHandle)->fKeyBuffer[i - 1]);
-                SInt8 final = ((i > 1) && (KIND((*inSessionHandle)->fKeyBuffer[i - 2]) == kKindInitial)) ? initialToFinal[VALUE((*inSessionHandle)->fKeyBuffer[i - 2])] : -1;
-                
-                buffer[kKindFinal] = final;
-                length = HIMGenerateChar(buffer, charBuffer);
+            }
+            else if ((sKind == kKindMedial) && (sBuffer[0] == kKindFinal))
+            {
+                SInt8 sInitial;
+                SInt8 sFinal;
 
-                if (preferences.fixImmediately) {
-                    (*inSessionHandle)->fCharBufferCount = length;
-                    HIMInput(inSessionHandle, true);
-                    HIMDequeueKeyBuffer(inSessionHandle, i - 1);
+                sInitial = VALUE((*aSessionHandle)->mKeyBuffer[i - 1]);
+                sFinal   = ((i > 1) && (KIND((*aSessionHandle)->mKeyBuffer[i - 2]) == kKindInitial)) ?
+                    gInitialToFinal[VALUE((*aSessionHandle)->mKeyBuffer[i - 2])] :
+                    -1;
+
+                sBuffer[kKindFinal] = sFinal;
+                sLength             = HIMGenerateChar(sBuffer, sCharBuffer);
+
+                if (gPreferences.mFixImmediately)
+                {
+                    (*aSessionHandle)->mCharBufferCount = sLength;
+
+                    HIMInput(aSessionHandle, true);
+                    HIMDequeueKeyBuffer(aSessionHandle, i - 1);
+
                     i = 1;
-                } else {
-                    (*inSessionHandle)->fCharBufferCount += length;
-                    charBuffer += length;
                 }
-                
-                HIMBufferClear(buffer);
-                HIMBufferSet(buffer, kKindInitial, initial);
+                else
+                {
+                    (*aSessionHandle)->mCharBufferCount += sLength;
+                    sCharBuffer += sLength;
+                }
+
+                HIMBufferClear(sBuffer);
+                HIMBufferSet(sBuffer, kKindInitial, sInitial);
             }
         }
-        
-        length = HIMCompositeBuffer(buffer, kind, value, charBuffer);
-        if (length) {
-            if (preferences.fixImmediately) {
-                (*inSessionHandle)->fCharBufferCount = length;
-                HIMInput(inSessionHandle, true);
-                HIMDequeueKeyBuffer(inSessionHandle, i);
+
+        sLength = HIMCompositeBuffer(sBuffer, sKind, sValue, sCharBuffer);
+
+        if (sLength)
+        {
+            if (gPreferences.mFixImmediately)
+            {
+                (*aSessionHandle)->mCharBufferCount = sLength;
+
+                HIMInput(aSessionHandle, true);
+                HIMDequeueKeyBuffer(aSessionHandle, i);
+
                 i = 0;
-            } else {
-                (*inSessionHandle)->fCharBufferCount += length;
-                charBuffer += length;
+            }
+            else
+            {
+                (*aSessionHandle)->mCharBufferCount += sLength;
+                sCharBuffer += sLength;
             }
         }
-    }
-    
-    length = HIMGenerateChar(buffer, charBuffer);
-    if (length) {
-        if (preferences.fixImmediately)
-            (*inSessionHandle)->fCharBufferCount = length;
-        else
-            (*inSessionHandle)->fCharBufferCount += length;
     }
 
-    HIMInput(inSessionHandle, false);
+    sLength = HIMGenerateChar(sBuffer, sCharBuffer);
+
+    if (sLength)
+    {
+        if (gPreferences.mFixImmediately)
+        {
+            (*aSessionHandle)->mCharBufferCount = sLength;
+        }
+        else
+        {
+            (*aSessionHandle)->mCharBufferCount += sLength;
+        }
+    }
+
+    HIMInput(aSessionHandle, false);
 }

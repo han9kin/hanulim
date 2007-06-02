@@ -1,122 +1,219 @@
 #include "Hanulim.h"
 #include "HIMComponent.h"
 #include "HIMContext.h"
+#include "HIMPreferences.h"
 #include "HIMScript.h"
 
-// Main entry point
 
-pascal ComponentResult HIMComponentDispatch(ComponentParameters *inParams, Handle inSessionHandle);
+/*
+ * Global variables
+ */
 
-// Global variables
+long    gInstanceRefCount = 0;
+MenuRef gTextServiceMenu  = nil;
 
-long gInstanceRefCount = 0;
-MenuRef gTextServiceMenu = nil;
+/*
+ * Local functions
+ */
 
-// Local function declarations
+static ComponentResult HIMComponentFunctionCall(ComponentParameters *aParams,
+                                                ProcPtr              aProcPtr,
+                                                SInt32               aProcInfo)
+{
+    ComponentFunctionUPP sComponentFunctionUPP;
+    ComponentResult      sResult;
 
-static ComponentResult CallHIMFunction(ComponentParameters *inParams, ProcPtr inProcPtr, SInt32 inProcInfo);
-static ComponentResult CallHIMFunctionWithStorage(Handle inStorage, ComponentParameters *inParams, ProcPtr inProcPtr, SInt32 inProcInfo);
+    sComponentFunctionUPP = NewComponentFunctionUPP(aProcPtr, aProcInfo);
+    sResult               = CallComponentFunction(aParams, sComponentFunctionUPP);
 
+    DisposeComponentFunctionUPP(sComponentFunctionUPP);
 
-pascal ComponentResult HIMComponentDispatch(ComponentParameters *inParams, Handle inSessionHandle) {
-    switch (inParams->what) {
+    return sResult;
+}
+
+static ComponentResult HIMComponentFunctionCallWithStorage(Handle               aStorage,
+                                                           ComponentParameters *aParams,
+                                                           ProcPtr              aProcPtr,
+                                                           SInt32               aProcInfo)
+{
+    ComponentFunctionUPP sComponentFunctionUPP;
+    ComponentResult      sResult;
+
+    sComponentFunctionUPP = NewComponentFunctionUPP(aProcPtr, aProcInfo);
+    sResult               = CallComponentFunctionWithStorage(aStorage, aParams, sComponentFunctionUPP);
+
+    DisposeComponentFunctionUPP(sComponentFunctionUPP);
+
+    return sResult;
+}
+
+/*
+ * Component main entry point
+ */
+
+pascal ComponentResult HIMComponentDispatch(ComponentParameters *aParams, Handle aSessionHandle)
+{
+    switch (aParams->what) {
         case kComponentOpenSelect:
             HIMLog("HIMComponentDispatch::kComponentOpenSelect");
-            return CallHIMFunction(inParams, (ProcPtr)HIMOpenComponent, uppOpenComponentProcInfo);
+            return HIMComponentFunctionCall(aParams,
+                                            (ProcPtr)HIMOpenComponent,
+                                            gUppOpenComponentProcInfo);
         case kComponentCloseSelect:
             HIMLog("HIMComponentDispatch::kComponentCloseSelect");
-            return CallHIMFunctionWithStorage(inSessionHandle, inParams, (ProcPtr)HIMCloseComponent, uppCloseComponentProcInfo);
+            return HIMComponentFunctionCallWithStorage(aSessionHandle,
+                                                       aParams,
+                                                       (ProcPtr)HIMCloseComponent,
+                                                       gUppCloseComponentProcInfo);
         case kComponentCanDoSelect:
             HIMLog("HIMComponentDispatch::kComponentCanDoSelect");
-            return CallHIMFunction(inParams, (ProcPtr)HIMCanDo, uppCanDoProcInfo);
+            return HIMComponentFunctionCall(aParams,
+                                            (ProcPtr)HIMCanDo,
+                                            gUppCanDoProcInfo);
         case kComponentVersionSelect:
             HIMLog("HIMComponentDispatch::kComponentVersionSelect");
-            return CallHIMFunction(inParams, (ProcPtr)HIMGetVersion, uppGetVersionProcInfo);
+            return HIMComponentFunctionCall(aParams,
+                                            (ProcPtr)HIMGetVersion,
+                                            gUppGetVersionProcInfo);
         case kCMGetScriptLangSupport:
             HIMLog("HIMComponentDispatch::kCMGetScriptLangSupport");
-            return CallHIMFunctionWithStorage(inSessionHandle, inParams, (ProcPtr)HIMGetScriptLangSupport, uppGetScriptLangSupportProcInfo);
+            return HIMComponentFunctionCallWithStorage(aSessionHandle,
+                                                       aParams,
+                                                       (ProcPtr)HIMGetScriptLangSupport,
+                                                       gUppGetScriptLangSupportProcInfo);
         case kCMInitiateTextService:
             HIMLog("HIMComponentDispatch::kCMInitiateTextService");
-            return CallHIMFunctionWithStorage(inSessionHandle, inParams, (ProcPtr)HIMInitiateTextService, uppInitiateTextServiceProcInfo);
+            return HIMComponentFunctionCallWithStorage(aSessionHandle,
+                                                       aParams,
+                                                       (ProcPtr)HIMInitiateTextService,
+                                                       gUppInitiateTextServiceProcInfo);
         case kCMTerminateTextService:
             HIMLog("HIMComponentDispatch::kCMTerminateTextService");
-            return CallHIMFunctionWithStorage(inSessionHandle, inParams, (ProcPtr)HIMTerminateTextService, uppTerminateTextServiceProcInfo);
+            return HIMComponentFunctionCallWithStorage(aSessionHandle,
+                                                       aParams,
+                                                       (ProcPtr)HIMTerminateTextService,
+                                                       gUppTerminateTextServiceProcInfo);
         case kCMActivateTextService:
             HIMLog("HIMComponentDispatch::kCMActivateTextService");
-            return CallHIMFunctionWithStorage(inSessionHandle, inParams, (ProcPtr)HIMActivateTextService, uppActivateTextServiceProcInfo);
+            return HIMComponentFunctionCallWithStorage(aSessionHandle,
+                                                       aParams,
+                                                       (ProcPtr)HIMActivateTextService,
+                                                       gUppActivateTextServiceProcInfo);
         case kCMDeactivateTextService:
             HIMLog("HIMComponentDispatch::kCMDeactivateTextService");
-            return CallHIMFunctionWithStorage(inSessionHandle, inParams, (ProcPtr)HIMDeactivateTextService, uppDeactivateTextServiceProcInfo);
+            return HIMComponentFunctionCallWithStorage(aSessionHandle,
+                                                       aParams,
+                                                       (ProcPtr)HIMDeactivateTextService,
+                                                       gUppDeactivateTextServiceProcInfo);
         case kCMTextServiceEvent:
             HIMLog("HIMComponentDispatch::kCMTextServiceEvent");
-            return CallHIMFunctionWithStorage(inSessionHandle, inParams, (ProcPtr)HIMTextServiceEventRef, uppTextServiceEventRefProcInfo);
+            return HIMComponentFunctionCallWithStorage(aSessionHandle,
+                                                       aParams,
+                                                       (ProcPtr)HIMTextServiceEventRef,
+                                                       gUppTextServiceEventRefProcInfo);
         case kCMGetTextServiceMenu:
             HIMLog("HIMComponentDispatch::kCMGetTextServiceMenu");
-            return CallHIMFunctionWithStorage(inSessionHandle, inParams, (ProcPtr)HIMGetTextServiceMenu, uppGetTextServiceMenuProcInfo);
+            return HIMComponentFunctionCallWithStorage(aSessionHandle,
+                                                       aParams,
+                                                       (ProcPtr)HIMGetTextServiceMenu,
+                                                       gUppGetTextServiceMenuProcInfo);
         case kCMFixTextService:
             HIMLog("HIMComponentDispatch::kCMFixTextService");
-            return CallHIMFunctionWithStorage(inSessionHandle, inParams, (ProcPtr)HIMFixTextService, uppFixTextServiceProcInfo);
+            return HIMComponentFunctionCallWithStorage(aSessionHandle,
+                                                       aParams,
+                                                       (ProcPtr)HIMFixTextService,
+                                                       gUppFixTextServiceProcInfo);
         case kCMHidePaletteWindows:
             HIMLog("HIMComponentDispatch::kCMHidePaletteWindows");
-            return CallHIMFunctionWithStorage(inSessionHandle, inParams, (ProcPtr)HIMHidePaletteWindows, uppHidePaletteWindowsProcInfo);
+            return HIMComponentFunctionCallWithStorage(aSessionHandle,
+                                                       aParams,
+                                                       (ProcPtr)HIMHidePaletteWindows,
+                                                       gUppHidePaletteWindowsProcInfo);
         case kCMCopyTextServiceInputModeList:
             HIMLog("HIMComponentDispatch::kCMCopyTextServiceInputModeList");
-            return CallHIMFunctionWithStorage(inSessionHandle, inParams, (ProcPtr)HIMCopyTextServiceInputModeList, uppCopyTextServiceInputModeListInfo);
+            return HIMComponentFunctionCallWithStorage(aSessionHandle,
+                                                       aParams,
+                                                       (ProcPtr)HIMCopyTextServiceInputModeList,
+                                                       gUppCopyTextServiceInputModeListInfo);
         case kCMSetTextServiceProperty:
             HIMLog("HIMComponentDispatch::kCMSetTextServiceProperty");
-            return CallHIMFunctionWithStorage(inSessionHandle, inParams, (ProcPtr)HIMSetTextServiceProperty,
-                                              uppSetTextServicePropertyInfo);
+            return HIMComponentFunctionCallWithStorage(aSessionHandle,
+                                                       aParams,
+                                                       (ProcPtr)HIMSetTextServiceProperty,
+                                                       gUppSetTextServicePropertyInfo);
         default:
             return badComponentSelector;
     }
 }
 
+/*
+ * Component functions
+ */
 
-pascal ComponentResult HIMOpenComponent(ComponentInstance inComponentInstance) {
-    ComponentResult result = noErr;
-    Handle sessionHandle = nil;
+pascal ComponentResult HIMOpenComponent(ComponentInstance aComponentInstance)
+{
+    ComponentResult sResult        = noErr;
+    Handle          sSessionHandle = nil;
 
     if (gInstanceRefCount == 0)
-        result = HIMInitialize(inComponentInstance, &gTextServiceMenu);
-    gInstanceRefCount++;
-
-    if (result == noErr) {
-        sessionHandle = GetComponentInstanceStorage(inComponentInstance);
-        result = HIMSessionOpen(inComponentInstance, (HIMSessionHandle *)&sessionHandle);
-
-        if (result == noErr)
-            SetComponentInstanceStorage(inComponentInstance, sessionHandle);
+    {
+        sResult = HIMInitialize(aComponentInstance, &gTextServiceMenu);
     }
 
-    return result;
+    gInstanceRefCount++;
+
+    if (sResult == noErr)
+    {
+        sSessionHandle = GetComponentInstanceStorage(aComponentInstance);
+        sResult        = HIMSessionOpen(aComponentInstance, (HIMSessionHandle *)&sSessionHandle);
+
+        if (sResult == noErr)
+        {
+            SetComponentInstanceStorage(aComponentInstance, sSessionHandle);
+        }
+    }
+
+    return sResult;
 }
 
-pascal ComponentResult HIMCloseComponent(Handle inSessionHandle, ComponentInstance inComponentInstance) {
-    ComponentResult result = noErr;
+pascal ComponentResult HIMCloseComponent(Handle aSessionHandle, ComponentInstance aComponentInstance)
+{
+    ComponentResult sResult = noErr;
 
-    if (inComponentInstance == nil)
+    if (aComponentInstance == nil)
+    {
         return paramErr;
+    }
 
-    HIMSessionClose((HIMSessionHandle)inSessionHandle);
-    SetComponentInstanceStorage(inComponentInstance, nil);
+    HIMSessionClose((HIMSessionHandle)aSessionHandle);
+    SetComponentInstanceStorage(aComponentInstance, nil);
 
     gInstanceRefCount--;
-    if (gInstanceRefCount == 0)
-        HIMTerminate(inComponentInstance);
 
-    return result;
+    if (gInstanceRefCount == 0)
+    {
+        HIMTerminate(aComponentInstance);
+    }
+
+    return sResult;
 }
 
-pascal ComponentResult HIMCanDo(SInt16 inSelector) {
-    switch (inSelector) {
-        // These first four calls are made by the Component Manager to every component.
+pascal ComponentResult HIMCanDo(SInt16 aSelector)
+{
+    switch (aSelector)
+    {
+        /*
+         * These first four calls are made by the Component Manager to every component.
+         */
         case kComponentOpenSelect:
         case kComponentCloseSelect:
         case kComponentCanDoSelect:
         case kComponentVersionSelect:
             return true;
 
-        // These calls are made by the Text Services Manager to text service componets.
+        /*
+         * These calls are made by the Text Services Manager to text service componets.
+         */
         case kCMGetScriptLangSupport:
         case kCMInitiateTextService:
         case kCMTerminateTextService:
@@ -131,138 +228,187 @@ pascal ComponentResult HIMCanDo(SInt16 inSelector) {
             return true;
 
         default:
-            HIMLog("HIMCanDo: %d", inSelector);
+            HIMLog("HIMCanDo: %d", aSelector);
             return false;
     }
 }
 
-pascal ComponentResult HIMGetVersion() {
+pascal ComponentResult HIMGetVersion()
+{
     return 0x00010000;
 }
 
-pascal ComponentResult HIMGetScriptLangSupport(Handle inSessionHandle, ScriptLanguageSupportHandle *outScriptHandle) {
-    OSStatus result = noErr;
-    ScriptLanguageRecord scriptLanguageRecord;
+pascal ComponentResult HIMGetScriptLangSupport(Handle                       aSessionHandle,
+                                               ScriptLanguageSupportHandle *aScriptHandle)
+{
+    OSStatus             sResult = noErr;
+    ScriptLanguageRecord sScriptLanguageRecord;
 
-    if (*outScriptHandle == NULL) {
-        *outScriptHandle = (ScriptLanguageSupportHandle)NewHandle(sizeof(SInt16));
-        if (*outScriptHandle == NULL)
-            result = memFullErr;
+    if (*aScriptHandle == NULL)
+    {
+        *aScriptHandle = (ScriptLanguageSupportHandle)NewHandle(sizeof(SInt16));
+
+        if (*aScriptHandle == NULL)
+        {
+            sResult = memFullErr;
+        }
     }
 
-    if (result == noErr) {
-        SetHandleSize((Handle)*outScriptHandle, sizeof(SInt16));
-        result = MemError();
-        if (result == noErr)
-            (**outScriptHandle)->fScriptLanguageCount = 0;
+    if (sResult == noErr)
+    {
+        SetHandleSize((Handle)*aScriptHandle, sizeof(SInt16));
+
+        sResult = MemError();
+
+        if (sResult == noErr)
+        {
+            (**aScriptHandle)->fScriptLanguageCount = 0;
+        }
     }
 
-    if (result == noErr) {
-        scriptLanguageRecord.fScript = kTextEncodingUnicodeDefault;
-        scriptLanguageRecord.fLanguage = kHIMLanguage;
-        result = PtrAndHand(&scriptLanguageRecord, (Handle)*outScriptHandle, sizeof(ScriptLanguageRecord));
-        if (result == noErr)
-            (**outScriptHandle)->fScriptLanguageCount++;
+    if (sResult == noErr)
+    {
+        sScriptLanguageRecord.fScript   = kTextEncodingUnicodeDefault;
+        sScriptLanguageRecord.fLanguage = kHIMLanguage;
+
+        sResult = PtrAndHand(&sScriptLanguageRecord,
+                             (Handle)*aScriptHandle,
+                             sizeof(ScriptLanguageRecord));
+
+        if (sResult == noErr)
+        {
+            (**aScriptHandle)->fScriptLanguageCount++;
+        }
     }
 
-    if (result && *outScriptHandle) {
-        DisposeHandle((Handle)*outScriptHandle);
-        *outScriptHandle = NULL;
+    if (sResult && *aScriptHandle)
+    {
+        DisposeHandle((Handle)*aScriptHandle);
+
+        *aScriptHandle = NULL;
     }
 
-    return result;
+    return sResult;
 }
 
-pascal ComponentResult HIMInitiateTextService(Handle inSessionHandle) {
+pascal ComponentResult HIMInitiateTextService(Handle aSessionHandle)
+{
     return noErr;
 }
 
-pascal ComponentResult HIMTerminateTextService(Handle inSessionHandle) {
+pascal ComponentResult HIMTerminateTextService(Handle aSessionHandle)
+{
     return noErr;
 }
 
-pascal ComponentResult HIMActivateTextService(Handle inSessionHandle) {
-    return HIMSessionActivate((HIMSessionHandle)inSessionHandle);
+pascal ComponentResult HIMActivateTextService(Handle aSessionHandle)
+{
+    return HIMSessionActivate((HIMSessionHandle)aSessionHandle);
 }
 
-pascal ComponentResult HIMDeactivateTextService(Handle inSessionHandle) {
-    return HIMSessionDeactivate((HIMSessionHandle)inSessionHandle);
+pascal ComponentResult HIMDeactivateTextService(Handle aSessionHandle)
+{
+    return HIMSessionDeactivate((HIMSessionHandle)aSessionHandle);
 }
 
-pascal ComponentResult HIMTextServiceEventRef(Handle inSessionHandle, EventRef inEventRef) {
-    return HIMSessionEvent((HIMSessionHandle)inSessionHandle, inEventRef);
+pascal ComponentResult HIMTextServiceEventRef(Handle aSessionHandle, EventRef aEventRef)
+{
+    return HIMSessionEvent((HIMSessionHandle)aSessionHandle, aEventRef);
 }
 
-pascal ComponentResult HIMGetTextServiceMenu(Handle inSessionHandle, MenuHandle *outMenuHandle) {
-    *outMenuHandle = gTextServiceMenu;
+pascal ComponentResult HIMGetTextServiceMenu(Handle aSessionHandle, MenuHandle *aMenuHandle)
+{
+    *aMenuHandle = gTextServiceMenu;
+
     return noErr;
 }
 
-pascal ComponentResult HIMFixTextService(Handle inSessionHandle) {
-    return HIMSessionFix((HIMSessionHandle)inSessionHandle);
+pascal ComponentResult HIMFixTextService(Handle aSessionHandle)
+{
+    return HIMSessionFix((HIMSessionHandle)aSessionHandle);
 }
 
-pascal ComponentResult HIMHidePaletteWindows(Handle inSessionHandle) {
-    return HIMSessionHidePalettes((HIMSessionHandle)inSessionHandle);
+pascal ComponentResult HIMHidePaletteWindows(Handle aSessionHandle)
+{
+    return HIMSessionHidePalettes((HIMSessionHandle)aSessionHandle);
 }
 
-pascal ComponentResult HIMCopyTextServiceInputModeList(Handle inSessionHandle, CFDictionaryRef* outInputModes) {
-    CFBundleRef bundleRef = CFBundleGetBundleWithIdentifier(CFSTR("org.osxdev.Hanulim"));
-    if(bundleRef) {
-	CFDictionaryRef bundleDict = CFBundleGetInfoDictionary(bundleRef);
-	if(bundleDict) {
-	    CFRetain(bundleDict);
-	    CFDictionaryRef tmpModes
-		= (CFDictionaryRef)CFDictionaryGetValue(bundleDict, kComponentBundleInputModeDictKey);
-	    if(tmpModes) {
-		*outInputModes = CFDictionaryCreateCopy(kCFAllocatorDefault, tmpModes);
-	    } else {
+pascal ComponentResult HIMCopyTextServiceInputModeList(Handle           aSessionHandle,
+                                                       CFDictionaryRef* aInputModes)
+{
+    CFBundleRef     sBundleRef;
+    CFDictionaryRef sBundleInfoDict;
+    CFDictionaryRef sInputModes;
+
+    sBundleRef = CFBundleGetBundleWithIdentifier(CFSTR("org.osxdev.Hanulim"));
+
+    if(sBundleRef)
+    {
+	sBundleInfoDict = CFBundleGetInfoDictionary(sBundleRef);
+
+        if(sBundleInfoDict)
+        {
+            CFRetain(sBundleInfoDict);
+
+            sInputModes = (CFDictionaryRef)CFDictionaryGetValue(sBundleInfoDict,
+                                                                kComponentBundleInputModeDictKey);
+	    if(sInputModes)
+            {
+		*aInputModes = CFDictionaryCreateCopy(kCFAllocatorDefault, sInputModes);
+	    }
+            else
+            {
 		HIMLog("CFDictionaryCreateCopy() failed\n");
 	    }
-	    CFRelease(bundleDict);
-	} else {
+
+            CFRelease(sBundleInfoDict);
+	}
+        else
+        {
 	    HIMLog("CFBundleGetInfoDictionary() failed\n");
 	}
-    } else {
+    }
+    else
+    {
 	HIMLog("CFBundleGetBundleWithIdentifier() failed\n");
     }
 
     return noErr;
 }
 
-pascal ComponentResult HIMSetTextServiceProperty(Handle inSessionHandle, TextServicePropertyTag tag,
-						 TextServicePropertyValue value) {
-    if(tag != kTextServiceInputModePropertyTag) {
-	HIMLog("Can't SetTextServiceProperty[%d]\n", tag);
-	return tsmComponentPropertyUnsupportedErr;
+pascal ComponentResult HIMSetTextServiceProperty(Handle                   aSessionHandle,
+                                                 TextServicePropertyTag   aTag,
+						 TextServicePropertyValue aValue)
+{
+    CFStringRef sNewMode = (CFStringRef)aValue;
+
+    if(aTag != kTextServiceInputModePropertyTag)
+    {
+	HIMLog("Can't SetTextServiceProperty[%d]\n", aTag);
+
+        return tsmComponentPropertyUnsupportedErr;
     }
 
-    CFStringRef newMode = (CFStringRef)value;
-
-    HIMLog("New Mode: %s", CFStringGetCStringPtr(newMode, kCFStringEncodingUTF8));
-
-/*     if(CFStringCompare(newMode, kTextServiceInputModeJapanese, 0) == 0) { */
-/* 	if(!inputMode->isHiraganaInputMode()) { */
-/* 	    inputMode->goHiraganaInputMode(); */
-/* 	    return noErr; */
-/* 	} */
-/*     } */
+    if (CFStringCompare(sNewMode, CFSTR("org.osxdev.Hanulim.Keyboard.2"), 0) == 0)
+    {
+        gPreferences.mKeyboardLayout = kKeyboardLayout2;
+    }
+    else if (CFStringCompare(sNewMode, CFSTR("org.osxdev.Hanulim.Keyboard.3"), 0) == 0)
+    {
+        gPreferences.mKeyboardLayout = kKeyboardLayout3;
+    }
+    else if (CFStringCompare(sNewMode, CFSTR("org.osxdev.Hanulim.Keyboard.390"), 0) == 0)
+    {
+        gPreferences.mKeyboardLayout = kKeyboardLayout390;
+    }
+    else if (CFStringCompare(sNewMode, CFSTR("org.osxdev.Hanulim.Keyboard.393"), 0) == 0)
+    {
+        gPreferences.mKeyboardLayout = kKeyboardLayout393;
+    }
+    else
+    {
+        HIMLog("Unknown Mode: %s", CFStringGetCStringPtr(sNewMode, kCFStringEncodingUTF8));
+    }
 
     return noErr;
-}
-
-static ComponentResult CallHIMFunction(ComponentParameters *inParams, ProcPtr inProcPtr, SInt32 inProcInfo) {
-    ComponentFunctionUPP componentFunctionUPP = NewComponentFunctionUPP(inProcPtr, inProcInfo);
-    ComponentResult result = CallComponentFunction(inParams, componentFunctionUPP);
-
-    DisposeComponentFunctionUPP(componentFunctionUPP);
-    return result;
-}
-
-static ComponentResult CallHIMFunctionWithStorage(Handle inStorage, ComponentParameters *inParams, ProcPtr inProcPtr, SInt32 inProcInfo) {
-    ComponentFunctionUPP componentFunctionUPP = NewComponentFunctionUPP(inProcPtr, inProcInfo);
-    ComponentResult result = CallComponentFunctionWithStorage(inStorage, inParams, componentFunctionUPP);
-
-    DisposeComponentFunctionUPP(componentFunctionUPP);
-    return result;
 }

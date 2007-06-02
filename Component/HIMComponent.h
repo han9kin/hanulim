@@ -3,94 +3,111 @@
 
 #include <Carbon/Carbon.h>
 
-// These first four entry points are standard for any component.
 
-pascal ComponentResult HIMOpenComponent(ComponentInstance inComponentInstance);
-pascal ComponentResult HIMCloseComponent(Handle inSessionHandle, ComponentInstance inComponentInstance);
-pascal ComponentResult HIMCanDo(SInt16 inSelector);
+/*
+ * Standard functions for any component
+ */
+
+pascal ComponentResult HIMOpenComponent(ComponentInstance aComponentInstance);
+pascal ComponentResult HIMCloseComponent(Handle            aSessionHandle,
+                                         ComponentInstance aComponentInstance);
+pascal ComponentResult HIMCanDo(SInt16 aSelector);
 pascal ComponentResult HIMGetVersion();
 
-// The next entry points are required for any text service component.
+/*
+ * Required functions for text service component
+ */
 
-pascal ComponentResult HIMGetScriptLangSupport(Handle inSessionHandle, ScriptLanguageSupportHandle *outScriptHandle);
-pascal ComponentResult HIMInitiateTextService(Handle inSessionHandle);
-pascal ComponentResult HIMTerminateTextService(Handle inSessionHandle);
-pascal ComponentResult HIMActivateTextService(Handle inSessionHandle);
-pascal ComponentResult HIMDeactivateTextService(Handle inSessionHandle);
-pascal ComponentResult HIMTextServiceEventRef(Handle inSessionHandle, EventRef inEventRef);
-pascal ComponentResult HIMGetTextServiceMenu(Handle inSessionHandle, MenuHandle *outMenuHandle);
-pascal ComponentResult HIMFixTextService(Handle inSessionHandle);
-pascal ComponentResult HIMHidePaletteWindows(Handle inSessionHandle);
-pascal ComponentResult HIMCopyTextServiceInputModeList(Handle inSessionHandle, CFDictionaryRef* outInputModes);
-pascal ComponentResult HIMSetTextServiceProperty(Handle inSessionHandle, TextServicePropertyTag tag, TextServicePropertyValue value);
-//
+pascal ComponentResult HIMGetScriptLangSupport(Handle                       aSessionHandle,
+                                               ScriptLanguageSupportHandle *aScriptHandle);
+pascal ComponentResult HIMInitiateTextService(Handle aSessionHandle);
+pascal ComponentResult HIMTerminateTextService(Handle aSessionHandle);
+pascal ComponentResult HIMActivateTextService(Handle aSessionHandle);
+pascal ComponentResult HIMDeactivateTextService(Handle aSessionHandle);
+pascal ComponentResult HIMTextServiceEventRef(Handle   aSessionHandle,
+                                              EventRef aEventRef);
+pascal ComponentResult HIMGetTextServiceMenu(Handle      aSessionHandle,
+                                             MenuHandle *aMenuHandle);
+pascal ComponentResult HIMFixTextService(Handle aSessionHandle);
+pascal ComponentResult HIMHidePaletteWindows(Handle aSessionHandle);
+pascal ComponentResult HIMCopyTextServiceInputModeList(Handle           aSessionHandle,
+                                                       CFDictionaryRef *aInputModes);
+pascal ComponentResult HIMSetTextServiceProperty(Handle                   aSessionHandle,
+                                                 TextServicePropertyTag   aTag,
+                                                 TextServicePropertyValue aValue);
 
-enum {
-    uppOpenComponentProcInfo = kPascalStackBased
+/*
+ * Component function info
+ */
+
+enum
+{
+    gUppOpenComponentProcInfo = kPascalStackBased
     | RESULT_SIZE(SIZE_CODE(sizeof(ComponentResult)))
     | STACK_ROUTINE_PARAMETER(1, SIZE_CODE(sizeof(ComponentInstance))),
 
-    uppCloseComponentProcInfo = kPascalStackBased
+    gUppCloseComponentProcInfo = kPascalStackBased
     | RESULT_SIZE(SIZE_CODE(sizeof(ComponentResult)))
     | STACK_ROUTINE_PARAMETER(1, SIZE_CODE(sizeof(Handle)))
     | STACK_ROUTINE_PARAMETER(2, SIZE_CODE(sizeof(ComponentInstance))),
 
-    uppCanDoProcInfo = kPascalStackBased
+    gUppCanDoProcInfo = kPascalStackBased
     | RESULT_SIZE(SIZE_CODE(sizeof(ComponentResult)))
     | STACK_ROUTINE_PARAMETER(1, SIZE_CODE(sizeof(short))),
 
-    uppGetVersionProcInfo = kPascalStackBased
+    gUppGetVersionProcInfo = kPascalStackBased
     | RESULT_SIZE(SIZE_CODE(sizeof(ComponentResult))),
 
-    uppGetScriptLangSupportProcInfo = kPascalStackBased
+    gUppGetScriptLangSupportProcInfo = kPascalStackBased
     | RESULT_SIZE(SIZE_CODE(sizeof(ComponentResult)))
     | STACK_ROUTINE_PARAMETER(1, SIZE_CODE(sizeof(Handle)))
     | STACK_ROUTINE_PARAMETER(2, SIZE_CODE(sizeof(ScriptLanguageSupportHandle *))),
 
-    uppInitiateTextServiceProcInfo = kPascalStackBased
+    gUppInitiateTextServiceProcInfo = kPascalStackBased
     | RESULT_SIZE(SIZE_CODE(sizeof(ComponentResult)))
     | STACK_ROUTINE_PARAMETER(1, SIZE_CODE(sizeof(Handle))),
 
-    uppTerminateTextServiceProcInfo = kPascalStackBased
+    gUppTerminateTextServiceProcInfo = kPascalStackBased
     | RESULT_SIZE(SIZE_CODE(sizeof(ComponentResult)))
     | STACK_ROUTINE_PARAMETER(1, SIZE_CODE(sizeof(Handle))),
 
-    uppActivateTextServiceProcInfo = kPascalStackBased
+    gUppActivateTextServiceProcInfo = kPascalStackBased
     | RESULT_SIZE(SIZE_CODE(sizeof(ComponentResult)))
     | STACK_ROUTINE_PARAMETER(1, SIZE_CODE(sizeof(Handle))),
 
-    uppDeactivateTextServiceProcInfo = kPascalStackBased
+    gUppDeactivateTextServiceProcInfo = kPascalStackBased
     | RESULT_SIZE(SIZE_CODE(sizeof(ComponentResult)))
     | STACK_ROUTINE_PARAMETER(1, SIZE_CODE(sizeof(Handle))),
 
-    uppTextServiceEventRefProcInfo = kPascalStackBased
+    gUppTextServiceEventRefProcInfo = kPascalStackBased
     | RESULT_SIZE(SIZE_CODE(sizeof(ComponentResult)))
     | STACK_ROUTINE_PARAMETER(1, SIZE_CODE(sizeof(Handle)))
     | STACK_ROUTINE_PARAMETER(2, SIZE_CODE(sizeof(EventRef))),
 
-    uppGetTextServiceMenuProcInfo = kPascalStackBased
+    gUppGetTextServiceMenuProcInfo = kPascalStackBased
     | RESULT_SIZE(SIZE_CODE(sizeof(ComponentResult)))
     | STACK_ROUTINE_PARAMETER(1, SIZE_CODE(sizeof(Handle)))
     | STACK_ROUTINE_PARAMETER(2, SIZE_CODE(sizeof(MenuHandle *))),
 
-    uppFixTextServiceProcInfo = kPascalStackBased
+    gUppFixTextServiceProcInfo = kPascalStackBased
     | RESULT_SIZE(SIZE_CODE(sizeof(ComponentResult)))
     | STACK_ROUTINE_PARAMETER(1, SIZE_CODE(sizeof(Handle))),
 
-    uppHidePaletteWindowsProcInfo = kPascalStackBased
+    gUppHidePaletteWindowsProcInfo = kPascalStackBased
     | RESULT_SIZE(SIZE_CODE(sizeof(ComponentResult)))
     | STACK_ROUTINE_PARAMETER(1, SIZE_CODE(sizeof(Handle))),
 
-    uppCopyTextServiceInputModeListInfo = kPascalStackBased
+    gUppCopyTextServiceInputModeListInfo = kPascalStackBased
     | RESULT_SIZE(SIZE_CODE(sizeof(ComponentResult)))
     | STACK_ROUTINE_PARAMETER(1, SIZE_CODE(sizeof(Handle)))
     | STACK_ROUTINE_PARAMETER(2, SIZE_CODE(sizeof(CFDictionaryRef*))),
 
-    uppSetTextServicePropertyInfo = kPascalStackBased
+    gUppSetTextServicePropertyInfo = kPascalStackBased
     | RESULT_SIZE(SIZE_CODE(sizeof(ComponentResult)))
     | STACK_ROUTINE_PARAMETER(1, SIZE_CODE(sizeof(Handle)))
     | STACK_ROUTINE_PARAMETER(2, SIZE_CODE(sizeof(TextServicePropertyTag)))
     | STACK_ROUTINE_PARAMETER(3, SIZE_CODE(sizeof(TextServicePropertyValue)))
 };
+
 
 #endif

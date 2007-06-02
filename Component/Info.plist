@@ -18,11 +18,13 @@
 	<string>1.1</string>
 	<key>CSResourcesFileMapped</key>
 	<true/>
+	<key>tsInputMethodIconFileKey</key>
+	<string>Hanulim.tif</string>
 	<key>ComponentInputModeDict</key>
 	<dict>
 		<key>tsInputModeListKey</key>
 		<dict>
-			<key>org.osxdev.Hanulim.Dubulsik</key>
+			<key>org.osxdev.Hanulim.Keyboard.2</key>
 			<dict>
 				<key>tsInputModeAlternateMenuIconFileKey</key>
 				<string>Hanulim.tif</string>
@@ -39,7 +41,41 @@
 				<key>tsInputModeScriptKey</key>
 				<string>smKorean</string>
 			</dict>
-			<key>org.osxdev.Hanulim.Sebulsik</key>
+			<key>org.osxdev.Hanulim.Keyboard.3</key>
+			<dict>
+				<key>tsInputModeAlternateMenuIconFileKey</key>
+				<string>Hanulim.tif</string>
+				<key>tsInputModeDefaultStateKey</key>
+				<true/>
+				<key>tsInputModeIsVisibleKey</key>
+				<true/>
+				<key>tsInputModeMenuIconFileKey</key>
+				<string>Hanulim.tif</string>
+				<key>tsInputModePaletteIconFileKey</key>
+				<string>Hanulim.tif</string>
+				<key>tsInputModePrimaryInScriptKey</key>
+				<false/>
+				<key>tsInputModeScriptKey</key>
+				<string>smKorean</string>
+			</dict>
+			<key>org.osxdev.Hanulim.Keyboard.390</key>
+			<dict>
+				<key>tsInputModeAlternateMenuIconFileKey</key>
+				<string>Hanulim.tif</string>
+				<key>tsInputModeDefaultStateKey</key>
+				<true/>
+				<key>tsInputModeIsVisibleKey</key>
+				<true/>
+				<key>tsInputModeMenuIconFileKey</key>
+				<string>Hanulim.tif</string>
+				<key>tsInputModePaletteIconFileKey</key>
+				<string>Hanulim.tif</string>
+				<key>tsInputModePrimaryInScriptKey</key>
+				<false/>
+				<key>tsInputModeScriptKey</key>
+				<string>smKorean</string>
+			</dict>
+			<key>org.osxdev.Hanulim.Keyboard.393</key>
 			<dict>
 				<key>tsInputModeAlternateMenuIconFileKey</key>
 				<string>Hanulim.tif</string>
@@ -59,11 +95,11 @@
 		</dict>
 		<key>tsVisibleInputModeOrderedArrayKey</key>
 		<array>
-			<string>org.odxdev.Hanulim.Dubulsik</string>
-			<string>org.osxdev.Hanulim.Sebulsik</string>
+			<string>org.osxdev.Hanulim.Keyboard.2</string>
+			<string>org.osxdev.Hanulim.Keyboard.3</string>
+			<string>org.osxdev.Hanulim.Keyboard.390</string>
+			<string>org.osxdev.Hanulim.Keyboard.393</string>
 		</array>
 	</dict>
-	<key>tsInputMethodIconFileKey</key>
-	<string>Hanulim.tif</string>
 </dict>
 </plist>

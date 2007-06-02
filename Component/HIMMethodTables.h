@@ -1,5 +1,6 @@
 
-static UniChar symbol[] = {
+static UniChar gSymbol[] =
+{
     0x0000, // 00 N/A
     0x0021, // 01 !
     0x0022, // 02 "
@@ -51,9 +52,10 @@ static UniChar symbol[] = {
     0x302e, // 30 (HANGUL SINGLE DOT TONE MARK)
     0x302f, // 31 (HANGUL DOUBLE DOT TONE MARK)
 };
-static UInt32 symbolMax = 0x31;
+static UInt32 gSymbolMax = 0x31;
 
-static UInt32 keyMap[4][51] = {
+static UInt32 gKeyMap[4][51] =
+{
     { // kKeyboardLayout2
         0x01060106, // a (00)
         0x01020102, // s (01)
@@ -267,9 +269,10 @@ static UInt32 keyMap[4][51] = {
         0x03490352, // ` (50)
     }
 };
-static UInt32 keyMapMax = 50;
+static UInt32 gKeyMapMax = 50;
 
-static UInt16 compoundFactor[3][69] = {
+static UInt16 gCompoundFactor[3][69] =
+{
     {
         0x0000, 0x0303, 0x0707, 0x0909, 0x0c0c,
         // archaic
@@ -303,7 +306,8 @@ static UInt16 compoundFactor[3][69] = {
         0x1a11, 0x1a49, 0x1b04, 0x1b08, 0x1b10, 0x1b11
     }
 };
-static UInt8 compoundResult[3][69] = {
+static UInt8 gCompoundResult[3][69] =
+{
     {
         0x01, 0x04, 0x08, 0x0a, 0x0d,
         // archaic
@@ -337,13 +341,15 @@ static UInt8 compoundResult[3][69] = {
         0x4c, 0x4d, 0x4e, 0x4f, 0x50, 0x51
     }
 };
-static UInt32 compoundCount[3][2] = {
+static UInt32 gCompoundCount[3][2] =
+{
     {5, 67},
     {13, 62},
     {13, 69}
 };
 
-static UniChar compatibilityJamo[3][28] = {
+static UniChar gCompatibilityJamo[3][28] =
+{
     {
         0x3131, 0x3132, 0x3134, 0x3137, 0x3138, 0x3139, 0x3141, 0x3142, 0x3143, 0x3145,
         0x3146, 0x3147, 0x3148, 0x3149, 0x314a, 0x314b, 0x314c, 0x314d, 0x314e
@@ -360,12 +366,14 @@ static UniChar compatibilityJamo[3][28] = {
     }
 };
 
-static UInt8 initialToFinal[] = {
+static UInt8 gInitialToFinal[] =
+{
     1, 2, 4, 7, 0, 8, 16, 17, 0, 19, 20, 21, 22, 0, 23, 24, 25, 26, 27
 };
 
-#define CanBeConvertedToKSC(index) (kscCompatiblity[index >> 3] & (1 << (index & 7)))
-static UInt8 kscCompatiblity[] = {
+#define CanBeConvertedToKSC(aIndex) (gKscCompatiblity[(aIndex) >> 3] & (1 << ((aIndex) & 7)))
+static UInt8 gKscCompatiblity[] =
+{
     0x93, 0x07, 0xff, 0x3e, 0x11, 0xb0, 0x03, 0x13, 0x01, 0x28,
     0x10, 0x11, 0x00, 0x00, 0x93, 0x05, 0x7b, 0x1e, 0x11, 0xb0,
     0x03, 0x97, 0x01, 0x3b, 0x12, 0x11, 0xa0, 0x00, 0x93, 0x95,

@@ -5,67 +5,93 @@
 
 ProcessSerialNumber gActiveInputMethod;
 
-CFDataRef HSMessagePortCallBack(CFMessagePortRef inLocalPort, SInt32 inMessageID, CFDataRef inData, void *inContextInfo) {
-    HanulimPreferences preferences;
-    CFDataRef replyData = NULL;
+CFDataRef HSMessagePortCallBack(CFMessagePortRef  aLocalPort,
+                                SInt32            aMessageID,
+                                CFDataRef         aData,
+                                void             *aContextInfo)
+{
+    HanulimPreferences sPreferences;
+    CFDataRef          sReplyData = NULL;
 
-    switch (inMessageID) {
+    switch (aMessageID)
+    {
         case HanulimMessageActivated:
-            if (inData) {
-                CFRange range;
-                range.location = 0;
-                range.length = sizeof(ProcessSerialNumber);
-                CFDataGetBytes(inData, range, (UInt8 *)&gActiveInputMethod);
+            if (aData)
+            {
+                CFRange sRange;
+
+                sRange.location = 0;
+                sRange.length   = sizeof(ProcessSerialNumber);
+
+                CFDataGetBytes(aData, sRange, (UInt8 *)&gActiveInputMethod);
             }
             break;
+
         case HanulimMessageDeactivated:
             gActiveInputMethod.highLongOfPSN = 0;
             gActiveInputMethod.lowLongOfPSN = kNoProcess;
             break;
+
         case HanulimMessageGetPreferences:
-            [HSPreferences get:&preferences];
-            replyData = CFDataCreate(NULL, (UInt8 *)&preferences, sizeof(HanulimPreferences));
+            [HSPreferences get:&sPreferences];
+            sReplyData = CFDataCreate(NULL, (UInt8 *)&sPreferences, sizeof(HanulimPreferences));
             break;
+
         case HanulimMessageSetPreferences:
-            if (inData) {
-                CFRange range;
-                range.location = 0;
-                range.length = sizeof(HanulimPreferences);
-                CFDataGetBytes(inData, range, (UInt8 *)&preferences);
-                [HSPreferences set:&preferences];
+            if (aData)
+            {
+                CFRange sRange;
+
+                sRange.location = 0;
+                sRange.length   = sizeof(HanulimPreferences);
+
+                CFDataGetBytes(aData, sRange, (UInt8 *)&sPreferences);
+
+                [HSPreferences set:&sPreferences];
             }
             break;
     }
-    
-    return replyData;
+
+    return sReplyData;
 }
 
-int HSRegisterServerToRunLoop(CFRunLoopRef runLoop) {
-    CFMessagePortContext context;
-    CFMessagePortRef port = NULL;
-    CFRunLoopSourceRef source = NULL;
-    
-    context.version = 0;
-    context.info = NULL;
-    context.retain = NULL;
-    context.release = NULL;
-    context.copyDescription = NULL;
-    
+int HSRegisterServerToRunLoop(CFRunLoopRef aRunLoop)
+{
+    CFMessagePortContext sContext;
+    CFMessagePortRef     sPort   = NULL;
+    CFRunLoopSourceRef   sSource = NULL;
+
+    sContext.version         = 0;
+    sContext.info            = NULL;
+    sContext.retain          = NULL;
+    sContext.release         = NULL;
+    sContext.copyDescription = NULL;
+
     gActiveInputMethod.highLongOfPSN = 0;
-    gActiveInputMethod.lowLongOfPSN = kNoProcess;
-    
-    port = CFMessagePortCreateLocal(NULL, HanulimServerIdentifier, HSMessagePortCallBack, &context, NULL);
-    if (port == NULL)
+    gActiveInputMethod.lowLongOfPSN  = kNoProcess;
+
+    sPort = CFMessagePortCreateLocal(NULL,
+                                    HanulimServerIdentifier,
+                                    HSMessagePortCallBack,
+                                    &sContext,
+                                    NULL);
+
+    if (sPort == NULL)
+    {
         return -1;
-    
-    source = CFMessagePortCreateRunLoopSource(NULL, port, 0);
-    if (source == NULL)
+    }
+
+    sSource = CFMessagePortCreateRunLoopSource(NULL, sPort, 0);
+
+    if (sSource == NULL)
+    {
         return -2;
-    
-    CFRunLoopAddSource(runLoop, source, kCFRunLoopCommonModes);
-    
-    CFRelease(source);
-    CFRelease(port);
-    
+    }
+
+    CFRunLoopAddSource(aRunLoop, sSource, kCFRunLoopCommonModes);
+
+    CFRelease(sSource);
+    CFRelease(sPort);
+
     return 0;
 }

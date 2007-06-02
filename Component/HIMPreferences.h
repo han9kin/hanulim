@@ -3,7 +3,9 @@
 
 #include <Carbon/Carbon.h>
 
-enum {
+
+enum
+{
     kKeyboardLayout2 = 0,
     kKeyboardLayout3,
     kKeyboardLayout390,
@@ -11,11 +13,12 @@ enum {
 };
 
 
-extern HanulimPreferences preferences;
+extern HanulimPreferences gPreferences;
 
 
 Boolean HIMOverloadConsonants();
 Boolean HIMArchaicKeyboard();
 Boolean HIMInputConjoiningJamo();
+
 
 #endif

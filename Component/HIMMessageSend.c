@@ -3,81 +3,120 @@
 #include "HIMPreferences.h"
 #include "HIMMessageSend.h"
 
-static OSStatus HIMSendMessageToServer(UInt32 inMessageID, CFDataRef inData, CFDataRef *outReplyData);
 
-OSStatus HIMSendActivated() {
-    OSStatus result;
-    ProcessSerialNumber psn;
-    CFDataRef sendData = NULL;
-    
-    result = GetCurrentProcess(&psn);
-    
-    if (result == noErr) {
-        sendData = CFDataCreate(NULL, (UInt8 *)&psn, sizeof(ProcessSerialNumber));
-        if (sendData == NULL)
-            result = memFullErr;
+
+static OSStatus HIMSendMessageToServer(UInt32     aMessageID,
+                                       CFDataRef  aData,
+                                       CFDataRef *aReplyData)
+{
+    OSStatus         sResult = noErr;
+    CFMessagePortRef sServerPortRef;
+
+    sServerPortRef = CFMessagePortCreateRemote(NULL, HanulimServerIdentifier);
+
+    if (sServerPortRef == NULL)
+    {
+        sResult = -1;
     }
-    
-    if (result == noErr) {
-        result = HIMSendMessageToServer(HanulimMessageActivated, sendData, NULL);
-        CFRelease(sendData);
+
+    if (sResult == noErr)
+    {
+        /*
+         * aReplyData CAN BE NULL?
+         */
+        if (CFMessagePortSendRequest(sServerPortRef,
+                                     aMessageID,
+                                     aData,
+                                     10,
+                                     10,
+                                     (aReplyData ? kCFRunLoopDefaultMode : NULL),
+                                     aReplyData) != kCFMessagePortSuccess)
+        {
+            sResult = -2;
+        }
     }
-    
-    return result;
+
+    if (sServerPortRef)
+    {
+        CFRelease(sServerPortRef);
+    }
+
+    return sResult;
 }
 
-OSStatus HIMSendDeactivated() {
+
+OSStatus HIMSendActivated()
+{
+    OSStatus            sResult;
+    ProcessSerialNumber sPsn;
+    CFDataRef           sSendData = NULL;
+
+    sResult = GetCurrentProcess(&sPsn);
+
+    if (sResult == noErr)
+    {
+        sSendData = CFDataCreate(NULL, (UInt8 *)&sPsn, sizeof(ProcessSerialNumber));
+
+        if (sSendData == NULL)
+        {
+            sResult = memFullErr;
+        }
+    }
+
+    if (sResult == noErr)
+    {
+        sResult = HIMSendMessageToServer(HanulimMessageActivated, sSendData, NULL);
+
+        CFRelease(sSendData);
+    }
+
+    return sResult;
+}
+
+OSStatus HIMSendDeactivated()
+{
     return HIMSendMessageToServer(HanulimMessageDeactivated, NULL, NULL);
 }
 
-OSStatus HIMSendGetPreferences() {
-    OSStatus result;
-    CFDataRef replyData;
-    
-    result = HIMSendMessageToServer(HanulimMessageGetPreferences, NULL, &replyData);
-    if ((result == noErr) && replyData) {
+OSStatus HIMSendGetPreferences()
+{
+    OSStatus  sResult;
+    CFDataRef sReplyData;
+
+    sResult = HIMSendMessageToServer(HanulimMessageGetPreferences, NULL, &sReplyData);
+
+    if ((sResult == noErr) && sReplyData)
+    {
         CFRange range;
-        
+
         range.location = 0;
-        range.length = sizeof(HanulimPreferences);
-        CFDataGetBytes(replyData, range, (UInt8 *)&preferences);
-        CFRelease(replyData);
+        range.length   = sizeof(HanulimPreferences);
+
+        CFDataGetBytes(sReplyData, range, (UInt8 *)&gPreferences);
+        CFRelease(sReplyData);
     }
-    
-    return result;
+
+    return sResult;
 }
 
-OSStatus HIMSendSetPreferences() {
-    OSStatus result = noErr;
-    CFDataRef sendData;
-    
-    sendData = CFDataCreate(NULL, (UInt8 *)&preferences, sizeof(HanulimPreferences));
-    if (sendData == NULL)
-        result = memFullErr;
-    
-    if (result == noErr) {
-        result = HIMSendMessageToServer(HanulimMessageSetPreferences, sendData, NULL);
-        CFRelease(sendData);
-    }
-    
-    return result;
-}
+OSStatus HIMSendSetPreferences()
+{
+    OSStatus  sResult = noErr;
+    CFDataRef sSendData;
 
-static OSStatus HIMSendMessageToServer(UInt32 inMessageID, CFDataRef inData, CFDataRef *outReplyData) {
-    OSStatus result = noErr;
-    CFMessagePortRef serverPortRef;
-    
-    serverPortRef = CFMessagePortCreateRemote(NULL, HanulimServerIdentifier);
-    if (serverPortRef == NULL)
-        result = -1;
-    
-    if (result == noErr) {
-        if (CFMessagePortSendRequest(serverPortRef, inMessageID, inData, 10, 10, (outReplyData ? kCFRunLoopDefaultMode : NULL), outReplyData) != kCFMessagePortSuccess) // outReplyData CAN BE NULL?
-            result = -2;
+    sSendData = CFDataCreate(NULL, (UInt8 *)&gPreferences, sizeof(HanulimPreferences));
+
+    if (sSendData == NULL)
+    {
+        sResult = memFullErr;
     }
-    
-    if (serverPortRef)
-        CFRelease(serverPortRef);
-    
-    return result;
+
+    if (sResult == noErr)
+    {
+        sResult = HIMSendMessageToServer(HanulimMessageSetPreferences, sSendData, NULL);
+
+        CFRelease(sSendData);
+    }
+
+    return sResult;
 }

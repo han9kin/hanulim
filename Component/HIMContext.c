@@ -7,271 +7,391 @@
 #include "HIMMessageSend.h"
 #include "HIMScript.h"
 
-// Constants
 
-enum {
-    kAboutMenuCommand = 'abou',
-    kKbdLayout2MenuCommand = 'kl2s',
-    kKbdLayout3MenuCommand = 'kl3l',
-    kKbdLayout390MenuCommand = 'k390',
-    kKbdLayout393MenuCommand = 'k393',
-    kFixImmediatelyMenuCommand = 'fixi',
-    kSmartQuotationMarksMenuCommand = 'quot',
+/*
+ * Constants
+ */
+
+enum
+{
+    kAboutMenuCommand                 = 'abou',
+    kFixImmediatelyMenuCommand        = 'fixi',
+    kSmartQuotationMarksMenuCommand   = 'quot',
     kHandleCapsLockAsShiftMenuCommand = 'caps',
-    kInputConjoiningJamoMenuCommand = 'conj'
+    kInputConjoiningJamoMenuCommand   = 'conj'
 };
 
-// Global variables
+
+/*
+ * Global variables
+ */
 
 static HIMSessionHandle gActiveSession;
-static MenuRef gPencilMenu;
+static MenuRef          gPencilMenu;
 
 
-// Local functions
+/*
+ * Local functions
+ */
 
-static pascal OSStatus HIMPencilMenuEventHandler(EventHandlerCallRef inEventHandlerCallRef, EventRef inEventRef, void *inUserData);
+static void HIMUpdateMenuItems()
+{
+    MenuRef       sOutMenu;
+    MenuItemIndex sOutIndex;
+    OSStatus      sResult;
 
+    sResult = GetIndMenuItemWithCommandID(gPencilMenu,
+                                          kFixImmediatelyMenuCommand,
+                                          1,
+                                          &sOutMenu,
+                                          &sOutIndex);
 
-void HIMUpdateMenuItems() {
-    static MenuCommand commandID[] = {kKbdLayout2MenuCommand, kKbdLayout3MenuCommand, kKbdLayout390MenuCommand, kKbdLayout393MenuCommand};
-    int i;
-    MenuRef outMenu;
-    MenuItemIndex outIndex;
-    OSStatus result;
-
-    for (i = 0; i < 4; i++) {
-        result = GetIndMenuItemWithCommandID(gPencilMenu, commandID[i], 1, &outMenu, &outIndex);
-        if (result == noErr)
-            CheckMenuItem(gPencilMenu, outIndex, (i == (UInt16)preferences.keyboardLayout));
+    if (sResult == noErr)
+    {
+        CheckMenuItem(gPencilMenu, sOutIndex, gPreferences.mFixImmediately);
     }
-    
-    result = GetIndMenuItemWithCommandID(gPencilMenu, kFixImmediatelyMenuCommand, 1, &outMenu, &outIndex);
-    if (result == noErr)
-        CheckMenuItem(gPencilMenu, outIndex, preferences.fixImmediately);
-    
-    result = GetIndMenuItemWithCommandID(gPencilMenu, kSmartQuotationMarksMenuCommand, 1, &outMenu, &outIndex);
-    if (result == noErr)
-        CheckMenuItem(gPencilMenu, outIndex, preferences.smartQuotationMarks);
-    
-    result = GetIndMenuItemWithCommandID(gPencilMenu, kHandleCapsLockAsShiftMenuCommand, 1, &outMenu, &outIndex);
-    if (result == noErr)
-        CheckMenuItem(gPencilMenu, outIndex, preferences.handleCapsLockAsShift);
-    
-    result = GetIndMenuItemWithCommandID(gPencilMenu, kInputConjoiningJamoMenuCommand, 1, &outMenu, &outIndex);
-    if (result == noErr) {
-        CheckMenuItem(gPencilMenu, outIndex, HIMInputConjoiningJamo());
+
+    sResult = GetIndMenuItemWithCommandID(gPencilMenu,
+                                          kSmartQuotationMarksMenuCommand,
+                                          1,
+                                          &sOutMenu,
+                                          &sOutIndex);
+
+    if (sResult == noErr)
+    {
+        CheckMenuItem(gPencilMenu, sOutIndex, gPreferences.mSmartQuotationMarks);
+    }
+
+    sResult = GetIndMenuItemWithCommandID(gPencilMenu,
+                                          kHandleCapsLockAsShiftMenuCommand,
+                                          1,
+                                          &sOutMenu,
+                                          &sOutIndex);
+
+    if (sResult == noErr)
+    {
+        CheckMenuItem(gPencilMenu, sOutIndex, gPreferences.mHandleCapsLockAsShift);
+    }
+
+    sResult = GetIndMenuItemWithCommandID(gPencilMenu,
+                                          kInputConjoiningJamoMenuCommand,
+                                          1,
+                                          &sOutMenu,
+                                          &sOutIndex);
+
+    if (sResult == noErr)
+    {
+        CheckMenuItem(gPencilMenu, sOutIndex, HIMInputConjoiningJamo());
+
         if (HIMArchaicKeyboard())
-            DisableMenuItem(gPencilMenu, outIndex);
+        {
+            DisableMenuItem(gPencilMenu, sOutIndex);
+        }
         else
-            EnableMenuItem(gPencilMenu, outIndex);
-    }
-}
-
-ComponentResult HIMInitialize(ComponentInstance inComponentInstance, MenuRef *outTextServiceMenu) {
-    ComponentResult result = noErr;
-    
-    gActiveSession = NULL;
-    gPencilMenu = NULL;
-    
-    result = HIMLaunchServer();
-    
-    if (result == noErr) {
-        CFBundleRef bundleRef = CFBundleGetBundleWithIdentifier(HanulimIdentifier);
-        IBNibRef nibRef;
-        OSStatus err;
-        
-        err = CreateNibReferenceWithCFBundle(bundleRef, CFSTR("PencilMenu"), &nibRef);
-        if (err) {
-            HIMLog("Hanulim Error: Cannot find PencilMenu.nib");
-            return resNotFound;
-        }
-        err = CreateMenuFromNib(nibRef, CFSTR("Menu"), &gPencilMenu);
-        if (err) {
-            HIMLog("Hanulim Error: Cannot unarchive menu from PencilMenu.nib");
-            return resNotFound;
-        }
-        DisposeNibReference(nibRef);
-
-        if (gPencilMenu)
-            *outTextServiceMenu = gPencilMenu;
-        else
-            result = resNotFound;
-        
-        if (result == noErr) {
-            EventTypeSpec menuEventSpec;
-            menuEventSpec.eventClass = kEventClassCommand;
-            menuEventSpec.eventKind = kEventProcessCommand;
-            result = InstallMenuEventHandler(gPencilMenu, NewEventHandlerUPP(HIMPencilMenuEventHandler), 1, &menuEventSpec, nil, nil);
-            
-            HIMUpdateMenuItems();
+        {
+            EnableMenuItem(gPencilMenu, sOutIndex);
         }
     }
-
-    return result;
 }
 
-void HIMTerminate(ComponentInstance inComponentInstance) {
-    DisposeMenu(gPencilMenu); // THIS MAY NOT BE SAFE
-    gActiveSession = NULL;
-    gPencilMenu = NULL;
-}
+static pascal OSStatus HIMPencilMenuEventHandler(EventHandlerCallRef  aEventHandlerCallRef,
+                                                 EventRef             aEventRef,
+                                                 void                *aUserData)
+{
+    OSStatus  sResult;
+    HICommand sCommand;
 
-ComponentResult HIMSessionOpen(ComponentInstance inComponentInstance, HIMSessionHandle *outSessionHandle) {
-    ComponentResult result = noErr;
-    
-    if (*outSessionHandle == nil)
-        *outSessionHandle = (HIMSessionHandle)NewHandle(sizeof(HIMSessionRecord));
-    if (*outSessionHandle == nil)
-        result = memFullErr;
+    sResult = GetEventParameter(aEventRef,
+                                kEventParamDirectObject,
+                                typeHICommand,
+                                nil,
+                                sizeof(sCommand),
+                                nil,
+                                &sCommand);
 
-    if (result == noErr) {
-        (**outSessionHandle)->fComponentInstance = inComponentInstance;
-        (**outSessionHandle)->fLastUpdateLength = 0;
-        (**outSessionHandle)->fCharBufferCount = 0;
-        (**outSessionHandle)->fCharBuffer = (UniCharPtr)NewPtr(kBufferMax + 2);
-        (**outSessionHandle)->fKeyBufferCount = 0;
-        (**outSessionHandle)->fKeyBuffer = (UniCharPtr)NewPtr(kBufferMax + 1);
-        result = MemError();
-    }
+    if (sResult == noErr)
+    {
+        Boolean sPreferencesChanged = true;
 
-    return result;
-}
-
-void HIMSessionClose(HIMSessionHandle inSessionHandle) {
-    if (inSessionHandle) {
-        if ((*inSessionHandle)->fCharBuffer)
-            DisposePtr((Ptr)(*inSessionHandle)->fCharBuffer);
-        if ((*inSessionHandle)->fKeyBuffer)
-            DisposePtr((Ptr)(*inSessionHandle)->fKeyBuffer);
-        DisposeHandle((Handle)inSessionHandle);
-    }
-}
-
-ComponentResult HIMSessionActivate(HIMSessionHandle inSessionHandle) {
-    OSStatus result;
-
-    gActiveSession = inSessionHandle;
-
-    HIMQuotationMark(0);
-
-    result = HIMSendActivated();
-
-    if (result == noErr)
-        result = HIMSendGetPreferences();
-    
-    if (result == noErr)
-        HIMUpdateMenuItems();
-
-    return result;
-}
-
-ComponentResult HIMSessionDeactivate(HIMSessionHandle inSessionHandle) {
-    gActiveSession = nil;
-    return HIMSendDeactivated();
-}
-
-ComponentResult HIMSessionEvent(HIMSessionHandle inSessionHandle, EventRef inEventRef) {
-    Boolean handled = false;
-    UInt32 eventClass = GetEventClass(inEventRef);
-    UInt32 eventKind = GetEventKind(inEventRef);
-
-    if ((eventClass == kEventClassKeyboard) && (eventKind == kEventRawKeyDown || eventKind == kEventRawKeyRepeat)) {
-        UInt32 keyCode;
-        unsigned char charCode;
-        UInt32 modifiers;
-        
-        // extract key code
-        GetEventParameter(inEventRef, kEventParamKeyCode, typeUInt32, nil, sizeof(keyCode), nil, &keyCode);
-        
-        // extract character code
-        GetEventParameter(inEventRef, kEventParamKeyMacCharCodes, typeChar, nil, sizeof(charCode), nil, &charCode);
-        
-        // extract modifiers
-        GetEventParameter(inEventRef, kEventParamKeyModifiers, typeUInt32, nil, sizeof(modifiers), nil, &modifiers);
-        
-        handled = HIMHandleKey(inSessionHandle, keyCode, modifiers, charCode);
-    }
-    
-    return handled;
-}
-
-ComponentResult HIMSessionFix(HIMSessionHandle inSessionHandle) {
-    ComponentResult result = noErr;
-    
-    if ((*inSessionHandle)->fCharBufferCount) {
-        result = HIMInput(inSessionHandle, true);
-        (*inSessionHandle)->fKeyBufferCount = 0;
-    }
-    return result;
-}
-
-ComponentResult HIMSessionHidePalettes(HIMSessionHandle inSessionHandle) {
-    return noErr;
-}
-
-HIMSessionHandle HIMGetActiveSession() {
-    return gActiveSession;
-}
-
-static pascal OSStatus HIMPencilMenuEventHandler(EventHandlerCallRef inEventHandlerCallRef, EventRef inEventRef, void *inUserData) {
-    OSStatus result;
-    HICommand command;
-
-    result = GetEventParameter(inEventRef, kEventParamDirectObject, typeHICommand, nil, sizeof(command), nil, &command);
-    if (result == noErr) {
-        Boolean preferencesChanged = true;
-
-        switch (command.commandID) {
+        switch (sCommand.commandID)
+        {
             case kAboutMenuCommand:
-                preferencesChanged = false;
-                break;
-            case kKbdLayout2MenuCommand:
-                preferences.keyboardLayout = kKeyboardLayout2;
-                break;
-            case kKbdLayout3MenuCommand:
-                preferences.keyboardLayout = kKeyboardLayout3;
-                break;
-            case kKbdLayout390MenuCommand:
-                preferences.keyboardLayout = kKeyboardLayout390;
-                break;
-            case kKbdLayout393MenuCommand:
-                preferences.keyboardLayout = kKeyboardLayout393;
+                sPreferencesChanged = false;
                 break;
             case kFixImmediatelyMenuCommand:
-                preferences.fixImmediately = !preferences.fixImmediately;
+                gPreferences.mFixImmediately = !gPreferences.mFixImmediately;
                 break;
             case kSmartQuotationMarksMenuCommand:
-                preferences.smartQuotationMarks = !preferences.smartQuotationMarks;
+                gPreferences.mSmartQuotationMarks = !gPreferences.mSmartQuotationMarks;
                 break;
             case kHandleCapsLockAsShiftMenuCommand:
-                preferences.handleCapsLockAsShift = !preferences.handleCapsLockAsShift;
+                gPreferences.mHandleCapsLockAsShift = !gPreferences.mHandleCapsLockAsShift;
                 break;
             case kInputConjoiningJamoMenuCommand:
-                preferences.inputConjoiningJamo = !preferences.inputConjoiningJamo;
+                gPreferences.mInputConjoiningJamo = !gPreferences.mInputConjoiningJamo;
                 break;
             default:
-                preferencesChanged = false;
+                sPreferencesChanged = false;
                 break;
         }
 
-        if (preferencesChanged) {
+        if (sPreferencesChanged)
+        {
             HIMUpdateMenuItems();
             HIMSendSetPreferences();
         }
     }
 
-    return result;
+    return sResult;
 }
 
 
-void HIMLog(const char *format, ...) {
+/*
+ * Service functions
+ */
+
+ComponentResult HIMInitialize(ComponentInstance aComponentInstance, MenuRef *aTextServiceMenu)
+{
+    ComponentResult sResult = noErr;
+
+    gActiveSession = NULL;
+    gPencilMenu    = NULL;
+
+    sResult = HIMLaunchServer();
+
+    if (sResult == noErr)
+    {
+        CFBundleRef sBundleRef;
+        IBNibRef    sNibRef;
+        OSStatus    sErr;
+
+        sBundleRef = CFBundleGetBundleWithIdentifier(HanulimIdentifier);
+
+        sErr = CreateNibReferenceWithCFBundle(sBundleRef, CFSTR("PencilMenu"), &sNibRef);
+
+        if (sErr)
+        {
+            HIMLog("Hanulim Error: Cannot find PencilMenu.nib");
+            return resNotFound;
+        }
+
+        sErr = CreateMenuFromNib(sNibRef, CFSTR("Menu"), &gPencilMenu);
+
+        if (sErr)
+        {
+            HIMLog("Hanulim Error: Cannot unarchive menu from PencilMenu.nib");
+            return resNotFound;
+        }
+
+        DisposeNibReference(sNibRef);
+
+        if (gPencilMenu)
+        {
+            *aTextServiceMenu = gPencilMenu;
+        }
+        else
+        {
+            sResult = resNotFound;
+        }
+
+        if (sResult == noErr)
+        {
+            EventTypeSpec sMenuEventSpec;
+
+            sMenuEventSpec.eventClass = kEventClassCommand;
+            sMenuEventSpec.eventKind  = kEventProcessCommand;
+
+            sResult = InstallMenuEventHandler(gPencilMenu,
+                                             NewEventHandlerUPP(HIMPencilMenuEventHandler),
+                                             1,
+                                             &sMenuEventSpec,
+                                             nil,
+                                             nil);
+
+            HIMUpdateMenuItems();
+        }
+    }
+
+    return sResult;
+}
+
+void HIMTerminate(ComponentInstance aComponentInstance)
+{
+    /*
+     * THIS MAY NOT BE SAFE
+     */
+    DisposeMenu(gPencilMenu);
+
+    gActiveSession = NULL;
+    gPencilMenu    = NULL;
+}
+
+ComponentResult HIMSessionOpen(ComponentInstance  aComponentInstance,
+                               HIMSessionHandle  *aSessionHandle)
+{
+    ComponentResult sResult = noErr;
+
+    if (*aSessionHandle == nil)
+    {
+        *aSessionHandle = (HIMSessionHandle)NewHandle(sizeof(HIMSessionRecord));
+    }
+
+    if (*aSessionHandle == nil)
+    {
+        sResult = memFullErr;
+    }
+
+    if (sResult == noErr)
+    {
+        (**aSessionHandle)->mComponentInstance = aComponentInstance;
+        (**aSessionHandle)->mLastUpdateLength  = 0;
+        (**aSessionHandle)->mCharBufferCount   = 0;
+        (**aSessionHandle)->mCharBuffer        = (UniCharPtr)NewPtr(kBufferMax + 2);
+        (**aSessionHandle)->mKeyBufferCount    = 0;
+        (**aSessionHandle)->mKeyBuffer         = (UniCharPtr)NewPtr(kBufferMax + 1);
+
+        sResult = MemError();
+    }
+
+    return sResult;
+}
+
+void HIMSessionClose(HIMSessionHandle aSessionHandle)
+{
+    if (aSessionHandle)
+    {
+        if ((*aSessionHandle)->mCharBuffer)
+        {
+            DisposePtr((Ptr)(*aSessionHandle)->mCharBuffer);
+        }
+
+        if ((*aSessionHandle)->mKeyBuffer)
+        {
+            DisposePtr((Ptr)(*aSessionHandle)->mKeyBuffer);
+        }
+
+        DisposeHandle((Handle)aSessionHandle);
+    }
+}
+
+ComponentResult HIMSessionActivate(HIMSessionHandle aSessionHandle)
+{
+    OSStatus sResult;
+
+    gActiveSession = aSessionHandle;
+
+    HIMQuotationMark(0);
+
+    sResult = HIMSendActivated();
+
+    if (sResult == noErr)
+    {
+        sResult = HIMSendGetPreferences();
+    }
+
+    if (sResult == noErr)
+    {
+        HIMUpdateMenuItems();
+    }
+
+    return sResult;
+}
+
+ComponentResult HIMSessionDeactivate(HIMSessionHandle aSessionHandle)
+{
+    gActiveSession = nil;
+
+    return HIMSendDeactivated();
+}
+
+ComponentResult HIMSessionEvent(HIMSessionHandle aSessionHandle, EventRef aEventRef)
+{
+    Boolean sHandled    = false;
+    UInt32  sEventClass = GetEventClass(aEventRef);
+    UInt32  sEventKind  = GetEventKind(aEventRef);
+
+    if ((sEventClass == kEventClassKeyboard) &&
+        (sEventKind == kEventRawKeyDown || sEventKind == kEventRawKeyRepeat))
+    {
+        UInt32        sKeyCode;
+        unsigned char sCharCode;
+        UInt32        sModifiers;
+
+        /*
+         * extract key code
+         */
+        GetEventParameter(aEventRef,
+                          kEventParamKeyCode,
+                          typeUInt32,
+                          nil,
+                          sizeof(sKeyCode),
+                          nil,
+                          &sKeyCode);
+
+        /*
+         * extract character code
+         */
+        GetEventParameter(aEventRef,
+                          kEventParamKeyMacCharCodes,
+                          typeChar,
+                          nil,
+                          sizeof(sCharCode),
+                          nil,
+                          &sCharCode);
+
+        /*
+         * extract modifiers
+         */
+        GetEventParameter(aEventRef,
+                          kEventParamKeyModifiers,
+                          typeUInt32,
+                          nil,
+                          sizeof(sModifiers),
+                          nil,
+                          &sModifiers);
+
+        sHandled = HIMHandleKey(aSessionHandle, sKeyCode, sModifiers, sCharCode);
+    }
+
+    return sHandled;
+}
+
+ComponentResult HIMSessionFix(HIMSessionHandle aSessionHandle)
+{
+    ComponentResult sResult = noErr;
+
+    if ((*aSessionHandle)->mCharBufferCount)
+    {
+        sResult = HIMInput(aSessionHandle, true);
+
+        (*aSessionHandle)->mKeyBufferCount = 0;
+    }
+
+    return sResult;
+}
+
+ComponentResult HIMSessionHidePalettes(HIMSessionHandle aSessionHandle)
+{
+    return noErr;
+}
+
+HIMSessionHandle HIMGetActiveSession()
+{
+    return gActiveSession;
+}
+
+void HIMLog(const char *format, ...)
+{
 /* #ifdef DEBUG */
-    va_list ap;
+    va_list  ap;
+    FILE    *fp = stderr;
 
     va_start(ap, format);
-    vfprintf(stderr, format, ap);
+    vfprintf(fp, format, ap);
     va_end(ap);
 
-    fprintf(stderr, "\n");
+    fprintf(fp, "\n");
+
+    fflush(fp);
 /* #endif */
 }

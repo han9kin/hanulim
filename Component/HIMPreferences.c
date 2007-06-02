@@ -1,17 +1,21 @@
 #include "Hanulim.h"
 #include "HIMPreferences.h"
 
-HanulimPreferences preferences;
+
+HanulimPreferences gPreferences;
 
 
-Boolean HIMOverloadConsonants() {
-    return preferences.keyboardLayout == kKeyboardLayout2;
+Boolean HIMOverloadConsonants()
+{
+    return gPreferences.mKeyboardLayout == kKeyboardLayout2;
 }
 
-Boolean HIMArchaicKeyboard() {
-    return preferences.keyboardLayout == kKeyboardLayout393;
+Boolean HIMArchaicKeyboard()
+{
+    return gPreferences.mKeyboardLayout == kKeyboardLayout393;
 }
 
-Boolean HIMInputConjoiningJamo() {
-    return HIMArchaicKeyboard() ? true : preferences.inputConjoiningJamo;
+Boolean HIMInputConjoiningJamo()
+{
+    return HIMArchaicKeyboard() ? true : gPreferences.mInputConjoiningJamo;
 }

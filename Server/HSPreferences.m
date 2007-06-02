@@ -2,38 +2,38 @@
 #import "HSPreferences.h"
 
 
-static NSString *PKKeyboardLayout = @"KeyboardLayout";
-static NSString *PKFixImmediately = @"FixImmediately";
-static NSString *PKSmartQuotationMarks = @"SmartQuotationMarks";
+static NSString *PKFixImmediately        = @"FixImmediately";
+static NSString *PKSmartQuotationMarks   = @"SmartQuotationMarks";
 static NSString *PKHandleCapsLockAsShift = @"HandleCapsLockAsShift";
-static NSString *PKInputConjoiningJamo = @"InputConjoiningJamo";
+static NSString *PKInputConjoiningJamo   = @"InputConjoiningJamo";
 
 
 @interface HSPreferences (Private)
 
-+ (int)intValueForKey:(NSString *)key defaultValue:(int)defaultValue;
-+ (void)setIntValue:(int)value forKey:(NSString *)key;
-+ (BOOL)boolValueForKey:(NSString *)key defaultValue:(BOOL)defaultValue;
-+ (void)setBoolValue:(BOOL)value forKey:(NSString *)key;
++ (int)intValueForKey:(NSString *)aKey defaultValue:(int)aDefaultValue;
++ (void)setIntValue:(int)aValue forKey:(NSString *)aKey;
++ (BOOL)boolValueForKey:(NSString *)aKey defaultValue:(BOOL)aDefaultValue;
++ (void)setBoolValue:(BOOL)aValue forKey:(NSString *)aKey;
 
 @end
 
 @implementation HSPreferences
 
-+ (void)get:(HanulimPreferences *)pref {
-    pref->keyboardLayout = [self intValueForKey:PKKeyboardLayout defaultValue:0];
-    pref->fixImmediately = [self boolValueForKey:PKFixImmediately defaultValue:YES];
-    pref->smartQuotationMarks = [self boolValueForKey:PKSmartQuotationMarks defaultValue:NO];
-    pref->handleCapsLockAsShift = [self boolValueForKey:PKHandleCapsLockAsShift defaultValue:NO];
-    pref->inputConjoiningJamo = [self boolValueForKey:PKInputConjoiningJamo defaultValue:NO];
++ (void)get:(HanulimPreferences *)aPref
+{
+    aPref->mFixImmediately        = [self boolValueForKey:PKFixImmediately defaultValue:YES];
+    aPref->mSmartQuotationMarks   = [self boolValueForKey:PKSmartQuotationMarks defaultValue:NO];
+    aPref->mHandleCapsLockAsShift = [self boolValueForKey:PKHandleCapsLockAsShift defaultValue:NO];
+    aPref->mInputConjoiningJamo   = [self boolValueForKey:PKInputConjoiningJamo defaultValue:NO];
 }
 
-+ (void)set:(HanulimPreferences *)pref {
-    [self setIntValue:pref->keyboardLayout forKey:PKKeyboardLayout];
-    [self setBoolValue:pref->fixImmediately forKey:PKFixImmediately];
-    [self setBoolValue:pref->smartQuotationMarks forKey:PKSmartQuotationMarks];
-    [self setBoolValue:pref->handleCapsLockAsShift forKey:PKHandleCapsLockAsShift];
-    [self setBoolValue:pref->inputConjoiningJamo forKey:PKInputConjoiningJamo];
++ (void)set:(HanulimPreferences *)aPref
+{
+    [self setBoolValue:aPref->mFixImmediately forKey:PKFixImmediately];
+    [self setBoolValue:aPref->mSmartQuotationMarks forKey:PKSmartQuotationMarks];
+    [self setBoolValue:aPref->mHandleCapsLockAsShift forKey:PKHandleCapsLockAsShift];
+    [self setBoolValue:aPref->mInputConjoiningJamo forKey:PKInputConjoiningJamo];
+
     CFPreferencesAppSynchronize(HanulimIdentifier);
 }
 
@@ -42,37 +42,53 @@ static NSString *PKInputConjoiningJamo = @"InputConjoiningJamo";
 
 @implementation HSPreferences (Private)
 
-+ (int)intValueForKey:(NSString *)key defaultValue:(int)defaultValue {
-    CFNumberRef obj = CFPreferencesCopyAppValue((CFStringRef)key, HanulimIdentifier);
-    int value = defaultValue;
-    
-    if (obj) {
-        if (!CFNumberGetValue(obj, kCFNumberIntType, &value))
-            value = defaultValue;
-        CFRelease(obj);
++ (int)intValueForKey:(NSString *)aKey defaultValue:(int)aDefaultValue
+{
+    CFNumberRef sObj   = CFPreferencesCopyAppValue((CFStringRef)aKey, HanulimIdentifier);
+    int         sValue = aDefaultValue;
+
+    if (sObj)
+    {
+        if (!CFNumberGetValue(sObj, kCFNumberIntType, &sValue))
+        {
+            sValue = aDefaultValue;
+        }
+
+        CFRelease(sObj);
     }
-    return value;
+
+    return sValue;
 }
 
-+ (void)setIntValue:(int)value forKey:(NSString *)key {
-    CFNumberRef obj = CFNumberCreate(NULL, kCFNumberIntType, &value);
-    CFPreferencesSetAppValue((CFStringRef)key, obj, HanulimIdentifier);
-    CFRelease(obj);
++ (void)setIntValue:(int)aValue forKey:(NSString *)aKey
+{
+    CFNumberRef sObj = CFNumberCreate(NULL, kCFNumberIntType, &aValue);
+
+    CFPreferencesSetAppValue((CFStringRef)aKey, sObj, HanulimIdentifier);
+
+    CFRelease(sObj);
 }
 
-+ (BOOL)boolValueForKey:(NSString *)key defaultValue:(BOOL)defaultValue {
-    CFBooleanRef obj = CFPreferencesCopyAppValue((CFStringRef)key, HanulimIdentifier);
-    BOOL value = defaultValue;
-    
-    if (obj) {
-        value = CFBooleanGetValue(obj);
-        CFRelease(obj);
++ (BOOL)boolValueForKey:(NSString *)aKey defaultValue:(BOOL)aDefaultValue
+{
+    CFBooleanRef sObj   = CFPreferencesCopyAppValue((CFStringRef)aKey, HanulimIdentifier);
+    BOOL         sValue = aDefaultValue;
+
+    if (sObj)
+    {
+        sValue = CFBooleanGetValue(sObj);
+
+        CFRelease(sObj);
     }
-    return value;
+
+    return sValue;
 }
 
-+ (void)setBoolValue:(BOOL)value forKey:(NSString *)key {
-    CFPreferencesSetAppValue((CFStringRef)key, (value ? kCFBooleanTrue : kCFBooleanFalse), HanulimIdentifier);
++ (void)setBoolValue:(BOOL)aValue forKey:(NSString *)aKey
+{
+    CFPreferencesSetAppValue((CFStringRef)aKey,
+                             (aValue ? kCFBooleanTrue : kCFBooleanFalse),
+                             HanulimIdentifier);
 }
 
 @end

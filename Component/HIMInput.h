@@ -3,8 +3,10 @@
 
 #include <Carbon/Carbon.h>
 
-Boolean HIMInputDocumentHasProperty(OSType propertyTag);
 
-OSErr HIMInput(HIMSessionHandle inSessionHandle, Boolean inFix);
+Boolean HIMInputDocumentHasProperty(OSType aPropertyTag);
+
+OSErr HIMInput(HIMSessionHandle aSessionHandle, Boolean aFix);
+
 
 #endif

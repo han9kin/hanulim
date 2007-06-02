@@ -3,10 +3,15 @@
 
 #include <Carbon/Carbon.h>
 
-UniChar HIMQuotationMark(UniChar ch);
 
-Boolean HIMHandleKey(HIMSessionHandle inSessionHandle, UInt32 inKeyCode, UInt32 inModifiers, unsigned char inCharCode);
+UniChar HIMQuotationMark(UniChar aChar);
 
-void HIMComposite(HIMSessionHandle inSessionHandle);
+Boolean HIMHandleKey(HIMSessionHandle aSessionHandle,
+                     UInt32           aKeyCode,
+                     UInt32           aModifiers,
+                     unsigned char    aCharCode);
+
+void HIMComposite(HIMSessionHandle aSessionHandle);
+
 
 #endif

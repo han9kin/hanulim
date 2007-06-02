@@ -4,12 +4,7 @@
   <object name="rootObject" class="NSCustomObject" id="1">
     <string name="customClass">NSApplication</string>
   </object>
-  <array count="12" name="allObjects">
-    <object class="IBCarbonMenuItem" id="180">
-      <boolean name="updateSingleItem">TRUE</boolean>
-      <string name="title">2-Bul</string>
-      <ostype name="command">kl2s</ostype>
-    </object>
+  <array count="7" name="allObjects">
     <object class="IBCarbonMenuItem" id="181">
       <boolean name="updateSingleItem">TRUE</boolean>
       <string name="title">About Hanulim</string>
@@ -17,29 +12,9 @@
     </object>
     <object class="IBCarbonMenu" id="182">
       <string name="title">Menu</string>
-      <array count="11" name="items">
+      <array count="6" name="items">
         <reference idRef="181"/>
         <object class="IBCarbonMenuItem" id="183">
-          <boolean name="separator">TRUE</boolean>
-          <boolean name="updateSingleItem">TRUE</boolean>
-        </object>
-        <reference idRef="180"/>
-        <object class="IBCarbonMenuItem" id="184">
-          <boolean name="updateSingleItem">TRUE</boolean>
-          <string name="title">3-Bul Final</string>
-          <ostype name="command">kl3l</ostype>
-        </object>
-        <object class="IBCarbonMenuItem" id="185">
-          <boolean name="updateSingleItem">TRUE</boolean>
-          <string name="title">3-Bul 390</string>
-          <ostype name="command">k390</ostype>
-        </object>
-        <object class="IBCarbonMenuItem" id="187">
-          <boolean name="updateSingleItem">TRUE</boolean>
-          <string name="title">3-Bul 393 (Archaic)</string>
-          <ostype name="command">k393</ostype>
-        </object>
-        <object class="IBCarbonMenuItem" id="188">
           <boolean name="separator">TRUE</boolean>
           <boolean name="updateSingleItem">TRUE</boolean>
         </object>
@@ -66,36 +41,25 @@
       </array>
     </object>
     <reference idRef="183"/>
-    <reference idRef="184"/>
-    <reference idRef="185"/>
-    <reference idRef="187"/>
-    <reference idRef="188"/>
     <reference idRef="189"/>
     <reference idRef="190"/>
     <reference idRef="191"/>
     <reference idRef="192"/>
   </array>
-  <array count="12" name="allParents">
-    <reference idRef="182"/>
+  <array count="7" name="allParents">
     <reference idRef="182"/>
     <reference idRef="1"/>
-    <reference idRef="182"/>
-    <reference idRef="182"/>
-    <reference idRef="182"/>
-    <reference idRef="182"/>
     <reference idRef="182"/>
     <reference idRef="182"/>
     <reference idRef="182"/>
     <reference idRef="182"/>
     <reference idRef="182"/>
   </array>
-  <dictionary count="4" name="nameTable">
+  <dictionary count="3" name="nameTable">
     <string>File&apos;s Owner</string>
     <reference idRef="1"/>
     <string>IBCarbonMenuItem</string>
     <reference idRef="181"/>
-    <string>IBCarbonMenuItem1</string>
-    <reference idRef="180"/>
     <string>Menu</string>
     <reference idRef="182"/>
   </dictionary>

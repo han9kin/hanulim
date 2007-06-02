@@ -1,11 +1,12 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface HSPreferences : NSObject {
+@interface HSPreferences : NSObject
+{
 
 }
 
-+ (void)get:(HanulimPreferences *)pref;
-+ (void)set:(HanulimPreferences *)pref;
++ (void)get:(HanulimPreferences *)aPref;
++ (void)set:(HanulimPreferences *)aPref;
 
 @end
