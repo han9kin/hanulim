@@ -382,7 +382,7 @@ HIMSessionHandle HIMGetActiveSession()
 
 void HIMLog(const char *format, ...)
 {
-/* #ifdef DEBUG */
+#ifdef DEBUG
     va_list  ap;
     FILE    *fp = stderr;
 
@@ -393,5 +393,5 @@ void HIMLog(const char *format, ...)
     fprintf(fp, "\n");
 
     fflush(fp);
-/* #endif */
+#endif
 }
