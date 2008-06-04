@@ -1,0 +1,15 @@
+﻿/* Localized versions of Info.plist keys */
+
+NSHumanReadableCopyright = "© OSXDEV.ORG, 2008";
+
+org.osxdev.inputmethod.Hanulim.2standard = "두벌식";
+org.osxdev.inputmethod.Hanulim.2archaic = "두벌식 옛한글";
+org.osxdev.inputmethod.Hanulim.3final = "세벌식 최종";
+org.osxdev.inputmethod.Hanulim.390 = "세벌식 390";
+org.osxdev.inputmethod.Hanulim.3noshift = "세벌식 순아래";
+org.osxdev.inputmethod.Hanulim.393 = "세벌식 옛한글";
+
+CFBundleName = "하늘입력기";
+CFBundleDisplayName = "하늘입력기";
+CFBundleShortVersionString = "하늘입력기 버전 2.0";
+CFBundleGetInfoString = "하늘입력기 버전 2.0, Copyright 2008 OSXDEV.ORG.";

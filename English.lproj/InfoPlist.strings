@@ -1,0 +1,15 @@
+﻿/* Localized versions of Info.plist keys */
+
+NSHumanReadableCopyright = "© OSXDEV.ORG, 2008";
+
+org.osxdev.inputmethod.Hanulim.2standard = "Dubeol";
+org.osxdev.inputmethod.Hanulim.2archaic = "Dubeol Archaic";
+org.osxdev.inputmethod.Hanulim.3final = "Sebeol Final";
+org.osxdev.inputmethod.Hanulim.390 = "Sebeol 390";
+org.osxdev.inputmethod.Hanulim.3noshift = "Sebeol Noshift";
+org.osxdev.inputmethod.Hanulim.393 = "Sebeol Archaic";
+
+CFBundleName = "Hanulim";
+CFBundleDisplayName = "Hanulim";
+CFBundleShortVersionString = "Hanulim version 2.0";
+CFBundleGetInfoString = "Hanulim version 2.0, Copyright 2008 OSXDEV.ORG.";

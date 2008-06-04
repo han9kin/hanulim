@@ -3,244 +3,147 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 42;
+	objectVersion = 44;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8D01CCCE0486CAD60068D4B7 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
-		CF194C890564461C00CD5F4F /* Hanulim.h in Headers */ = {isa = PBXBuildFile; fileRef = CF194C870564461C00CD5F4F /* Hanulim.h */; };
-		CF194D7405649D8300CD5F4F /* HIMLaunchServer.c in Sources */ = {isa = PBXBuildFile; fileRef = CF54416B0563909B0086DC0F /* HIMLaunchServer.c */; };
-		CF194D7505649D8300CD5F4F /* HIMLaunchServer.h in Headers */ = {isa = PBXBuildFile; fileRef = CF54416A0563909B0086DC0F /* HIMLaunchServer.h */; };
-		CF194D7E05649DBB00CD5F4F /* HIMMessageSend.h in Headers */ = {isa = PBXBuildFile; fileRef = CF194D7C05649DBB00CD5F4F /* HIMMessageSend.h */; };
-		CF194D7F05649DBB00CD5F4F /* HIMMessageSend.c in Sources */ = {isa = PBXBuildFile; fileRef = CF194D7D05649DBB00CD5F4F /* HIMMessageSend.c */; };
-		CF1950020566286A00CD5F4F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF1950010566286A00CD5F4F /* InfoPlist.strings */; };
-		CF35F6710BDE34EB00D123BA /* COPYING in Resources */ = {isa = PBXBuildFile; fileRef = CF35F6700BDE34EB00D123BA /* COPYING */; };
-		CF528A85055C841200A89F66 /* PencilMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = CF528A83055C841200A89F66 /* PencilMenu.nib */; };
-		CF5F5927054638B200953D4A /* HIM.r in Rez */ = {isa = PBXBuildFile; fileRef = CF5F5926054638B200953D4A /* HIM.r */; };
-		CF6B76BE0580F6DE0036BC54 /* HIMPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6B76BC0580F6DD0036BC54 /* HIMPreferences.h */; };
-		CF6B76BF0580F6DE0036BC54 /* HIMPreferences.c in Sources */ = {isa = PBXBuildFile; fileRef = CF6B76BD0580F6DE0036BC54 /* HIMPreferences.c */; };
-		CF71053A057F700500306D8D /* Hanulim.h in Headers */ = {isa = PBXBuildFile; fileRef = CF194C870564461C00CD5F4F /* Hanulim.h */; };
-		CF71053B057F700600306D8D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD2F5F9057B8AB600C3C26B /* Cocoa.framework */; };
-		CF71053C057F700A00306D8D /* HSMain.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD2F60A057B8B2400C3C26B /* HSMain.m */; };
-		CF71053D057F700C00306D8D /* HSMessageReceive.h in Headers */ = {isa = PBXBuildFile; fileRef = CF194CF8056498D900CD5F4F /* HSMessageReceive.h */; };
-		CF71053E057F700D00306D8D /* HSMessageReceive.m in Sources */ = {isa = PBXBuildFile; fileRef = CF194CF9056498D900CD5F4F /* HSMessageReceive.m */; };
-		CF71053F057F700F00306D8D /* HSPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = CF194CC0056494A600CD5F4F /* HSPreferences.h */; };
-		CF710540057F700F00306D8D /* HSPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = CF194CC1056494A600CD5F4F /* HSPreferences.m */; };
-		CF9108AE05540464001E4F3D /* HIMMethodTables.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9108AD05540464001E4F3D /* HIMMethodTables.h */; };
-		CFA146F7055235E700D9312F /* HIMInput.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA146F5055235E700D9312F /* HIMInput.h */; };
-		CFA146F8055235E700D9312F /* HIMInput.c in Sources */ = {isa = PBXBuildFile; fileRef = CFA146F6055235E700D9312F /* HIMInput.c */; };
-		CFA1482D0552BD2F00D9312F /* HIMMethod.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA1482B0552BD2F00D9312F /* HIMMethod.h */; };
-		CFA1482E0552BD2F00D9312F /* HIMMethod.c in Sources */ = {isa = PBXBuildFile; fileRef = CFA1482C0552BD2F00D9312F /* HIMMethod.c */; };
-		CFAC3EB6054641210014F8E0 /* HIMScript.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAC3EB5054641210014F8E0 /* HIMScript.h */; };
-		CFAC3F080546B55D0014F8E0 /* HIMComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAC3F060546B55D0014F8E0 /* HIMComponent.h */; };
-		CFAC3F090546B55D0014F8E0 /* HIMComponent.c in Sources */ = {isa = PBXBuildFile; fileRef = CFAC3F070546B55D0014F8E0 /* HIMComponent.c */; };
-		CFAC3F7C0546C6CC0014F8E0 /* HIMContext.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAC3F7A0546C6CC0014F8E0 /* HIMContext.h */; };
-		CFAC3F7D0546C6CC0014F8E0 /* HIMContext.c in Sources */ = {isa = PBXBuildFile; fileRef = CFAC3F7B0546C6CC0014F8E0 /* HIMContext.c */; };
-		CFC4C4010AF66550000199A7 /* Hanulim.tif in Resources */ = {isa = PBXBuildFile; fileRef = CFC4C4000AF66550000199A7 /* Hanulim.tif */; };
+		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
+		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		CF4CD5DA0CD50F3E00E2A2F5 /* HNInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4CD5D70CD50F3E00E2A2F5 /* HNInputController.m */; };
+		CF4CD5DD0CD50F4900E2A2F5 /* Hanulim.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF4CD5DC0CD50F4900E2A2F5 /* Hanulim.tif */; };
+		CF4CD5E20CD50F9700E2A2F5 /* InputMethodKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4CD5E10CD50F9700E2A2F5 /* InputMethodKit.framework */; };
+		CFCD185F0CD613DA00213F4E /* HNAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCD185E0CD613DA00213F4E /* HNAppController.m */; };
+		CFCD19C60CDA333A00213F4E /* HNInputContext.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCD19C50CDA333A00213F4E /* HNInputContext.m */; };
+		CFD7D04A0DF716A100D0C515 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFD7D0480DF716A100D0C515 /* MainMenu.xib */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		CF194C360564422800CD5F4F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8D1107260486CEB800E47090;
-			remoteInfo = HanulimServer;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
-		8D01CCD10486CAD60068D4B7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		8D01CCD20486CAD60068D4B7 /* Hanulim.component */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Hanulim.component; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF194C280564410E00CD5F4F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		CF194C870564461C00CD5F4F /* Hanulim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hanulim.h; sourceTree = "<group>"; };
-		CF194CC0056494A600CD5F4F /* HSPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSPreferences.h; sourceTree = "<group>"; };
-		CF194CC1056494A600CD5F4F /* HSPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSPreferences.m; sourceTree = "<group>"; };
-		CF194CF8056498D900CD5F4F /* HSMessageReceive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSMessageReceive.h; sourceTree = "<group>"; };
-		CF194CF9056498D900CD5F4F /* HSMessageReceive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSMessageReceive.m; sourceTree = "<group>"; };
-		CF194D7C05649DBB00CD5F4F /* HIMMessageSend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIMMessageSend.h; sourceTree = "<group>"; };
-		CF194D7D05649DBB00CD5F4F /* HIMMessageSend.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HIMMessageSend.c; sourceTree = "<group>"; };
-		CF194FFD0566284900CD5F4F /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		CF1950030566287F00CD5F4F /* Korean */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Korean; path = Korean.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		CF35F6700BDE34EB00D123BA /* COPYING */ = {isa = PBXFileReference; fileEncoding = 0; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
-		CF528A84055C841200A89F66 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/PencilMenu.nib; sourceTree = "<group>"; };
-		CF528A86055C841B00A89F66 /* Korean */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Korean; path = Korean.lproj/PencilMenu.nib; sourceTree = "<group>"; };
-		CF54416A0563909B0086DC0F /* HIMLaunchServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIMLaunchServer.h; sourceTree = "<group>"; };
-		CF54416B0563909B0086DC0F /* HIMLaunchServer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HIMLaunchServer.c; sourceTree = "<group>"; };
-		CF5F5926054638B200953D4A /* HIM.r */ = {isa = PBXFileReference; fileEncoding = 0; lastKnownFileType = sourcecode.rez; path = HIM.r; sourceTree = "<group>"; };
-		CF6B76BC0580F6DD0036BC54 /* HIMPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIMPreferences.h; sourceTree = "<group>"; };
-		CF6B76BD0580F6DE0036BC54 /* HIMPreferences.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HIMPreferences.c; sourceTree = "<group>"; };
-		CF9108AD05540464001E4F3D /* HIMMethodTables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIMMethodTables.h; sourceTree = "<group>"; };
-		CF93A459057F6EF900F823F8 /* HanulimServer.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = HanulimServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CFA146F5055235E700D9312F /* HIMInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIMInput.h; sourceTree = "<group>"; };
-		CFA146F6055235E700D9312F /* HIMInput.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HIMInput.c; sourceTree = "<group>"; };
-		CFA1482B0552BD2F00D9312F /* HIMMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIMMethod.h; sourceTree = "<group>"; };
-		CFA1482C0552BD2F00D9312F /* HIMMethod.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HIMMethod.c; sourceTree = "<group>"; };
-		CFAC3EB5054641210014F8E0 /* HIMScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIMScript.h; sourceTree = "<group>"; };
-		CFAC3F060546B55D0014F8E0 /* HIMComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIMComponent.h; sourceTree = "<group>"; };
-		CFAC3F070546B55D0014F8E0 /* HIMComponent.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HIMComponent.c; sourceTree = "<group>"; };
-		CFAC3F7A0546C6CC0014F8E0 /* HIMContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIMContext.h; sourceTree = "<group>"; };
-		CFAC3F7B0546C6CC0014F8E0 /* HIMContext.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HIMContext.c; sourceTree = "<group>"; };
-		CFC4C4000AF66550000199A7 /* Hanulim.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Hanulim.tif; sourceTree = "<group>"; };
-		CFD2F5F9057B8AB600C3C26B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		CFD2F60A057B8B2400C3C26B /* HSMain.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = HSMain.m; sourceTree = "<group>"; };
+		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		32CA4F630368D1EE00C91783 /* Hanulim_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hanulim_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D1107320486CEB800E47090 /* Hanulim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hanulim.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF45B4950DF2896B00109833 /* HNDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDebug.h; sourceTree = "<group>"; };
+		CF4CD5D60CD50F3E00E2A2F5 /* HNInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNInputController.h; sourceTree = "<group>"; };
+		CF4CD5D70CD50F3E00E2A2F5 /* HNInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNInputController.m; sourceTree = "<group>"; };
+		CF4CD5DC0CD50F4900E2A2F5 /* Hanulim.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Hanulim.tif; sourceTree = "<group>"; };
+		CF4CD5E10CD50F9700E2A2F5 /* InputMethodKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InputMethodKit.framework; path = /System/Library/Frameworks/InputMethodKit.framework; sourceTree = "<absolute>"; };
+		CFCD185D0CD613DA00213F4E /* HNAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNAppController.h; sourceTree = "<group>"; };
+		CFCD185E0CD613DA00213F4E /* HNAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNAppController.m; sourceTree = "<group>"; };
+		CFCD18D40CD792A200213F4E /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CFCD19C40CDA333A00213F4E /* HNInputContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNInputContext.h; sourceTree = "<group>"; };
+		CFCD19C50CDA333A00213F4E /* HNInputContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNInputContext.m; sourceTree = "<group>"; };
+		CFD7D0490DF716A100D0C515 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		CFD7D04C0DF716B900D0C515 /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = ko.lproj/MainMenu.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8D01CCCD0486CAD60068D4B7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8D01CCCE0486CAD60068D4B7 /* Carbon.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8D11072E0486CEB800E47090 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF71053B057F700600306D8D /* Cocoa.framework in Frameworks */,
+				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				CF4CD5E20CD50F9700E2A2F5 /* InputMethodKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		089C166AFE841209C02AAC07 /* Hanulim */ = {
+		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				CF35F6700BDE34EB00D123BA /* COPYING */,
-				CF194C870564461C00CD5F4F /* Hanulim.h */,
-				08FB77ADFE841716C02AAC07 /* Haulim.component */,
-				CF194BFD05643F4E00CD5F4F /* HanulimServer.app */,
-				089C1671FE841209C02AAC07 /* External Frameworks and Libraries */,
-				19C28FB4FE9D528D11CA2CBB /* Products */,
+				CF45B4950DF2896B00109833 /* HNDebug.h */,
+				CFCD185D0CD613DA00213F4E /* HNAppController.h */,
+				CFCD185E0CD613DA00213F4E /* HNAppController.m */,
+				CF4CD5D60CD50F3E00E2A2F5 /* HNInputController.h */,
+				CF4CD5D70CD50F3E00E2A2F5 /* HNInputController.m */,
+				CFCD19C40CDA333A00213F4E /* HNInputContext.h */,
+				CFCD19C50CDA333A00213F4E /* HNInputContext.m */,
 			);
-			name = Hanulim;
+			name = Classes;
 			sourceTree = "<group>";
 		};
-		089C1671FE841209C02AAC07 /* External Frameworks and Libraries */ = {
+		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */,
-				CFD2F5F9057B8AB600C3C26B /* Cocoa.framework */,
+				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+				CF4CD5E10CD50F9700E2A2F5 /* InputMethodKit.framework */,
 			);
-			name = "External Frameworks and Libraries";
+			name = "Linked Frameworks";
 			sourceTree = "<group>";
 		};
-		08FB77ADFE841716C02AAC07 /* Haulim.component */ = {
+		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CFC4C4000AF66550000199A7 /* Hanulim.tif */,
-				8D01CCD10486CAD60068D4B7 /* Info.plist */,
-				CF1950010566286A00CD5F4F /* InfoPlist.strings */,
-				CF528A83055C841200A89F66 /* PencilMenu.nib */,
-				CF5F5926054638B200953D4A /* HIM.r */,
-				CFAC3EB5054641210014F8E0 /* HIMScript.h */,
-				CFAC3F060546B55D0014F8E0 /* HIMComponent.h */,
-				CFAC3F070546B55D0014F8E0 /* HIMComponent.c */,
-				CFAC3F7A0546C6CC0014F8E0 /* HIMContext.h */,
-				CFAC3F7B0546C6CC0014F8E0 /* HIMContext.c */,
-				CFA146F5055235E700D9312F /* HIMInput.h */,
-				CFA146F6055235E700D9312F /* HIMInput.c */,
-				CF6B76BC0580F6DD0036BC54 /* HIMPreferences.h */,
-				CF6B76BD0580F6DE0036BC54 /* HIMPreferences.c */,
-				CFA1482B0552BD2F00D9312F /* HIMMethod.h */,
-				CFA1482C0552BD2F00D9312F /* HIMMethod.c */,
-				CF9108AD05540464001E4F3D /* HIMMethodTables.h */,
-				CF54416A0563909B0086DC0F /* HIMLaunchServer.h */,
-				CF54416B0563909B0086DC0F /* HIMLaunchServer.c */,
-				CF194D7C05649DBB00CD5F4F /* HIMMessageSend.h */,
-				CF194D7D05649DBB00CD5F4F /* HIMMessageSend.c */,
+				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
+				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
+				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
 			);
-			name = Haulim.component;
-			path = Component;
+			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		19C28FB4FE9D528D11CA2CBB /* Products */ = {
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D01CCD20486CAD60068D4B7 /* Hanulim.component */,
-				CF93A459057F6EF900F823F8 /* HanulimServer.app */,
+				8D1107320486CEB800E47090 /* Hanulim.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CF194BFD05643F4E00CD5F4F /* HanulimServer.app */ = {
+		29B97314FDCFA39411CA2CEA /* Hanulim */ = {
 			isa = PBXGroup;
 			children = (
-				CF194C280564410E00CD5F4F /* Info.plist */,
-				CFD2F60A057B8B2400C3C26B /* HSMain.m */,
-				CF194CC0056494A600CD5F4F /* HSPreferences.h */,
-				CF194CC1056494A600CD5F4F /* HSPreferences.m */,
-				CF194CF8056498D900CD5F4F /* HSMessageReceive.h */,
-				CF194CF9056498D900CD5F4F /* HSMessageReceive.m */,
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
-			name = HanulimServer.app;
-			path = Server;
+			name = Hanulim;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* Hanulim_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CF4CD5DC0CD50F4900E2A2F5 /* Hanulim.tif */,
+				8D1107310486CEB800E47090 /* Info.plist */,
+				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+				CFD7D0480DF716A100D0C515 /* MainMenu.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
+				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		8D01CCC70486CAD60068D4B7 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CFAC3EB6054641210014F8E0 /* HIMScript.h in Headers */,
-				CFAC3F080546B55D0014F8E0 /* HIMComponent.h in Headers */,
-				CFAC3F7C0546C6CC0014F8E0 /* HIMContext.h in Headers */,
-				CFA146F7055235E700D9312F /* HIMInput.h in Headers */,
-				CFA1482D0552BD2F00D9312F /* HIMMethod.h in Headers */,
-				CF9108AE05540464001E4F3D /* HIMMethodTables.h in Headers */,
-				CF194C890564461C00CD5F4F /* Hanulim.h in Headers */,
-				CF194D7505649D8300CD5F4F /* HIMLaunchServer.h in Headers */,
-				CF194D7E05649DBB00CD5F4F /* HIMMessageSend.h in Headers */,
-				CF6B76BE0580F6DE0036BC54 /* HIMPreferences.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8D1107270486CEB800E47090 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CF71053A057F700500306D8D /* Hanulim.h in Headers */,
-				CF71053D057F700C00306D8D /* HSMessageReceive.h in Headers */,
-				CF71053F057F700F00306D8D /* HSPreferences.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		8D01CCC60486CAD60068D4B7 /* Hanulim */ = {
+		8D1107260486CEB800E47090 /* Hanulim */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CFFB71FF087769C300271B4F /* Build configuration list for PBXNativeTarget "Hanulim" */;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Hanulim" */;
 			buildPhases = (
-				8D01CCC70486CAD60068D4B7 /* Headers */,
-				8D01CCC90486CAD60068D4B7 /* Resources */,
-				8D01CCCB0486CAD60068D4B7 /* Sources */,
-				8D01CCCD0486CAD60068D4B7 /* Frameworks */,
-				8D01CCCF0486CAD60068D4B7 /* Rez */,
-				CF194C3A0564424100CD5F4F /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CF194C370564422800CD5F4F /* PBXTargetDependency */,
-			);
-			name = Hanulim;
-			productInstallPath = "$(HOME)/Library/Bundles";
-			productName = Hanulim;
-			productReference = 8D01CCD20486CAD60068D4B7 /* Hanulim.component */;
-			productType = "com.apple.product-type.bundle";
-		};
-		8D1107260486CEB800E47090 /* HanulimServer */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CFFB71FB087769C300271B4F /* Build configuration list for PBXNativeTarget "HanulimServer" */;
-			buildPhases = (
-				8D1107270486CEB800E47090 /* Headers */,
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
@@ -249,405 +152,166 @@
 			);
 			dependencies = (
 			);
-			name = HanulimServer;
+			name = Hanulim;
 			productInstallPath = "$(HOME)/Applications";
-			productName = HanulimServer;
-			productReference = CF93A459057F6EF900F823F8 /* HanulimServer.app */;
+			productName = Hanulim;
+			productReference = 8D1107320486CEB800E47090 /* Hanulim.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		089C1669FE841209C02AAC07 /* Project object */ = {
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = CFFB7203087769C300271B4F /* Build configuration list for PBXProject "Hanulim" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Hanulim" */;
+			compatibilityVersion = "Xcode 3.0";
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
 				Japanese,
 				French,
 				German,
-				Korean,
+				ko,
 			);
-			mainGroup = 089C166AFE841209C02AAC07 /* Hanulim */;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* Hanulim */;
 			projectDirPath = "";
+			projectRoot = "";
 			targets = (
-				8D01CCC60486CAD60068D4B7 /* Hanulim */,
-				8D1107260486CEB800E47090 /* HanulimServer */,
+				8D1107260486CEB800E47090 /* Hanulim */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		8D01CCC90486CAD60068D4B7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CF528A85055C841200A89F66 /* PencilMenu.nib in Resources */,
-				CF1950020566286A00CD5F4F /* InfoPlist.strings in Resources */,
-				CFC4C4010AF66550000199A7 /* Hanulim.tif in Resources */,
-				CF35F6710BDE34EB00D123BA /* COPYING in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8D1107290486CEB800E47090 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
+				CF4CD5DD0CD50F4900E2A2F5 /* Hanulim.tif in Resources */,
+				CFD7D04A0DF716A100D0C515 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXRezBuildPhase section */
-		8D01CCCF0486CAD60068D4B7 /* Rez */ = {
-			isa = PBXRezBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CF5F5927054638B200953D4A /* HIM.r in Rez */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXRezBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		CF194C3A0564424100CD5F4F /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "rm -rf \"${TARGET_BUILD_DIR}/Hanulim.component/Contents/SharedSupport\"\nmkdir -p \"${TARGET_BUILD_DIR}/Hanulim.component/Contents/SharedSupport\"\nmv \"${TARGET_BUILD_DIR}/HanulimServer.app\" \"${TARGET_BUILD_DIR}/Hanulim.component/Contents/SharedSupport\"";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		8D01CCCB0486CAD60068D4B7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CFAC3F090546B55D0014F8E0 /* HIMComponent.c in Sources */,
-				CFAC3F7D0546C6CC0014F8E0 /* HIMContext.c in Sources */,
-				CFA146F8055235E700D9312F /* HIMInput.c in Sources */,
-				CFA1482E0552BD2F00D9312F /* HIMMethod.c in Sources */,
-				CF194D7405649D8300CD5F4F /* HIMLaunchServer.c in Sources */,
-				CF194D7F05649DBB00CD5F4F /* HIMMessageSend.c in Sources */,
-				CF6B76BF0580F6DE0036BC54 /* HIMPreferences.c in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8D11072C0486CEB800E47090 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF71053C057F700A00306D8D /* HSMain.m in Sources */,
-				CF71053E057F700D00306D8D /* HSMessageReceive.m in Sources */,
-				CF710540057F700F00306D8D /* HSPreferences.m in Sources */,
+				8D11072D0486CEB800E47090 /* main.m in Sources */,
+				CF4CD5DA0CD50F3E00E2A2F5 /* HNInputController.m in Sources */,
+				CFCD185F0CD613DA00213F4E /* HNAppController.m in Sources */,
+				CFCD19C60CDA333A00213F4E /* HNInputContext.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		CF194C370564422800CD5F4F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8D1107260486CEB800E47090 /* HanulimServer */;
-			targetProxy = CF194C360564422800CD5F4F /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
-		CF1950010566286A00CD5F4F /* InfoPlist.strings */ = {
+		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CF194FFD0566284900CD5F4F /* English */,
-				CF1950030566287F00CD5F4F /* Korean */,
+				089C165DFE840E0CC02AAC07 /* English */,
+				CFCD18D40CD792A200213F4E /* ko */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		CF528A83055C841200A89F66 /* PencilMenu.nib */ = {
+		CFD7D0480DF716A100D0C515 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CF528A84055C841200A89F66 /* English */,
-				CF528A86055C841B00A89F66 /* Korean */,
+				CFD7D0490DF716A100D0C515 /* English */,
+				CFD7D04C0DF716B900D0C515 /* ko */,
 			);
-			name = PencilMenu.nib;
+			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		CFFB71FC087769C300271B4F /* Development */ = {
+		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
-				DEBUGGING_SYMBOLS = YES;
-				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_ENABLE_TRIGRAPHS = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = Server/Info.plist;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Hanulim_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = "";
-				OPTIMIZATION_CFLAGS = "-O0";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = HanulimServer;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
+				PRODUCT_NAME = Hanulim;
 				WRAPPER_EXTENSION = app;
-				ZERO_LINK = NO;
+				ZERO_LINK = YES;
 			};
-			name = Development;
+			name = Debug;
 		};
-		CFFB71FD087769C300271B4F /* Deployment */ = {
+		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_ENABLE_TRIGRAPHS = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = Server/Info.plist;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Hanulim_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = "";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = HanulimServer;
-				REZ_SCRIPT_TYPE = Korean;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-				WRAPPER_EXTENSION = app;
-				ZERO_LINK = NO;
-			};
-			name = Deployment;
-		};
-		CFFB71FE087769C300271B4F /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_ENABLE_TRIGRAPHS = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = Server/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = "";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = HanulimServer;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
+				PRODUCT_NAME = Hanulim;
 				WRAPPER_EXTENSION = app;
 			};
-			name = Default;
+			name = Release;
 		};
-		CFFB7200087769C300271B4F /* Development */ = {
+		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				DEBUGGING_SYMBOLS = YES;
-				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_ENABLE_TRIGRAPHS = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = Component/Info.plist;
-				INSTALL_PATH = "$(HOME)/Library/Components";
-				LIBRARY_SEARCH_PATHS = "";
-				LIBRARY_STYLE = Bundle;
-				OPTIMIZATION_CFLAGS = "-O0";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "-rd -d ppc_$(ppc) -d i386_$(i386)";
-				PRODUCT_NAME = Hanulim;
-				REZ_SCRIPT_TYPE = Korean;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-				WRAPPER_EXTENSION = component;
-				ZERO_LINK = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_VERSION = 4.2;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
 			};
-			name = Development;
+			name = Debug;
 		};
-		CFFB7201087769C300271B4F /* Deployment */ = {
+		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_ENABLE_TRIGRAPHS = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = Component/Info.plist;
-				INSTALL_PATH = "$(HOME)/Library/Components";
-				LIBRARY_SEARCH_PATHS = "";
-				LIBRARY_STYLE = Bundle;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "-rd -d ppc_$(ppc) -d i386_$(i386)";
-				PRODUCT_NAME = Hanulim;
-				REZ_SCRIPT_TYPE = Korean;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-				WRAPPER_EXTENSION = component;
-				ZERO_LINK = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
+				GCC_VERSION = 4.2;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
 			};
-			name = Deployment;
-		};
-		CFFB7202087769C300271B4F /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_ENABLE_TRIGRAPHS = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = Component/Info.plist;
-				INSTALL_PATH = "$(HOME)/Library/Components";
-				LIBRARY_SEARCH_PATHS = "";
-				LIBRARY_STYLE = Bundle;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "-rd -d ppc_$(ppc) -d i386_$(i386)";
-				PRODUCT_NAME = Hanulim;
-				REZ_SCRIPT_TYPE = Korean;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-				WRAPPER_EXTENSION = component;
-			};
-			name = Default;
-		};
-		CFFB7204087769C300271B4F /* Development */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
-			};
-			name = Development;
-		};
-		CFFB7205087769C300271B4F /* Deployment */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
-			};
-			name = Deployment;
-		};
-		CFFB7206087769C300271B4F /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
-			};
-			name = Default;
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CFFB71FB087769C300271B4F /* Build configuration list for PBXNativeTarget "HanulimServer" */ = {
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Hanulim" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CFFB71FC087769C300271B4F /* Development */,
-				CFFB71FD087769C300271B4F /* Deployment */,
-				CFFB71FE087769C300271B4F /* Default */,
+				C01FCF4B08A954540054247B /* Debug */,
+				C01FCF4C08A954540054247B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
+			defaultConfigurationName = Release;
 		};
-		CFFB71FF087769C300271B4F /* Build configuration list for PBXNativeTarget "Hanulim" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Hanulim" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CFFB7200087769C300271B4F /* Development */,
-				CFFB7201087769C300271B4F /* Deployment */,
-				CFFB7202087769C300271B4F /* Default */,
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
-		};
-		CFFB7203087769C300271B4F /* Build configuration list for PBXProject "Hanulim" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CFFB7204087769C300271B4F /* Development */,
-				CFFB7205087769C300271B4F /* Deployment */,
-				CFFB7206087769C300271B4F /* Default */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 089C1669FE841209C02AAC07 /* Project object */;
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
 }
