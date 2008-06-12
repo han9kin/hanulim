@@ -151,10 +151,18 @@
 
         if (sString)
         {
+            HNLog(@" inputText: (%@)", sString);
+
             [sender insertText:sString replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
+
+            [self updateComposition];
+        }
+        else if (sHandled)
+        {
+            [self updateComposition];
         }
 
-        [self updateComposition];
+        HNLog(@" => %@", sHandled ? @"YES" : @"NO");
 
         return sHandled;
     }
@@ -162,24 +170,33 @@
     {
         [self commitComposition:sender];
 
+        HNLog(@" => UNHANDLED NO");
+
         return NO;
     }
 }
 
 - (void)commitComposition:(id)sender
 {
+    NSString *sString = HNICComposedString(&mContext);
+
     HNLog(@"HNInputController<IMKServerInput> -commitComposition:");
 
-    [sender insertText:HNICComposedString(&mContext) replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
+    if (sString)
+    {
+        HNLog(@" inputText: (%@)", sString);
 
-    HNICClear(&mContext);
+        [sender insertText:sString replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
+
+        HNICClear(&mContext);
+    }
 }
 
 - (id)composedString:(id)sender
 {
     NSString *sString = HNICComposedString(&mContext);
 
-    HNLog(@"HNInputController<IMKServerInput> -composedString:");
+    HNLog(@"HNInputController<IMKServerInput> -composedString: (%@)", sString ? sString : @"");
 
     return sString ? sString : @"";
 }
