@@ -793,6 +793,11 @@ static NSUInteger HNCharacterCompose(HNInputContext *aContext, HNCharacter *aCha
                 aOutput[i - 1] = sFiller[i];
             }
         }
+
+        if (sLength == 1)
+        {
+            sLength = 2;
+        }
     }
     else
     {
