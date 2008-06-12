@@ -225,7 +225,7 @@ UInt32 HIMGenerateChar(SInt8 *aBuffer, UniChar *aChar)
     static const SInt8   sCMax[4]   = { 0, 89, 65, 82 };
     static const SInt8   sSMax[4]   = { 0, 18, 20, 27 };
     static const UniChar sBase[4]   = { 0, 0x1100, 0x1161, 0x11a7 };
-    static const UniChar sFilter[4] = { 0, 0x115f, 0x1160, 0 };
+    static const UniChar sFiller[4] = { 0, 0x115f, 0x1160, 0 };
     UInt32 sLength                  = 0;
     UInt32 i;
 
@@ -240,8 +240,13 @@ UInt32 HIMGenerateChar(SInt8 *aBuffer, UniChar *aChar)
             }
             else
             {
-                aChar[i - 1] = sFilter[i];
+                aChar[i - 1] = sFiller[i];
             }
+        }
+
+        if (sLength == 1)
+        {
+            sLength = 2;
         }
     }
     else

@@ -72,7 +72,7 @@
 		CF6B76BC0580F6DD0036BC54 /* HIMPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIMPreferences.h; sourceTree = "<group>"; };
 		CF6B76BD0580F6DE0036BC54 /* HIMPreferences.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HIMPreferences.c; sourceTree = "<group>"; };
 		CF9108AD05540464001E4F3D /* HIMMethodTables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIMMethodTables.h; sourceTree = "<group>"; };
-		CF93A459057F6EF900F823F8 /* HanulimServer.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = HanulimServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF93A459057F6EF900F823F8 /* HanulimServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HanulimServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFA146F5055235E700D9312F /* HIMInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIMInput.h; sourceTree = "<group>"; };
 		CFA146F6055235E700D9312F /* HIMInput.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HIMInput.c; sourceTree = "<group>"; };
 		CFA1482B0552BD2F00D9312F /* HIMMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIMMethod.h; sourceTree = "<group>"; };
@@ -261,6 +261,7 @@
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = CFFB7203087769C300271B4F /* Build configuration list for PBXProject "Hanulim" */;
+			compatibilityVersion = "Xcode 2.4";
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -271,6 +272,7 @@
 			);
 			mainGroup = 089C166AFE841209C02AAC07 /* Hanulim */;
 			projectDirPath = "";
+			projectRoot = "";
 			targets = (
 				8D01CCC60486CAD60068D4B7 /* Hanulim */,
 				8D1107260486CEB800E47090 /* HanulimServer */,
@@ -403,7 +405,6 @@
 				INFOPLIST_FILE = Server/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "";
-				OPTIMIZATION_CFLAGS = "-O0";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = HanulimServer;
@@ -499,7 +500,6 @@
 				INSTALL_PATH = "$(HOME)/Library/Components";
 				LIBRARY_SEARCH_PATHS = "";
 				LIBRARY_STYLE = Bundle;
-				OPTIMIZATION_CFLAGS = "-O0";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				OTHER_REZFLAGS = "-rd -d ppc_$(ppc) -d i386_$(i386)";
