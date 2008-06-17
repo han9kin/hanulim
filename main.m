@@ -10,14 +10,15 @@
 #import <InputMethodKit/InputMethodKit.h>
 
 
-static NSString *HNConnectionName = @"HanulimServer_1_Connection";
+static NSString *HNConnectionName = @"Hanulim_1_Connection";
 
 
 int main(int argc, char *argv[])
 {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    IMKServer         *server;
 
-    [[IMKServer alloc] initWithName:HNConnectionName bundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]];
+    server = [[IMKServer alloc] initWithName:HNConnectionName bundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]];
 
     [NSBundle loadNibNamed:@"MainMenu" owner:[NSApplication sharedApplication]];
 
