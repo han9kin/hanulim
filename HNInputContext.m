@@ -709,7 +709,7 @@ static HNJasoComposition HNJasoCompositionTable[] =
 /*
  * Unicode Table
  */
-#define HNUnicodeSymbolMax 0x32
+#define HNUnicodeSymbolMax 0x30
 
 static unichar HNUnicodeSymbol[HNUnicodeSymbolMax] =
 {
@@ -1311,18 +1311,19 @@ static unsigned char HNJasoCompose(HNInputContext *aContext, unsigned char aType
 {
     if ((aType >= HNKeyTypeInitial) && (aType <= HNKeyTypeFinal))
     {
-        unsigned short sIn;
-        int            sCount;
-        int            i;
+        HNJasoComposition *sTable = &HNJasoCompositionTable[aType];
+        unsigned short     sIn;
+        int                sCount;
+        int                i;
 
-        sCount = HNJasoCompositionTable[aType].mCount[aContext->mKeyboardLayout->mScope];
+        sCount = sTable->mCount[aContext->mKeyboardLayout->mScope];
         sIn    = (aValue1 << 8) | aValue2;
 
         for (i = 0; i < sCount; i++)
         {
-            if (HNJasoCompositionTable[aType].mIn[i] == sIn)
+            if (sTable->mIn[i] == sIn)
             {
-                return HNJasoCompositionTable[aType].mOut[i];
+                return sTable->mOut[i];
             }
         }
     }
