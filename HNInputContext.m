@@ -122,7 +122,7 @@ static HNKeyboardLayout HNKeyboardLayoutTable[] =
         HNKeyboardLayoutScopeArchaic,
         {
             0x01410107, // a (00)
-            0x03060103, // s (01)
+            0x015e0103, // s (01)
             0x014d010c, // d (02)
             0x011b0106, // f (03)
             0x02230209, // h (04)
@@ -137,7 +137,7 @@ static HNKeyboardLayout HNKeyboardLayoutTable[] =
             0x010e010d, // w (13)
             0x01050104, // e (14)
             0x01020101, // r (15)
-            0x020d020d, // y (16)
+            0x0402020d, // y (16)
             0x010b010a, // t (17)
             0x00010011, // 1 (18)
             0x00200012, // 2 (19)
@@ -153,7 +153,7 @@ static HNKeyboardLayout HNKeyboardLayoutTable[] =
             0x00090010, // 0 (29)
             0x00290023, // ] (30)
             0x02040202, // o (31)
-            0x02070207, // u (32)
+            0x04010207, // u (32)
             0x00270021, // [ (33)
             0x02030203, // i (34)
             0x02080206, // p (35)
