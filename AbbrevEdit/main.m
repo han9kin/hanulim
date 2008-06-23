@@ -1,10 +1,10 @@
-//
-//  main.m
-//  HanulimAbbrevs
-//
-//  Created by han9kin on 08. 06. 14.
-//  Copyright __MyCompanyName__ 2008. All rights reserved.
-//
+/*
+ * Hanulim
+ * $Id$
+ *
+ * http://www.osxdev.org
+ * http://code.google.com/p/hanulim
+ */
 
 #import <Cocoa/Cocoa.h>
 
