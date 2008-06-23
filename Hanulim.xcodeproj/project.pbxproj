@@ -10,36 +10,83 @@
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		CF0576FB0E103B7400F8DA39 /* Abbrevs.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = CF0576FA0E103B7400F8DA39 /* Abbrevs.xcdatamodel */; };
+		CF3E863D0E0BE3E000F1116F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		CF3E86440E0BE52100F1116F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3E86430E0BE52100F1116F /* main.m */; };
+		CF3E864D0E0BE63100F1116F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF3E864B0E0BE63100F1116F /* InfoPlist.strings */; };
+		CF3E86510E0BE67600F1116F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF3E864F0E0BE67600F1116F /* MainMenu.xib */; };
+		CF3E86540E0BE69500F1116F /* AEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3E86530E0BE69500F1116F /* AEAppDelegate.m */; };
+		CF3E86630E0BEE8000F1116F /* AbbrevEdit.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = CF3E85ED0E0BDE2F00F1116F /* AbbrevEdit.app */; };
+		CF4198760E1048DC00A2BE4A /* Abbrevs.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = CF0576FA0E103B7400F8DA39 /* Abbrevs.xcdatamodel */; };
 		CF4CD5DA0CD50F3E00E2A2F5 /* HNInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4CD5D70CD50F3E00E2A2F5 /* HNInputController.m */; };
 		CF4CD5DD0CD50F4900E2A2F5 /* Hanulim.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF4CD5DC0CD50F4900E2A2F5 /* Hanulim.tif */; };
 		CF4CD5E20CD50F9700E2A2F5 /* InputMethodKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4CD5E10CD50F9700E2A2F5 /* InputMethodKit.framework */; };
+		CFA3DEDC0E03BD5A00BF8CD5 /* HNCandidates.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA3DEDB0E03BD5A00BF8CD5 /* HNCandidates.m */; };
 		CFCD185F0CD613DA00213F4E /* HNAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCD185E0CD613DA00213F4E /* HNAppController.m */; };
 		CFCD19C60CDA333A00213F4E /* HNInputContext.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCD19C50CDA333A00213F4E /* HNInputContext.m */; };
 		CFD7D04A0DF716A100D0C515 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFD7D0480DF716A100D0C515 /* MainMenu.xib */; };
+		CFE976380E0E07C0000061D6 /* HNDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE976370E0E07C0000061D6 /* HNDataController.m */; };
+		CFE976490E0E0EF8000061D6 /* HNDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE976370E0E07C0000061D6 /* HNDataController.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		CF3E86020E0BDEB600F1116F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CF3E85EC0E0BDE2F00F1116F;
+			remoteInfo = AbbrevEdit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CF3E86660E0BEEA600F1116F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 12;
+			files = (
+				CF3E86630E0BEE8000F1116F /* AbbrevEdit.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		089C165DFE840E0CC02AAC07 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = InfoPlist.strings; path = InputMethod/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
-		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = InputMethod/main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		32CA4F630368D1EE00C91783 /* Hanulim_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hanulim_Prefix.pch; sourceTree = "<group>"; };
-		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* Hanulim_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Hanulim_Prefix.pch; path = InputMethod/Hanulim_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = InputMethod/Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Hanulim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hanulim.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF0576FA0E103B7400F8DA39 /* Abbrevs.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Abbrevs.xcdatamodel; sourceTree = "<group>"; };
+		CF3E85ED0E0BDE2F00F1116F /* AbbrevEdit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AbbrevEdit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF3E86360E0BE2A900F1116F /* HNAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNAppController.h; path = InputMethod/HNAppController.h; sourceTree = "<group>"; };
+		CF3E86420E0BE50100F1116F /* AbbrevEdit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AbbrevEdit_Prefix.pch; path = AbbrevEdit/AbbrevEdit_Prefix.pch; sourceTree = "<group>"; };
+		CF3E86430E0BE52100F1116F /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = AbbrevEdit/main.m; sourceTree = "<group>"; };
+		CF3E86450E0BE54900F1116F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = AbbrevEdit/Info.plist; sourceTree = "<group>"; };
+		CF3E864C0E0BE63100F1116F /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = AbbrevEdit/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CF3E86500E0BE67600F1116F /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = AbbrevEdit/English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		CF3E86520E0BE69500F1116F /* AEAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AEAppDelegate.h; path = AbbrevEdit/AEAppDelegate.h; sourceTree = "<group>"; };
+		CF3E86530E0BE69500F1116F /* AEAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AEAppDelegate.m; path = AbbrevEdit/AEAppDelegate.m; sourceTree = "<group>"; };
 		CF45B4950DF2896B00109833 /* HNDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDebug.h; sourceTree = "<group>"; };
-		CF4CD5D60CD50F3E00E2A2F5 /* HNInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNInputController.h; sourceTree = "<group>"; };
-		CF4CD5D70CD50F3E00E2A2F5 /* HNInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNInputController.m; sourceTree = "<group>"; };
-		CF4CD5DC0CD50F4900E2A2F5 /* Hanulim.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Hanulim.tif; sourceTree = "<group>"; };
+		CF4CD5D60CD50F3E00E2A2F5 /* HNInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNInputController.h; path = InputMethod/HNInputController.h; sourceTree = "<group>"; };
+		CF4CD5D70CD50F3E00E2A2F5 /* HNInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNInputController.m; path = InputMethod/HNInputController.m; sourceTree = "<group>"; };
+		CF4CD5DC0CD50F4900E2A2F5 /* Hanulim.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = Hanulim.tif; path = InputMethod/Hanulim.tif; sourceTree = "<group>"; };
 		CF4CD5E10CD50F9700E2A2F5 /* InputMethodKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InputMethodKit.framework; path = /System/Library/Frameworks/InputMethodKit.framework; sourceTree = "<absolute>"; };
-		CFCD185D0CD613DA00213F4E /* HNAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNAppController.h; sourceTree = "<group>"; };
-		CFCD185E0CD613DA00213F4E /* HNAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNAppController.m; sourceTree = "<group>"; };
-		CFCD18D40CD792A200213F4E /* ko */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		CFCD19C40CDA333A00213F4E /* HNInputContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNInputContext.h; sourceTree = "<group>"; };
-		CFCD19C50CDA333A00213F4E /* HNInputContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNInputContext.m; sourceTree = "<group>"; };
-		CFD7D0490DF716A100D0C515 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		CFD7D04C0DF716B900D0C515 /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = ko.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		CFA3DEDA0E03BD5A00BF8CD5 /* HNCandidates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCandidates.h; path = InputMethod/HNCandidates.h; sourceTree = "<group>"; };
+		CFA3DEDB0E03BD5A00BF8CD5 /* HNCandidates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCandidates.m; path = InputMethod/HNCandidates.m; sourceTree = "<group>"; };
+		CFCD185E0CD613DA00213F4E /* HNAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNAppController.m; path = InputMethod/HNAppController.m; sourceTree = "<group>"; };
+		CFCD18D40CD792A200213F4E /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = InfoPlist.strings; path = InputMethod/ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CFCD19C40CDA333A00213F4E /* HNInputContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNInputContext.h; path = InputMethod/HNInputContext.h; sourceTree = "<group>"; };
+		CFCD19C50CDA333A00213F4E /* HNInputContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNInputContext.m; path = InputMethod/HNInputContext.m; sourceTree = "<group>"; };
+		CFD7D0490DF716A100D0C515 /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainMenu.xib; path = InputMethod/English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		CFD7D04C0DF716B900D0C515 /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainMenu.xib; path = InputMethod/ko.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		CFE976360E0E07C0000061D6 /* HNDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDataController.h; sourceTree = "<group>"; };
+		CFE976370E0E07C0000061D6 /* HNDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDataController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,19 +99,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CF3E85EB0E0BDE2F00F1116F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF3E863D0E0BE3E000F1116F /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				CF45B4950DF2896B00109833 /* HNDebug.h */,
-				CFCD185D0CD613DA00213F4E /* HNAppController.h */,
+				CF3E86360E0BE2A900F1116F /* HNAppController.h */,
 				CFCD185E0CD613DA00213F4E /* HNAppController.m */,
 				CF4CD5D60CD50F3E00E2A2F5 /* HNInputController.h */,
 				CF4CD5D70CD50F3E00E2A2F5 /* HNInputController.m */,
 				CFCD19C40CDA333A00213F4E /* HNInputContext.h */,
 				CFCD19C50CDA333A00213F4E /* HNInputContext.m */,
+				CFA3DEDA0E03BD5A00BF8CD5 /* HNCandidates.h */,
+				CFA3DEDB0E03BD5A00BF8CD5 /* HNCandidates.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -92,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				8D1107320486CEB800E47090 /* Hanulim.app */,
+				CF3E85ED0E0BDE2F00F1116F /* AbbrevEdit.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,9 +156,10 @@
 		29B97314FDCFA39411CA2CEA /* Hanulim */ = {
 			isa = PBXGroup;
 			children = (
-				080E96DDFE201D6D7F000001 /* Classes */,
-				29B97315FDCFA39411CA2CEA /* Other Sources */,
-				29B97317FDCFA39411CA2CEA /* Resources */,
+				CFA3DEC20E02F52300BF8CD5 /* Model */,
+				CF3E860B0E0BE1B700F1116F /* Shared Sources */,
+				CF3E85DF0E0BD96500F1116F /* AbbrevEdit */,
+				CF3E85DE0E0BD94900F1116F /* InputMethod */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -137,6 +195,72 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CF3E85DE0E0BD94900F1116F /* InputMethod */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+			);
+			name = InputMethod;
+			sourceTree = "<group>";
+		};
+		CF3E85DF0E0BD96500F1116F /* AbbrevEdit */ = {
+			isa = PBXGroup;
+			children = (
+				CF3E863F0E0BE4C900F1116F /* Classes */,
+				CF3E86400E0BE4D000F1116F /* Other Sources */,
+				CF3E86410E0BE4DD00F1116F /* Resources */,
+			);
+			name = AbbrevEdit;
+			sourceTree = "<group>";
+		};
+		CF3E860B0E0BE1B700F1116F /* Shared Sources */ = {
+			isa = PBXGroup;
+			children = (
+				CF45B4950DF2896B00109833 /* HNDebug.h */,
+				CFE976360E0E07C0000061D6 /* HNDataController.h */,
+				CFE976370E0E07C0000061D6 /* HNDataController.m */,
+			);
+			name = "Shared Sources";
+			sourceTree = "<group>";
+		};
+		CF3E863F0E0BE4C900F1116F /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CF3E86520E0BE69500F1116F /* AEAppDelegate.h */,
+				CF3E86530E0BE69500F1116F /* AEAppDelegate.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		CF3E86400E0BE4D000F1116F /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				CF3E86420E0BE50100F1116F /* AbbrevEdit_Prefix.pch */,
+				CF3E86430E0BE52100F1116F /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		CF3E86410E0BE4DD00F1116F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CF3E86450E0BE54900F1116F /* Info.plist */,
+				CF3E864B0E0BE63100F1116F /* InfoPlist.strings */,
+				CF3E864F0E0BE67600F1116F /* MainMenu.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		CFA3DEC20E02F52300BF8CD5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CF0576FA0E103B7400F8DA39 /* Abbrevs.xcdatamodel */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,15 +271,34 @@
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
+				CF3E86660E0BEEA600F1116F /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CF3E86030E0BDEB600F1116F /* PBXTargetDependency */,
 			);
 			name = Hanulim;
 			productInstallPath = "$(HOME)/Applications";
 			productName = Hanulim;
 			productReference = 8D1107320486CEB800E47090 /* Hanulim.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CF3E85EC0E0BDE2F00F1116F /* AbbrevEdit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF3E85F20E0BDE3000F1116F /* Build configuration list for PBXNativeTarget "AbbrevEdit" */;
+			buildPhases = (
+				CF3E85E90E0BDE2F00F1116F /* Resources */,
+				CF3E85EA0E0BDE2F00F1116F /* Sources */,
+				CF3E85EB0E0BDE2F00F1116F /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AbbrevEdit;
+			productName = AbbrevEdit;
+			productReference = CF3E85ED0E0BDE2F00F1116F /* AbbrevEdit.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -178,6 +321,7 @@
 			projectRoot = "";
 			targets = (
 				8D1107260486CEB800E47090 /* Hanulim */,
+				CF3E85EC0E0BDE2F00F1116F /* AbbrevEdit */,
 			);
 		};
 /* End PBXProject section */
@@ -193,6 +337,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CF3E85E90E0BDE2F00F1116F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF3E864D0E0BE63100F1116F /* InfoPlist.strings in Resources */,
+				CF3E86510E0BE67600F1116F /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -204,26 +357,64 @@
 				CF4CD5DA0CD50F3E00E2A2F5 /* HNInputController.m in Sources */,
 				CFCD185F0CD613DA00213F4E /* HNAppController.m in Sources */,
 				CFCD19C60CDA333A00213F4E /* HNInputContext.m in Sources */,
+				CFA3DEDC0E03BD5A00BF8CD5 /* HNCandidates.m in Sources */,
+				CFE976490E0E0EF8000061D6 /* HNDataController.m in Sources */,
+				CF4198760E1048DC00A2BE4A /* Abbrevs.xcdatamodel in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF3E85EA0E0BDE2F00F1116F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF3E86440E0BE52100F1116F /* main.m in Sources */,
+				CF3E86540E0BE69500F1116F /* AEAppDelegate.m in Sources */,
+				CFE976380E0E07C0000061D6 /* HNDataController.m in Sources */,
+				CF0576FB0E103B7400F8DA39 /* Abbrevs.xcdatamodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		CF3E86030E0BDEB600F1116F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CF3E85EC0E0BDE2F00F1116F /* AbbrevEdit */;
+			targetProxy = CF3E86020E0BDEB600F1116F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				089C165DFE840E0CC02AAC07 /* English */,
-				CFCD18D40CD792A200213F4E /* ko */,
+				089C165DFE840E0CC02AAC07 /* InfoPlist.strings */,
+				CFCD18D40CD792A200213F4E /* InfoPlist.strings */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CF3E864B0E0BE63100F1116F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF3E864C0E0BE63100F1116F /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CF3E864F0E0BE67600F1116F /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF3E86500E0BE67600F1116F /* English */,
+			);
+			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 		CFD7D0480DF716A100D0C515 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CFD7D0490DF716A100D0C515 /* English */,
-				CFD7D04C0DF716B900D0C515 /* ko */,
+				CFD7D0490DF716A100D0C515 /* MainMenu.xib */,
+				CFD7D04C0DF716B900D0C515 /* MainMenu.xib */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -240,12 +431,12 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Hanulim_Prefix.pch;
-				INFOPLIST_FILE = Info.plist;
+				GCC_PREFIX_HEADER = InputMethod/Hanulim_Prefix.pch;
+				INFOPLIST_FILE = InputMethod/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = Hanulim;
 				WRAPPER_EXTENSION = app;
-				ZERO_LINK = YES;
+				ZERO_LINK = NO;
 			};
 			name = Debug;
 		};
@@ -255,8 +446,8 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Hanulim_Prefix.pch;
-				INFOPLIST_FILE = Info.plist;
+				GCC_PREFIX_HEADER = InputMethod/Hanulim_Prefix.pch;
+				INFOPLIST_FILE = InputMethod/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = Hanulim;
 				WRAPPER_EXTENSION = app;
@@ -269,7 +460,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
-				GCC_VERSION = 4.2;
+				GCC_VERSION = 4.0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
@@ -282,11 +473,59 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
-				GCC_VERSION = 4.2;
+				GCC_VERSION = 4.0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+			};
+			name = Release;
+		};
+		CF3E85F00E0BDE3000F1116F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = AbbrevEdit/AbbrevEdit_Prefix.pch;
+				INFOPLIST_FILE = AbbrevEdit/Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = AbbrevEdit;
+			};
+			name = Debug;
+		};
+		CF3E85F10E0BDE3000F1116F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = AbbrevEdit/AbbrevEdit_Prefix.pch;
+				INFOPLIST_FILE = AbbrevEdit/Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = AbbrevEdit;
+				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
@@ -307,6 +546,15 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF3E85F20E0BDE3000F1116F /* Build configuration list for PBXNativeTarget "AbbrevEdit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF3E85F00E0BDE3000F1116F /* Debug */,
+				CF3E85F10E0BDE3000F1116F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

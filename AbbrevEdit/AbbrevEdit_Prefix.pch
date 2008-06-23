@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'AbbrevEdit' target in the 'AbbrevEdit' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
