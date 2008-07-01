@@ -2,13 +2,12 @@
  * Hanulim
  * $Id$
  *
- * http://www.osxdev.org
  * http://code.google.com/p/hanulim
  */
 
 #import "HNAppController.h"
 #import "HNInputController.h"
-#import "HNCandidates.h"
+#import "HNCandidatesController.h"
 #import "HNDebug.h"
 
 
@@ -24,6 +23,8 @@
     {
         HNICInitialize(&mContext);
         HNICSetOptionDelegate(&mContext, [HNAppController sharedInstance]);
+
+        mCandidates = nil;
     }
 
     return self;
@@ -35,6 +36,8 @@
 
     HNICFinalize(&mContext);
 
+    [mCandidates release];
+
     [super dealloc];
 }
 
@@ -45,7 +48,14 @@
 
 - (void)candidateSelectionChanged:(NSAttributedString *)candidateString
 {
+    NSString *sAnnotation = [mCandidates annotationForString:[candidateString string]];
+
     HNLog(@"HNInputController -candidateSelectionChanged:(%@)", [candidateString string]);
+
+    if (sAnnotation)
+    {
+        [[HNCandidatesController sharedInstance] showAnnotation:sAnnotation];
+    }
 }
 
 - (void)candidateSelected:(NSAttributedString *)candidateString
@@ -60,6 +70,9 @@
 - (void)hidePalettes
 {
     HNLog(@"HNInputController -hidePalettes");
+
+    [mCandidates release];
+    mCandidates = nil;
 }
 
 - (NSMenu *)menu
@@ -179,10 +192,16 @@
         {
             sString = HNICComposedString(&mContext);
 
-            if (sString && [[HNCandidates sharedInstance] candidatesForString:sString])
+            if (sString)
             {
-                sShowCandidates = YES;
-                sHandled        = YES;
+                [mCandidates release];
+                mCandidates = [[[HNCandidatesController sharedInstance] candidatesForString:sString] retain];
+
+                if (mCandidates)
+                {
+                    sShowCandidates = YES;
+                    sHandled        = YES;
+                }
             }
         }
         else
@@ -202,6 +221,9 @@
             {
                 [self updateComposition];
             }
+
+            [mCandidates release];
+            mCandidates = nil;
         }
     }
     else
@@ -211,11 +233,11 @@
 
     if (sShowCandidates)
     {
-        [[HNCandidates sharedInstance] show];
+        [[HNCandidatesController sharedInstance] show];
     }
     else
     {
-        [[HNCandidates sharedInstance] hide];
+        [[HNCandidatesController sharedInstance] hide];
     }
 
     HNLog(@" => %@", sHandled ? @"YES" : @"NO");
@@ -257,18 +279,9 @@
 
 - (NSArray *)candidates:(id)sender
 {
-    NSString *sString = HNICComposedString(&mContext);
-
     HNLog(@"HNInputController<IMKServerInput> -candidates:");
 
-    if (sString)
-    {
-        return [[HNCandidates sharedInstance] candidatesForString:sString];
-    }
-    else
-    {
-        return nil;
-    }
+    return [mCandidates expansions];
 }
 
 @end

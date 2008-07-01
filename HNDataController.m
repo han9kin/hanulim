@@ -2,7 +2,6 @@
  * Hanulim
  * $Id$
  *
- * http://www.osxdev.org
  * http://code.google.com/p/hanulim
  */
 
@@ -24,35 +23,8 @@ static HNDataController *HNDataControllerInstance = nil;
     return HNDataControllerInstance;
 }
 
-- (NSString *)applicationSupportFolder
-{
-    NSFileManager *sFileManager;
-    NSArray       *sBasePaths;
-    NSString      *sBasePath;
-    NSString      *sPath;
-
-    sFileManager = [NSFileManager defaultManager];
-    sBasePaths   = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
-    sBasePath    = ([sBasePaths count] > 0) ? [sBasePaths objectAtIndex:0] : NSTemporaryDirectory();
-    sPath        = [sBasePath stringByAppendingPathComponent:@"Hanulim"];
-
-    if (![sFileManager fileExistsAtPath:sPath isDirectory:NULL])
-    {
-        [sFileManager createDirectoryAtPath:sPath attributes:nil];
-    }
-
-    return sPath;
-}
-
-- (NSURL *)abbrevsDataFileURL
-{
-    return [NSURL fileURLWithPath:[[self applicationSupportFolder] stringByAppendingPathComponent:@"Abbrevs.db"]];
-}
-
 - (void)initManagedObjectContext
 {
-    NSError *sError;
-
     /*
      * ManagedObjectModel
      */
@@ -63,15 +35,11 @@ static HNDataController *HNDataControllerInstance = nil;
      */
     mPersistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mManagedObjectModel];
 
-    if (![mPersistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:[self abbrevsDataFileURL] options:nil error:&sError])
-    {
-        [[NSApplication sharedApplication] presentError:sError];
-    }
-
     /*
      * ManagedObjectContext
      */
     mManagedObjectContext = [[NSManagedObjectContext alloc] init];
+
     [mManagedObjectContext setPersistentStoreCoordinator:mPersistentStoreCoordinator];
 }
 
@@ -94,6 +62,67 @@ static HNDataController *HNDataControllerInstance = nil;
     [mManagedObjectModel release];
 
     [super dealloc];
+}
+
+- (NSError *)addPersistentStoresInDomains:(NSSearchPathDomainMask)aDomainMask
+{
+    NSFileManager *sFileManager;
+    NSArray       *sBasePaths;
+    NSString      *sBasePath;
+    NSString      *sPath;
+    NSArray       *sFiles;
+    NSString      *sFile;
+    NSURL         *sURL;
+    NSError       *sError;
+
+    sFileManager = [NSFileManager defaultManager];
+    sBasePaths   = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, aDomainMask, YES);
+
+    for (sBasePath in sBasePaths)
+    {
+        sPath = [sBasePath stringByAppendingPathComponent:@"Hanulim"];
+
+        if (![sFileManager fileExistsAtPath:sPath isDirectory:NULL])
+        {
+            [sFileManager createDirectoryAtPath:sPath attributes:nil];
+        }
+
+        sPath = [sPath stringByAppendingPathComponent:@"Abbrevs"];
+
+        if (![sFileManager fileExistsAtPath:sPath isDirectory:NULL])
+        {
+            [sFileManager createDirectoryAtPath:sPath attributes:nil];
+        }
+
+        sFiles = [sFileManager directoryContentsAtPath:sPath];
+
+        for (sFile in sFiles)
+        {
+            if ([[sFile pathExtension] isEqualToString:@"db"])
+            {
+                sURL = [NSURL fileURLWithPath:[sPath stringByAppendingPathComponent:sFile]];
+
+                if (![mPersistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:sURL options:nil error:&sError])
+                {
+                    return sError;
+                }
+            }
+        }
+    }
+
+    return nil;
+}
+
+- (NSError *)addPersistentStoreAtPath:(NSString *)aPath
+{
+    NSError *sError;
+
+    if (![mPersistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:[NSURL fileURLWithPath:aPath] options:nil error:&sError])
+    {
+        return sError;
+    }
+
+    return nil;
 }
 
 - (NSManagedObjectContext *)managedObjectContext

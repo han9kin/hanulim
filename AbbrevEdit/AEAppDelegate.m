@@ -2,7 +2,6 @@
  * Hanulim
  * $Id$
  *
- * http://www.osxdev.org
  * http://code.google.com/p/hanulim
  */
 
@@ -11,6 +10,18 @@
 
 
 @implementation AEAppDelegate
+
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
+    NSError *sError;
+
+    sError = [[HNDataController sharedInstance] addPersistentStoresInDomains:NSUserDomainMask];
+
+    if (sError)
+    {
+        [[NSApplication sharedApplication] presentError:sError];
+    }
+}
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
 {

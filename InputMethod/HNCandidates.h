@@ -2,26 +2,23 @@
  * Hanulim
  * $Id$
  *
- * http://www.osxdev.org
  * http://code.google.com/p/hanulim
  */
 
 #import <Cocoa/Cocoa.h>
-#import <InputMethodKit/InputMethodKit.h>
 
 
 @interface HNCandidates : NSObject
 {
-    IMKCandidates *mCandidates;
+    NSArray      *mExpansions;
+    NSDictionary *mAnnotations;
 }
 
-+ (HNCandidates *)sharedInstance;
++ (id)candidatesWithExpansionManagedObjects:(NSArray *)aExpansionRecords;
 
-- (id)initWithServer:(IMKServer *)aServer;
+- (id)initWithExpansionManagedObjects:(NSArray *)aExpansionRecords;
 
-- (void)show;
-- (void)hide;
-
-- (NSArray *)candidatesForString:(NSString *)aString;
+- (NSArray *)expansions;
+- (NSString *)annotationForString:(NSString *)aString;
 
 @end

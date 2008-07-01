@@ -2,7 +2,6 @@
  * Hanulim
  * $Id$
  *
- * http://www.osxdev.org
  * http://code.google.com/p/hanulim
  */
 
@@ -17,6 +16,9 @@
 }
 
 + (HNDataController *)sharedInstance;
+
+- (NSError *)addPersistentStoresInDomains:(NSSearchPathDomainMask)aDomainMask;
+- (NSError *)addPersistentStoreAtPath:(NSString *)aPath;
 
 - (NSManagedObjectContext *)managedObjectContext;
 

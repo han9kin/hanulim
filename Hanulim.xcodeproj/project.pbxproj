@@ -18,13 +18,21 @@
 		CF3E86540E0BE69500F1116F /* AEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3E86530E0BE69500F1116F /* AEAppDelegate.m */; };
 		CF3E86630E0BEE8000F1116F /* AbbrevEdit.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = CF3E85ED0E0BDE2F00F1116F /* AbbrevEdit.app */; };
 		CF4198760E1048DC00A2BE4A /* Abbrevs.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = CF0576FA0E103B7400F8DA39 /* Abbrevs.xcdatamodel */; };
+		CF4198B30E12B45600A2BE4A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4198B20E12B45600A2BE4A /* main.m */; };
+		CF4198B50E12B4ED00A2BE4A /* abbrevtool in CopyFiles */ = {isa = PBXBuildFile; fileRef = CF4198950E12ADDF00A2BE4A /* abbrevtool */; };
+		CF4198B80E14576C00A2BE4A /* Abbrevs.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = CF0576FA0E103B7400F8DA39 /* Abbrevs.xcdatamodel */; };
+		CF4198B90E14577E00A2BE4A /* HNDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE976370E0E07C0000061D6 /* HNDataController.m */; };
+		CF4198C10E14584500A2BE4A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13E42FB307B3F0F600E4EEF1 /* CoreData.framework */; };
+		CF4198C40E1459F200A2BE4A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B97325FDCFA39411CA2CEA /* Foundation.framework */; };
 		CF4CD5DA0CD50F3E00E2A2F5 /* HNInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4CD5D70CD50F3E00E2A2F5 /* HNInputController.m */; };
 		CF4CD5DD0CD50F4900E2A2F5 /* Hanulim.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF4CD5DC0CD50F4900E2A2F5 /* Hanulim.tif */; };
 		CF4CD5E20CD50F9700E2A2F5 /* InputMethodKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4CD5E10CD50F9700E2A2F5 /* InputMethodKit.framework */; };
-		CFA3DEDC0E03BD5A00BF8CD5 /* HNCandidates.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA3DEDB0E03BD5A00BF8CD5 /* HNCandidates.m */; };
+		CF571FE80E1A56F20075397A /* HNCandidates.m in Sources */ = {isa = PBXBuildFile; fileRef = CF571FE70E1A56F20075397A /* HNCandidates.m */; };
+		CFA3DEDC0E03BD5A00BF8CD5 /* HNCandidatesController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA3DEDB0E03BD5A00BF8CD5 /* HNCandidatesController.m */; };
 		CFCD185F0CD613DA00213F4E /* HNAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCD185E0CD613DA00213F4E /* HNAppController.m */; };
 		CFCD19C60CDA333A00213F4E /* HNInputContext.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCD19C50CDA333A00213F4E /* HNInputContext.m */; };
 		CFD7D04A0DF716A100D0C515 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFD7D0480DF716A100D0C515 /* MainMenu.xib */; };
+		CFD961C90E1675B0006710FF /* ATImport.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD961C80E1675B0006710FF /* ATImport.m */; };
 		CFE976380E0E07C0000061D6 /* HNDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE976370E0E07C0000061D6 /* HNDataController.m */; };
 		CFE976490E0E0EF8000061D6 /* HNDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE976370E0E07C0000061D6 /* HNDataController.m */; };
 /* End PBXBuildFile section */
@@ -37,6 +45,13 @@
 			remoteGlobalIDString = CF3E85EC0E0BDE2F00F1116F;
 			remoteInfo = AbbrevEdit;
 		};
+		CF41989B0E12B2F100A2BE4A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CF4198940E12ADDF00A2BE4A;
+			remoteInfo = abbrevtool;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,6 +61,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 12;
 			files = (
+				CF4198B50E12B4ED00A2BE4A /* abbrevtool in CopyFiles */,
 				CF3E86630E0BEE8000F1116F /* AbbrevEdit.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,19 +88,26 @@
 		CF3E86500E0BE67600F1116F /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = AbbrevEdit/English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		CF3E86520E0BE69500F1116F /* AEAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AEAppDelegate.h; path = AbbrevEdit/AEAppDelegate.h; sourceTree = "<group>"; };
 		CF3E86530E0BE69500F1116F /* AEAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AEAppDelegate.m; path = AbbrevEdit/AEAppDelegate.m; sourceTree = "<group>"; };
+		CF4198950E12ADDF00A2BE4A /* abbrevtool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = abbrevtool; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF4198B00E12B41800A2BE4A /* abbrevtool_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = abbrevtool_Prefix.pch; path = abbrevtool/abbrevtool_Prefix.pch; sourceTree = "<group>"; };
+		CF4198B20E12B45600A2BE4A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = abbrevtool/main.m; sourceTree = "<group>"; };
 		CF45B4950DF2896B00109833 /* HNDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDebug.h; sourceTree = "<group>"; };
 		CF4CD5D60CD50F3E00E2A2F5 /* HNInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNInputController.h; path = InputMethod/HNInputController.h; sourceTree = "<group>"; };
 		CF4CD5D70CD50F3E00E2A2F5 /* HNInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNInputController.m; path = InputMethod/HNInputController.m; sourceTree = "<group>"; };
 		CF4CD5DC0CD50F4900E2A2F5 /* Hanulim.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = Hanulim.tif; path = InputMethod/Hanulim.tif; sourceTree = "<group>"; };
 		CF4CD5E10CD50F9700E2A2F5 /* InputMethodKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InputMethodKit.framework; path = /System/Library/Frameworks/InputMethodKit.framework; sourceTree = "<absolute>"; };
-		CFA3DEDA0E03BD5A00BF8CD5 /* HNCandidates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCandidates.h; path = InputMethod/HNCandidates.h; sourceTree = "<group>"; };
-		CFA3DEDB0E03BD5A00BF8CD5 /* HNCandidates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCandidates.m; path = InputMethod/HNCandidates.m; sourceTree = "<group>"; };
+		CF571FE60E1A56F20075397A /* HNCandidates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCandidates.h; path = InputMethod/HNCandidates.h; sourceTree = "<group>"; };
+		CF571FE70E1A56F20075397A /* HNCandidates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCandidates.m; path = InputMethod/HNCandidates.m; sourceTree = "<group>"; };
+		CFA3DEDA0E03BD5A00BF8CD5 /* HNCandidatesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCandidatesController.h; path = InputMethod/HNCandidatesController.h; sourceTree = "<group>"; };
+		CFA3DEDB0E03BD5A00BF8CD5 /* HNCandidatesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCandidatesController.m; path = InputMethod/HNCandidatesController.m; sourceTree = "<group>"; };
 		CFCD185E0CD613DA00213F4E /* HNAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNAppController.m; path = InputMethod/HNAppController.m; sourceTree = "<group>"; };
 		CFCD18D40CD792A200213F4E /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = InfoPlist.strings; path = InputMethod/ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CFCD19C40CDA333A00213F4E /* HNInputContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNInputContext.h; path = InputMethod/HNInputContext.h; sourceTree = "<group>"; };
 		CFCD19C50CDA333A00213F4E /* HNInputContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNInputContext.m; path = InputMethod/HNInputContext.m; sourceTree = "<group>"; };
 		CFD7D0490DF716A100D0C515 /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainMenu.xib; path = InputMethod/English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		CFD7D04C0DF716B900D0C515 /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainMenu.xib; path = InputMethod/ko.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		CFD961C70E1675B0006710FF /* ATImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATImport.h; path = abbrevtool/ATImport.h; sourceTree = "<group>"; };
+		CFD961C80E1675B0006710FF /* ATImport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATImport.m; path = abbrevtool/ATImport.m; sourceTree = "<group>"; };
 		CFE976360E0E07C0000061D6 /* HNDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDataController.h; sourceTree = "<group>"; };
 		CFE976370E0E07C0000061D6 /* HNDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDataController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +130,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CF4198930E12ADDF00A2BE4A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF4198C10E14584500A2BE4A /* CoreData.framework in Frameworks */,
+				CF4198C40E1459F200A2BE4A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -119,8 +151,10 @@
 				CF4CD5D70CD50F3E00E2A2F5 /* HNInputController.m */,
 				CFCD19C40CDA333A00213F4E /* HNInputContext.h */,
 				CFCD19C50CDA333A00213F4E /* HNInputContext.m */,
-				CFA3DEDA0E03BD5A00BF8CD5 /* HNCandidates.h */,
-				CFA3DEDB0E03BD5A00BF8CD5 /* HNCandidates.m */,
+				CFA3DEDA0E03BD5A00BF8CD5 /* HNCandidatesController.h */,
+				CFA3DEDB0E03BD5A00BF8CD5 /* HNCandidatesController.m */,
+				CF571FE60E1A56F20075397A /* HNCandidates.h */,
+				CF571FE70E1A56F20075397A /* HNCandidates.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -149,6 +183,7 @@
 			children = (
 				8D1107320486CEB800E47090 /* Hanulim.app */,
 				CF3E85ED0E0BDE2F00F1116F /* AbbrevEdit.app */,
+				CF4198950E12ADDF00A2BE4A /* abbrevtool */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -158,6 +193,7 @@
 			children = (
 				CFA3DEC20E02F52300BF8CD5 /* Model */,
 				CF3E860B0E0BE1B700F1116F /* Shared Sources */,
+				CF4198AB0E12B39800A2BE4A /* abbrevtool */,
 				CF3E85DF0E0BD96500F1116F /* AbbrevEdit */,
 				CF3E85DE0E0BD94900F1116F /* InputMethod */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -253,12 +289,39 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		CF4198AB0E12B39800A2BE4A /* abbrevtool */ = {
+			isa = PBXGroup;
+			children = (
+				CFD961C60E16754D006710FF /* Classes */,
+				CF4198B10E12B42800A2BE4A /* Other Sources */,
+			);
+			name = abbrevtool;
+			sourceTree = "<group>";
+		};
+		CF4198B10E12B42800A2BE4A /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				CF4198B00E12B41800A2BE4A /* abbrevtool_Prefix.pch */,
+				CF4198B20E12B45600A2BE4A /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
 		CFA3DEC20E02F52300BF8CD5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				CF0576FA0E103B7400F8DA39 /* Abbrevs.xcdatamodel */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		CFD961C60E16754D006710FF /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CFD961C70E1675B0006710FF /* ATImport.h */,
+				CFD961C80E1675B0006710FF /* ATImport.m */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,6 +339,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				CF41989C0E12B2F100A2BE4A /* PBXTargetDependency */,
 				CF3E86030E0BDEB600F1116F /* PBXTargetDependency */,
 			);
 			name = Hanulim;
@@ -301,6 +365,22 @@
 			productReference = CF3E85ED0E0BDE2F00F1116F /* AbbrevEdit.app */;
 			productType = "com.apple.product-type.application";
 		};
+		CF4198940E12ADDF00A2BE4A /* abbrevtool */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF4198990E12ADEA00A2BE4A /* Build configuration list for PBXNativeTarget "abbrevtool" */;
+			buildPhases = (
+				CF4198920E12ADDF00A2BE4A /* Sources */,
+				CF4198930E12ADDF00A2BE4A /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = abbrevtool;
+			productName = abbrevtool;
+			productReference = CF4198950E12ADDF00A2BE4A /* abbrevtool */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -322,6 +402,7 @@
 			targets = (
 				8D1107260486CEB800E47090 /* Hanulim */,
 				CF3E85EC0E0BDE2F00F1116F /* AbbrevEdit */,
+				CF4198940E12ADDF00A2BE4A /* abbrevtool */,
 			);
 		};
 /* End PBXProject section */
@@ -357,9 +438,10 @@
 				CF4CD5DA0CD50F3E00E2A2F5 /* HNInputController.m in Sources */,
 				CFCD185F0CD613DA00213F4E /* HNAppController.m in Sources */,
 				CFCD19C60CDA333A00213F4E /* HNInputContext.m in Sources */,
-				CFA3DEDC0E03BD5A00BF8CD5 /* HNCandidates.m in Sources */,
+				CFA3DEDC0E03BD5A00BF8CD5 /* HNCandidatesController.m in Sources */,
 				CFE976490E0E0EF8000061D6 /* HNDataController.m in Sources */,
 				CF4198760E1048DC00A2BE4A /* Abbrevs.xcdatamodel in Sources */,
+				CF571FE80E1A56F20075397A /* HNCandidates.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +456,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CF4198920E12ADDF00A2BE4A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF4198B30E12B45600A2BE4A /* main.m in Sources */,
+				CF4198B80E14576C00A2BE4A /* Abbrevs.xcdatamodel in Sources */,
+				CF4198B90E14577E00A2BE4A /* HNDataController.m in Sources */,
+				CFD961C90E1675B0006710FF /* ATImport.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -381,6 +474,11 @@
 			isa = PBXTargetDependency;
 			target = CF3E85EC0E0BDE2F00F1116F /* AbbrevEdit */;
 			targetProxy = CF3E86020E0BDEB600F1116F /* PBXContainerItemProxy */;
+		};
+		CF41989C0E12B2F100A2BE4A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CF4198940E12ADDF00A2BE4A /* abbrevtool */;
+			targetProxy = CF41989B0E12B2F100A2BE4A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -494,12 +592,6 @@
 				GCC_PREFIX_HEADER = AbbrevEdit/AbbrevEdit_Prefix.pch;
 				INFOPLIST_FILE = AbbrevEdit/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
 				PREBINDING = NO;
 				PRODUCT_NAME = AbbrevEdit;
 			};
@@ -517,14 +609,42 @@
 				GCC_PREFIX_HEADER = AbbrevEdit/AbbrevEdit_Prefix.pch;
 				INFOPLIST_FILE = AbbrevEdit/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
 				PREBINDING = NO;
 				PRODUCT_NAME = AbbrevEdit;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		CF4198970E12ADE600A2BE4A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = abbrevtool/abbrevtool_Prefix.pch;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = abbrevtool;
+			};
+			name = Debug;
+		};
+		CF4198980E12ADE600A2BE4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = abbrevtool/abbrevtool_Prefix.pch;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = abbrevtool;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -555,6 +675,15 @@
 			buildConfigurations = (
 				CF3E85F00E0BDE3000F1116F /* Debug */,
 				CF3E85F10E0BDE3000F1116F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF4198990E12ADEA00A2BE4A /* Build configuration list for PBXNativeTarget "abbrevtool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF4198970E12ADE600A2BE4A /* Debug */,
+				CF4198980E12ADE600A2BE4A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

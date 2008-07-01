@@ -3,13 +3,13 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1050</int>
 		<string key="IBDocument.SystemVersion">9D34</string>
-		<string key="IBDocument.InterfaceBuilderVersion">667</string>
+		<string key="IBDocument.InterfaceBuilderVersion">670</string>
 		<string key="IBDocument.AppKitVersion">949.33</string>
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<integer value="111"/>
-			<integer value="2"/>
+			<integer value="958"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -346,6 +346,7 @@
 												<object class="NSButtonCell" key="NSCancelButtonCell">
 													<int key="NSCellFlags">-2147353088</int>
 													<int key="NSCellFlags2">0</int>
+													<string key="NSContents">clear</string>
 													<object class="NSMutableArray" key="NSAccessibilityOverriddenAttributes">
 														<bool key="EncodedWithXMLCoder">YES</bool>
 														<object class="NSMutableDictionary">
@@ -645,6 +646,7 @@
 												<object class="NSButtonCell" key="NSCancelButtonCell">
 													<int key="NSCellFlags">-2147353088</int>
 													<int key="NSCellFlags2">0</int>
+													<string key="NSContents">clear</string>
 													<object class="NSMutableArray" key="NSAccessibilityOverriddenAttributes">
 														<bool key="EncodedWithXMLCoder">YES</bool>
 														<object class="NSMutableDictionary">
@@ -1048,6 +1050,7 @@
 												<object class="NSButtonCell" key="NSCancelButtonCell">
 													<int key="NSCellFlags">-2147353088</int>
 													<int key="NSCellFlags2">0</int>
+													<string key="NSContents">clear</string>
 													<object class="NSMutableArray" key="NSAccessibilityOverriddenAttributes">
 														<bool key="EncodedWithXMLCoder">YES</bool>
 														<object class="NSMutableDictionary">
@@ -2199,6 +2202,7 @@
 				<object class="NSMutableArray" key="NSDeclaredKeys">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>abbrev</string>
+					<string>expansions</string>
 				</object>
 				<bool key="NSEditable">YES</bool>
 				<bool key="NSAutomaticallyPreparesContent">YES</bool>
@@ -3388,7 +3392,7 @@
 							<string key="NSKeyPath">arrangedObjects</string>
 							<object class="NSDictionary" key="NSOptions">
 								<string key="NS.key.0">NSInsertsNullPlaceholder</string>
-								<integer value="1" key="NS.object.0" id="5"/>
+								<reference key="NS.object.0" ref="9"/>
 							</object>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
@@ -3408,7 +3412,7 @@
 							<string key="NSKeyPath">arrangedObjects.abbrev</string>
 							<object class="NSDictionary" key="NSOptions">
 								<string key="NS.key.0">NSInsertsNullPlaceholder</string>
-								<reference key="NS.object.0" ref="5"/>
+								<reference key="NS.object.0" ref="9"/>
 							</object>
 							<reference key="NSPreviousConnector" ref="875302124"/>
 							<int key="NSNibBindingConnectorVersion">2</int>
@@ -3446,7 +3450,7 @@
 							<string key="NSKeyPath">arrangedObjects</string>
 							<object class="NSDictionary" key="NSOptions">
 								<string key="NS.key.0">NSInsertsNullPlaceholder</string>
-								<reference key="NS.object.0" ref="5"/>
+								<reference key="NS.object.0" ref="9"/>
 							</object>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
@@ -3466,7 +3470,7 @@
 							<string key="NSKeyPath">arrangedObjects.category</string>
 							<object class="NSDictionary" key="NSOptions">
 								<string key="NS.key.0">NSInsertsNullPlaceholder</string>
-								<reference key="NS.object.0" ref="5"/>
+								<reference key="NS.object.0" ref="9"/>
 							</object>
 							<reference key="NSPreviousConnector" ref="954769992"/>
 							<int key="NSNibBindingConnectorVersion">2</int>
@@ -5345,7 +5349,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">999</int>
+			<int key="maxID">1004</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

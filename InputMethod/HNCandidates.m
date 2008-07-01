@@ -2,34 +2,27 @@
  * Hanulim
  * $Id$
  *
- * http://www.osxdev.org
  * http://code.google.com/p/hanulim
  */
 
 #import "HNCandidates.h"
-#import "HNDataController.h"
-#import "HNDebug.h"
-
-
-static HNCandidates *HNCandidatesInstance = nil;
 
 
 @implementation HNCandidates
 
-+ (HNCandidates *)sharedInstance
++ (id)candidatesWithExpansionManagedObjects:(NSArray *)aExpansionRecords
 {
-    return HNCandidatesInstance;
+    return [[[self alloc] initWithExpansionManagedObjects:aExpansionRecords] autorelease];
 }
 
-- (id)initWithServer:(IMKServer *)aServer
+- (id)initWithExpansionManagedObjects:(NSArray *)aExpansionRecords
 {
     self = [super init];
 
     if (self)
     {
-        mCandidates = [[IMKCandidates alloc] initWithServer:aServer panelType:kIMKSingleRowSteppingCandidatePanel];
-
-        HNCandidatesInstance = self;
+        mExpansions  = [[aExpansionRecords valueForKey:@"expansion"] retain];
+        mAnnotations = [[NSDictionary alloc] initWithObjects:[aExpansionRecords valueForKey:@"annotation"] forKeys:mExpansions];
     }
 
     return self;
@@ -37,48 +30,29 @@ static HNCandidates *HNCandidatesInstance = nil;
 
 - (void)dealloc
 {
-    [mCandidates release];
+    [mExpansions release];
+    [mAnnotations release];
 
     [super dealloc];
 }
 
-- (void)show
+- (NSArray *)expansions
 {
-    [mCandidates show:kIMKLocateCandidatesBelowHint];
+    return mExpansions;
 }
 
-- (void)hide
+- (NSString *)annotationForString:(NSString *)aString
 {
-    [mCandidates hide];
-}
+    id sAnnotation = [mAnnotations objectForKey:aString];
 
-- (NSArray *)candidatesForString:(NSString *)aString
-{
-    NSManagedObjectContext *sContext    = [[HNDataController sharedInstance] managedObjectContext];
-    NSSortDescriptor       *sSortDesc   = [[[NSSortDescriptor alloc] initWithKey:@"expansion" ascending:YES] autorelease];
-    NSFetchRequest         *sRequest    = [[[NSFetchRequest alloc] init] autorelease];
-    NSArray                *sResult;
-    NSError                *sError;
-
-    [sRequest setEntity:[NSEntityDescription entityForName:@"Expansion" inManagedObjectContext:sContext]];
-    [sRequest setPredicate:[NSPredicate predicateWithFormat:@"abbrev.abbrev = %@", aString]];
-    [sRequest setSortDescriptors:[NSArray arrayWithObject:sSortDesc]];
-
-    sResult = [sContext executeFetchRequest:sRequest error:&sError];
-
-    if (sResult)
+    if ([sAnnotation isKindOfClass:[NSString class]] && [sAnnotation length])
     {
-        if ([sResult count])
-        {
-            return [sResult valueForKey:@"expansion"];
-        }
+        return sAnnotation;
     }
     else
     {
-        [[NSApplication sharedApplication] presentError:sError];
+        return nil;
     }
-
-    return nil;
 }
 
 @end
