@@ -17,9 +17,4 @@
     HNCandidates   *mCandidates;
 }
 
-- (IBAction)toggleUsesSmartQuotationMarks:(id)sender;
-- (IBAction)toggleHandlesCapsLockAsShift:(id)sender;
-- (IBAction)toggleCommitsImmediately:(id)sender;
-- (IBAction)toggleUsesDecomposedUnicode:(id)sender;
-
 @end

@@ -28,6 +28,7 @@
 		CF4CD5DD0CD50F4900E2A2F5 /* Hanulim.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF4CD5DC0CD50F4900E2A2F5 /* Hanulim.tif */; };
 		CF4CD5E20CD50F9700E2A2F5 /* InputMethodKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4CD5E10CD50F9700E2A2F5 /* InputMethodKit.framework */; };
 		CF571FE80E1A56F20075397A /* HNCandidates.m in Sources */ = {isa = PBXBuildFile; fileRef = CF571FE70E1A56F20075397A /* HNCandidates.m */; };
+		CF63059F0E34F7C8009E6A72 /* HNUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = CF63059E0E34F7C8009E6A72 /* HNUserDefaults.m */; };
 		CFA3DEDC0E03BD5A00BF8CD5 /* HNCandidatesController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA3DEDB0E03BD5A00BF8CD5 /* HNCandidatesController.m */; };
 		CFCD185F0CD613DA00213F4E /* HNAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCD185E0CD613DA00213F4E /* HNAppController.m */; };
 		CFCD19C60CDA333A00213F4E /* HNInputContext.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCD19C50CDA333A00213F4E /* HNInputContext.m */; };
@@ -35,6 +36,7 @@
 		CFD961C90E1675B0006710FF /* ATImport.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD961C80E1675B0006710FF /* ATImport.m */; };
 		CFE976380E0E07C0000061D6 /* HNDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE976370E0E07C0000061D6 /* HNDataController.m */; };
 		CFE976490E0E0EF8000061D6 /* HNDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE976370E0E07C0000061D6 /* HNDataController.m */; };
+		CFF8A69B0E20EFC500DD47E7 /* preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFF8A69A0E20EFC500DD47E7 /* preferences.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +100,8 @@
 		CF4CD5E10CD50F9700E2A2F5 /* InputMethodKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InputMethodKit.framework; path = /System/Library/Frameworks/InputMethodKit.framework; sourceTree = "<absolute>"; };
 		CF571FE60E1A56F20075397A /* HNCandidates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCandidates.h; path = InputMethod/HNCandidates.h; sourceTree = "<group>"; };
 		CF571FE70E1A56F20075397A /* HNCandidates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCandidates.m; path = InputMethod/HNCandidates.m; sourceTree = "<group>"; };
+		CF63059D0E34F7C8009E6A72 /* HNUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNUserDefaults.h; path = InputMethod/HNUserDefaults.h; sourceTree = "<group>"; };
+		CF63059E0E34F7C8009E6A72 /* HNUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNUserDefaults.m; path = InputMethod/HNUserDefaults.m; sourceTree = "<group>"; };
 		CFA3DEDA0E03BD5A00BF8CD5 /* HNCandidatesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCandidatesController.h; path = InputMethod/HNCandidatesController.h; sourceTree = "<group>"; };
 		CFA3DEDB0E03BD5A00BF8CD5 /* HNCandidatesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCandidatesController.m; path = InputMethod/HNCandidatesController.m; sourceTree = "<group>"; };
 		CFCD185E0CD613DA00213F4E /* HNAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNAppController.m; path = InputMethod/HNAppController.m; sourceTree = "<group>"; };
@@ -110,6 +114,7 @@
 		CFD961C80E1675B0006710FF /* ATImport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATImport.m; path = abbrevtool/ATImport.m; sourceTree = "<group>"; };
 		CFE976360E0E07C0000061D6 /* HNDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDataController.h; sourceTree = "<group>"; };
 		CFE976370E0E07C0000061D6 /* HNDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDataController.m; sourceTree = "<group>"; };
+		CFF8A69A0E20EFC500DD47E7 /* preferences.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = preferences.xib; path = InputMethod/preferences.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +160,8 @@
 				CFA3DEDB0E03BD5A00BF8CD5 /* HNCandidatesController.m */,
 				CF571FE60E1A56F20075397A /* HNCandidates.h */,
 				CF571FE70E1A56F20075397A /* HNCandidates.m */,
+				CF63059D0E34F7C8009E6A72 /* HNUserDefaults.h */,
+				CF63059E0E34F7C8009E6A72 /* HNUserDefaults.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -218,6 +225,7 @@
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				CFD7D0480DF716A100D0C515 /* MainMenu.xib */,
+				CFF8A69A0E20EFC500DD47E7 /* preferences.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -415,6 +423,7 @@
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				CF4CD5DD0CD50F4900E2A2F5 /* Hanulim.tif in Resources */,
 				CFD7D04A0DF716A100D0C515 /* MainMenu.xib in Resources */,
+				CFF8A69B0E20EFC500DD47E7 /* preferences.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +451,7 @@
 				CFE976490E0E0EF8000061D6 /* HNDataController.m in Sources */,
 				CF4198760E1048DC00A2BE4A /* Abbrevs.xcdatamodel in Sources */,
 				CF571FE80E1A56F20075397A /* HNCandidates.m in Sources */,
+				CF63059F0E34F7C8009E6A72 /* HNUserDefaults.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

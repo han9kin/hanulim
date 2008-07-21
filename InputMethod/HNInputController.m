@@ -8,6 +8,7 @@
 #import "HNAppController.h"
 #import "HNInputController.h"
 #import "HNCandidatesController.h"
+#import "HNUserDefaults.h"
 #import "HNDebug.h"
 
 
@@ -22,7 +23,7 @@
     if (self)
     {
         HNICInitialize(&mContext);
-        HNICSetOptionDelegate(&mContext, [HNAppController sharedInstance]);
+        HNICSetUserDefaults(&mContext, [HNUserDefaults sharedInstance]);
 
         mCandidates = nil;
     }
@@ -80,26 +81,6 @@
     HNLog(@"HNInputController -menu");
 
     return [[HNAppController sharedInstance] menu];
-}
-
-- (IBAction)toggleUsesSmartQuotationMarks:(id)sender
-{
-    [[HNAppController sharedInstance] toggleUsesSmartQuotationMarks];
-}
-
-- (IBAction)toggleHandlesCapsLockAsShift:(id)sender
-{
-    [[HNAppController sharedInstance] toggleHandlesCapsLockAsShift];
-}
-
-- (IBAction)toggleCommitsImmediately:(id)sender
-{
-    [[HNAppController sharedInstance] toggleCommitsImmediately];
-}
-
-- (IBAction)toggleUsesDecomposedUnicode:(id)sender
-{
-    [[HNAppController sharedInstance] toggleUsesDecomposedUnicode];
 }
 
 @end

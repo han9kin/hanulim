@@ -1278,7 +1278,7 @@ static unsigned short HNKeyboardGetCode(HNInputContext *aContext, unsigned short
     unsigned char  sType;
     unsigned char  sValue;
 
-    if ((aModifiers & NSShiftKeyMask) || ((aModifiers & NSAlphaShiftKeyMask) && [aContext->mOptionDelegate handlesCapsLockAsShift]))
+    if ((aModifiers & NSShiftKeyMask) || ((aModifiers & NSAlphaShiftKeyMask) && [aContext->mUserDefaults handlesCapsLockAsShift]))
     {
         sShift = 16;
     }
@@ -1362,7 +1362,7 @@ static NSUInteger HNCharacterCompose(HNInputContext *aContext, HNCharacter *aCha
     NSUInteger                 sLength    = 0;
     int                        i;
 
-    if ((aContext->mKeyboardLayout->mScope == HNKeyboardLayoutScopeArchaic) || [aContext->mOptionDelegate usesDecomposedUnicode])
+    if ((aContext->mKeyboardLayout->mScope == HNKeyboardLayoutScopeArchaic) || [aContext->mUserDefaults usesDecomposedUnicode])
     {
         /*
          * Unicode NFD (첫가끝코드)
@@ -1632,7 +1632,7 @@ static void HNCompose(HNInputContext *aContext)
                 sChar.CH_JONG = sFinal;
                 sLength       = HNCharacterCompose(aContext, &sChar, sCharPtr);
 
-                if ([aContext->mOptionDelegate commitsImmediately])
+                if ([aContext->mUserDefaults commitsImmediately])
                 {
                     HNCommit(aContext, sCharBuffer, sLength, i - 1);
 
@@ -1691,7 +1691,7 @@ static void HNCompose(HNInputContext *aContext)
 
         if (sLength)
         {
-            if ([aContext->mOptionDelegate commitsImmediately])
+            if ([aContext->mUserDefaults commitsImmediately])
             {
                 HNCommit(aContext, sCharBuffer, sLength, i);
 
@@ -1724,7 +1724,7 @@ static void HNCompose(HNInputContext *aContext)
 void HNICInitialize(HNInputContext *aContext)
 {
     aContext->mKeyboardLayout = NULL;
-    aContext->mOptionDelegate = nil;
+    aContext->mUserDefaults   = nil;
 
     aContext->mComposedString = nil;
     aContext->mFinishedString = nil;
@@ -1755,9 +1755,9 @@ void HNICSetKeyboardLayout(HNInputContext *aContext, NSString *aName)
     }
 }
 
-void HNICSetOptionDelegate(HNInputContext *aContext, id aDelegate)
+void HNICSetUserDefaults(HNInputContext *aContext, id<HNICUserDefaults> aUserDefaults)
 {
-    aContext->mOptionDelegate = aDelegate;
+    aContext->mUserDefaults = aUserDefaults;
 }
 
 BOOL HNICHandleEvent(HNInputContext *aContext, NSEvent *aEvent)
@@ -1783,9 +1783,14 @@ BOOL HNICHandleEvent(HNInputContext *aContext, NSEvent *aEvent)
         {
             sSymbol = HNUnicodeSymbol[HNKeyValue(sKeyConv)];
 
-            if ([aContext->mOptionDelegate usesSmartQuotationMarks])
+            if ([aContext->mUserDefaults usesSmartQuotationMarks])
             {
                 sSymbol = HNQuotationMark(aContext, sSymbol);
+            }
+
+            if ([aContext->mUserDefaults inputsBackSlashInsteadOfWon] && (sSymbol == 0xffe6))
+            {
+                sSymbol = 0x5c;
             }
 
             HNFinishComposition(aContext);

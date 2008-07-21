@@ -11,27 +11,11 @@
 
 @interface HNAppController : NSObject
 {
-    IBOutlet NSMenu     *menu;
-
-    IBOutlet NSMenuItem *smartQuotationMarkMenu;
-    IBOutlet NSMenuItem *capsLockMenu;
-    IBOutlet NSMenuItem *commitMenu;
-    IBOutlet NSMenuItem *decomposedUnicodeMenu;
-
-
-    BOOL mUsesSmartQuotationMarks;
-    BOOL mHandlesCapsLockAsShift;
-    BOOL mCommitsImmediately;
-    BOOL mUsesDecomposedUnicode;
+    IBOutlet NSMenu *menu;
 }
 
 + (HNAppController *)sharedInstance;
 
 - (NSMenu *)menu;
-
-- (void)toggleUsesSmartQuotationMarks;
-- (void)toggleHandlesCapsLockAsShift;
-- (void)toggleCommitsImmediately;
-- (void)toggleUsesDecomposedUnicode;
 
 @end
