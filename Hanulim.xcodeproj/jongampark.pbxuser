@@ -1,5 +1,13 @@
 // !$*UTF8*$!
 {
+	089C165DFE840E0CC02AAC07 /* English */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {930, 605}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 617}";
+			sepNavWindowFrame = "{{38, 34}, {989, 718}}";
+		};
+	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 740795430E4A9DE100DFE4AD /* Hanulim */;
@@ -11,8 +19,8 @@
 			740795450E4A9DE100DFE4AD /* abbrevtool */,
 		);
 		perUserDictionary = {
-			PBXPerProjectTemplateStateSaveDate = 239771105;
-			PBXWorkspaceStateSaveDate = 239771105;
+			PBXPerProjectTemplateStateSaveDate = 239771485;
+			PBXWorkspaceStateSaveDate = 239771485;
 		};
 		sourceControlManager = 7407954D0E4A9E0100DFE4AD /* Source Control */;
 		userBuildSettings = {

@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
+		74BEAC0E0E4A9FB5001AA535 /* preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74BEAC0D0E4A9FB5001AA535 /* preferences.xib */; };
+		74BEAC140E4A9FEA001AA535 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74BEAC130E4A9FEA001AA535 /* MainMenu.xib */; };
+		74BEAC190E4AA00A001AA535 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 74BEAC180E4AA00A001AA535 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		CF0576FB0E103B7400F8DA39 /* Abbrevs.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = CF0576FA0E103B7400F8DA39 /* Abbrevs.xcdatamodel */; };
@@ -32,11 +34,9 @@
 		CFA3DEDC0E03BD5A00BF8CD5 /* HNCandidatesController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA3DEDB0E03BD5A00BF8CD5 /* HNCandidatesController.m */; };
 		CFCD185F0CD613DA00213F4E /* HNAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCD185E0CD613DA00213F4E /* HNAppController.m */; };
 		CFCD19C60CDA333A00213F4E /* HNInputContext.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCD19C50CDA333A00213F4E /* HNInputContext.m */; };
-		CFD7D04A0DF716A100D0C515 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFD7D0480DF716A100D0C515 /* MainMenu.xib */; };
 		CFD961C90E1675B0006710FF /* ATImport.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD961C80E1675B0006710FF /* ATImport.m */; };
 		CFE976380E0E07C0000061D6 /* HNDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE976370E0E07C0000061D6 /* HNDataController.m */; };
 		CFE976490E0E0EF8000061D6 /* HNDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE976370E0E07C0000061D6 /* HNDataController.m */; };
-		CFF8A69B0E20EFC500DD47E7 /* preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFF8A69A0E20EFC500DD47E7 /* preferences.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,13 +71,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		089C165DFE840E0CC02AAC07 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = InfoPlist.strings; path = InputMethod/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = InputMethod/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = InputMethod/main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* Hanulim_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Hanulim_Prefix.pch; path = InputMethod/Hanulim_Prefix.pch; sourceTree = "<group>"; };
+		74BEAC100E4A9FD6001AA535 /* Korean */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Korean; path = InputMethod/Korean.lproj/preferences.xib; sourceTree = "<group>"; };
+		74BEAC150E4A9FEF001AA535 /* Korean */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Korean; path = InputMethod/Korean.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		74BEAC1A0E4AA010001AA535 /* Korean */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Korean; path = InputMethod/Korean.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = InputMethod/Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Hanulim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hanulim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF0576FA0E103B7400F8DA39 /* Abbrevs.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Abbrevs.xcdatamodel; sourceTree = "<group>"; };
@@ -105,16 +108,14 @@
 		CFA3DEDA0E03BD5A00BF8CD5 /* HNCandidatesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCandidatesController.h; path = InputMethod/HNCandidatesController.h; sourceTree = "<group>"; };
 		CFA3DEDB0E03BD5A00BF8CD5 /* HNCandidatesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCandidatesController.m; path = InputMethod/HNCandidatesController.m; sourceTree = "<group>"; };
 		CFCD185E0CD613DA00213F4E /* HNAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNAppController.m; path = InputMethod/HNAppController.m; sourceTree = "<group>"; };
-		CFCD18D40CD792A200213F4E /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = InfoPlist.strings; path = InputMethod/ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CFCD19C40CDA333A00213F4E /* HNInputContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNInputContext.h; path = InputMethod/HNInputContext.h; sourceTree = "<group>"; };
 		CFCD19C50CDA333A00213F4E /* HNInputContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNInputContext.m; path = InputMethod/HNInputContext.m; sourceTree = "<group>"; };
-		CFD7D0490DF716A100D0C515 /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainMenu.xib; path = InputMethod/English.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		CFD7D04C0DF716B900D0C515 /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainMenu.xib; path = InputMethod/ko.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		CFD7D0490DF716A100D0C515 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = InputMethod/English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		CFD961C70E1675B0006710FF /* ATImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATImport.h; path = abbrevtool/ATImport.h; sourceTree = "<group>"; };
 		CFD961C80E1675B0006710FF /* ATImport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATImport.m; path = abbrevtool/ATImport.m; sourceTree = "<group>"; };
 		CFE976360E0E07C0000061D6 /* HNDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDataController.h; sourceTree = "<group>"; };
 		CFE976370E0E07C0000061D6 /* HNDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNDataController.m; sourceTree = "<group>"; };
-		CFF8A69A0E20EFC500DD47E7 /* preferences.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = preferences.xib; path = InputMethod/preferences.xib; sourceTree = "<group>"; };
+		CFF8A69A0E20EFC500DD47E7 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = InputMethod/English.lproj/preferences.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,9 +224,9 @@
 			children = (
 				CF4CD5DC0CD50F4900E2A2F5 /* Hanulim.tif */,
 				8D1107310486CEB800E47090 /* Info.plist */,
-				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
-				CFD7D0480DF716A100D0C515 /* MainMenu.xib */,
-				CFF8A69A0E20EFC500DD47E7 /* preferences.xib */,
+				74BEAC180E4AA00A001AA535 /* InfoPlist.strings */,
+				74BEAC130E4A9FEA001AA535 /* MainMenu.xib */,
+				74BEAC0D0E4A9FB5001AA535 /* preferences.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -403,6 +404,7 @@
 				French,
 				German,
 				ko,
+				Korean,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Hanulim */;
 			projectDirPath = "";
@@ -420,10 +422,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
+				74BEAC190E4AA00A001AA535 /* InfoPlist.strings in Resources */,
 				CF4CD5DD0CD50F4900E2A2F5 /* Hanulim.tif in Resources */,
-				CFD7D04A0DF716A100D0C515 /* MainMenu.xib in Resources */,
-				CFF8A69B0E20EFC500DD47E7 /* preferences.xib in Resources */,
+				74BEAC140E4A9FEA001AA535 /* MainMenu.xib in Resources */,
+				74BEAC0E0E4A9FB5001AA535 /* preferences.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,11 +495,29 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
+		74BEAC0D0E4A9FB5001AA535 /* preferences.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				089C165DFE840E0CC02AAC07 /* InfoPlist.strings */,
-				CFCD18D40CD792A200213F4E /* InfoPlist.strings */,
+				CFF8A69A0E20EFC500DD47E7 /* English */,
+				74BEAC100E4A9FD6001AA535 /* Korean */,
+			);
+			name = preferences.xib;
+			sourceTree = "<group>";
+		};
+		74BEAC130E4A9FEA001AA535 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFD7D0490DF716A100D0C515 /* English */,
+				74BEAC150E4A9FEF001AA535 /* Korean */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		74BEAC180E4AA00A001AA535 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C165DFE840E0CC02AAC07 /* English */,
+				74BEAC1A0E4AA010001AA535 /* Korean */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -514,15 +534,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				CF3E86500E0BE67600F1116F /* English */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-		CFD7D0480DF716A100D0C515 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CFD7D0490DF716A100D0C515 /* MainMenu.xib */,
-				CFD7D04C0DF716B900D0C515 /* MainMenu.xib */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
