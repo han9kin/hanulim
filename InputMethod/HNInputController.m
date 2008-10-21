@@ -16,7 +16,7 @@
 
 - (id)initWithServer:(IMKServer *)server delegate:(id)delegate client:(id)inputClient
 {
-    HNLog(@"HNInputController -initWithServer:delegate:client:");
+    HNLog(@"HNInputController(%@) -initWithServer:(%@) delegate:(%@) client:(%@)", self, server, delegate, inputClient);
 
     self = [super initWithServer:server delegate:delegate client:inputClient];
 
@@ -33,7 +33,7 @@
 
 - (void)dealloc
 {
-    HNLog(@"HNInputController -dealloc");
+    HNLog(@"HNInputController(%@) -dealloc", self);
 
     HNICFinalize(&mContext);
 
@@ -44,14 +44,14 @@
 
 - (void)annotationSelected:(NSAttributedString *)annotationString forCandidate:(NSAttributedString *)candidateString
 {
-    HNLog(@"HNInputController -annotationSelected:(%@) forCandidate:(%@)", [annotationString string], [candidateString string]);
+    HNLog(@"HNInputController(%@) -annotationSelected:(%@) forCandidate:(%@)", self, [annotationString string], [candidateString string]);
 }
 
 - (void)candidateSelectionChanged:(NSAttributedString *)candidateString
 {
     NSString *sAnnotation = [mCandidates annotationForString:[candidateString string]];
 
-    HNLog(@"HNInputController -candidateSelectionChanged:(%@)", [candidateString string]);
+    HNLog(@"HNInputController(%@) -candidateSelectionChanged:(%@)", self, [candidateString string]);
 
     if (sAnnotation)
     {
@@ -61,92 +61,58 @@
 
 - (void)candidateSelected:(NSAttributedString *)candidateString
 {
-    HNLog(@"HNInputController -candidateSelected:(%@)", [candidateString string]);
+    HNLog(@"HNInputController(%@) -candidateSelected:(%@)", self, [candidateString string]);
+
+    HNLog(@"HNInputController(%@) ## inputText:(%@)", self, [candidateString string]);
 
     [[self client] insertText:[candidateString string] replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
 
-    HNICClear(&mContext);
+    HNICCancelComposition(&mContext);
 }
 
 - (void)hidePalettes
 {
-    HNLog(@"HNInputController -hidePalettes");
+    HNLog(@"HNInputController(%@) -hidePalettes", self);
 
     [mCandidates release];
     mCandidates = nil;
+
+    [super hidePalettes];
 }
 
 - (NSMenu *)menu
 {
-    HNLog(@"HNInputController -menu");
+    HNLog(@"HNInputController(%@) -menu", self);
 
     return [[HNAppController sharedInstance] menu];
 }
 
 @end
 
+
 @implementation HNInputController (IMKStateSetting)
-
-- (void)activateServer:(id)sender
-{
-    HNLog(@"HNInputController<IMKStateSetting> -activateServer:");
-
-    [super activateServer:sender];
-}
-
-- (void)deactivateServer:(id)sender
-{
-    HNLog(@"HNInputController<IMKStateSetting> -deactivateServer:");
-
-    [super deactivateServer:sender];
-}
-
-- (void)showPreferences:(id)sender
-{
-    HNLog(@"HNInputController<IMKStateSetting> -showPreferences:");
-
-    [super showPreferences:sender];
-}
 
 - (NSUInteger)recognizedEvents:(id)sender
 {
-    HNLog(@"HNInputController<IMKStateSetting> -recognizedEvents:");
+    NSUInteger sEventMask;
 
     if (HNICComposedString(&mContext))
     {
-        return NSKeyDownMask | NSLeftMouseDownMask | NSRightMouseDownMask | NSOtherMouseDownMask;
+        sEventMask = NSKeyDownMask | NSLeftMouseDownMask | NSRightMouseDownMask | NSOtherMouseDownMask;
     }
     else
     {
-        return NSKeyDownMask;
+        sEventMask = NSKeyDownMask;
     }
-}
 
-- (NSDictionary *)modes:(id)sender
-{
-    id ret;
+    HNLog(@"HNInputController(%@) <IMKStateSetting>-recognizedEvents:(%@) => %lx", self, sender, sEventMask);
 
-    HNLog(@"HNInputController<IMKStateSetting> -modes:");
-
-    ret = [super modes:sender];
-
-    HNLog(@" => %@", ret);
-
-    return ret;
-}
-
-- (id)valueForTag:(long)tag client:(id)sender
-{
-    id ret = [super valueForTag:tag client:sender];
-
-    HNLog(@"HNInputController<IMKStateSetting> -valueForTag:%d => %@", tag, ret);
-
-    return ret;
+    return sEventMask;
 }
 
 - (void)setValue:(id)value forTag:(long)tag client:(id)sender
 {
-    HNLog(@"HNInputController<IMKStateSetting> -setValue:%@ forTag:%d client:", value, tag);
+    HNLog(@"HNInputController(%@) <IMKStateSetting>-setValue:(%@) forTag:(%ld) client:(%@)", self, value, tag, sender);
 
     if (tag == kTSMDocumentInputModePropertyTag)
     {
@@ -158,58 +124,36 @@
 
 @implementation HNInputController (IMKServerInput)
 
-- (BOOL)handleEvent:(NSEvent *)event client:(id)sender
+- (BOOL)inputText:(NSString *)string key:(NSInteger)keyCode modifiers:(NSUInteger)flags client:(id)sender
 {
     BOOL      sHandled        = NO;
     BOOL      sShowCandidates = NO;
     NSString *sString;
 
-    HNLog(@"HNInputController<IMKServerInput> -handleEvent:client:");
-    HNLog(@" <= %@", event);
+    HNLog(@"HNInputController(%@) <IMKServerInput>-inputText:(%@) key:(%ld) modifiers:(%lu) client:(%@) [%@]", self, string, keyCode, flags, sender, [sender bundleIdentifier]);
 
-    if ([event type] == NSKeyDown)
+    if (((flags & NSDeviceIndependentModifierFlagsMask) == NSAlternateKeyMask) && ([string characterAtIndex:0] == 0x0d))
     {
-        if ((([event modifierFlags] & NSDeviceIndependentModifierFlagsMask) == NSAlternateKeyMask) && ([[event characters] characterAtIndex:0] == 0x0d))
+        sString = HNICComposedString(&mContext);
+
+        if (sString)
         {
-            sString = HNICComposedString(&mContext);
-
-            if (sString)
-            {
-                [mCandidates release];
-                mCandidates = [[[HNCandidatesController sharedInstance] candidatesForString:sString] retain];
-
-                if (mCandidates)
-                {
-                    sShowCandidates = YES;
-                    sHandled        = YES;
-                }
-            }
-        }
-        else
-        {
-            sHandled = HNICHandleEvent(&mContext, event);
-            sString  = HNICFinishedString(&mContext);
-
-            if (sString)
-            {
-                HNLog(@" inputText: (%@)", sString);
-
-                [sender insertText:sString replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
-
-                [self updateComposition];
-            }
-            else if (sHandled)
-            {
-                [self updateComposition];
-            }
-
             [mCandidates release];
-            mCandidates = nil;
+            mCandidates = [[[HNCandidatesController sharedInstance] candidatesForString:sString] retain];
+
+            if (mCandidates)
+            {
+                sShowCandidates = YES;
+                sHandled        = YES;
+            }
         }
     }
     else
     {
-        [self commitComposition:sender];
+        sHandled = HNICHandleKey(&mContext, string, keyCode, flags, sender);
+
+        [mCandidates release];
+        mCandidates = nil;
     }
 
     if (sShowCandidates)
@@ -221,48 +165,29 @@
         [[HNCandidatesController sharedInstance] hide];
     }
 
-    HNLog(@" => %@", sHandled ? @"YES" : @"NO");
+    HNLog(@"HNInputController(%@) => %@", self, sHandled ? @"YES" : @"NO");
 
     return sHandled;
 }
 
 - (void)commitComposition:(id)sender
 {
-    NSString *sString = HNICComposedString(&mContext);
+    HNLog(@"HNInputController(%@) <IMKServerInput>-commitComposition:(%@)", self, sender);
 
-    HNLog(@"HNInputController<IMKServerInput> -commitComposition:");
-
-    if (sString)
-    {
-        HNLog(@" inputText: (%@)", sString);
-
-        [sender insertText:sString replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
-
-        HNICClear(&mContext);
-    }
-}
-
-- (id)composedString:(id)sender
-{
-    NSString *sString = HNICComposedString(&mContext);
-
-    HNLog(@"HNInputController<IMKServerInput> -composedString: (%@)", sString ? sString : @"");
-
-    return sString ? sString : @"";
-}
-
-- (NSAttributedString *)originalString:(id)sender
-{
-    HNLog(@"HNInputController<IMKServerInput> -originalString:");
-
-    return nil;
+    HNICCommitComposition(&mContext, sender);
 }
 
 - (NSArray *)candidates:(id)sender
 {
-    HNLog(@"HNInputController<IMKServerInput> -candidates:");
+    NSArray *sRet;
 
-    return [mCandidates expansions];
+    HNLog(@"HNInputController(%@) <IMKServerInput>-candidates:(%@)", self, sender);
+
+    sRet = [mCandidates expansions];
+
+    HNLog(@"HNInputController(%@) => %@", self, sRet);
+
+    return sRet;
 }
 
 @end
@@ -271,9 +196,9 @@
 
 - (BOOL)mouseDownOnCharacterIndex:(NSUInteger)index coordinate:(NSPoint)point withModifier:(NSUInteger)flags continueTracking:(BOOL *)keepTracking client:(id)sender
 {
-    HNLog(@"HNInputController<IMKMouseHandling> -mouseDown");
+    HNLog(@"HNInputController(%@) <IMKMouseHandling>-mouseDown:", self);
 
-    [self commitComposition:sender];
+    HNICCommitComposition(&mContext, sender);
 
     return NO;
 }

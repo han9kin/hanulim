@@ -6,6 +6,7 @@
  */
 
 #import <Cocoa/Cocoa.h>
+#import <InputMethodKit/InputMethodKit.h>
 
 
 /*
@@ -35,7 +36,6 @@ typedef struct HNInputContext
     id<HNICUserDefaults>  mUserDefaults;
 
     NSString             *mComposedString;
-    NSString             *mFinishedString;
 
     int                   mSingleQuot;
     int                   mDoubleQuot;
@@ -51,9 +51,10 @@ void HNICFinalize(HNInputContext *aContext);
 void HNICSetKeyboardLayout(HNInputContext *aContext, NSString *aName);
 void HNICSetUserDefaults(HNInputContext *aContext, id<HNICUserDefaults> aUserDefaults);
 
-BOOL HNICHandleEvent(HNInputContext *aContext, NSEvent *aEvent);
+BOOL HNICHandleKey(HNInputContext *aContext, NSString *aString, NSInteger aKeyCode, NSUInteger aModifiers, id<IMKTextInput> aClient);
 
-void HNICClear(HNInputContext *aContext);
+void HNICCommitComposition(HNInputContext *aContext, id<IMKTextInput> aClient);
+void HNICUpdateComposition(HNInputContext *aContext, id<IMKTextInput> aClient);
+void HNICCancelComposition(HNInputContext *aContext);
 
 NSString *HNICComposedString(HNInputContext *aContext);
-NSString *HNICFinishedString(HNInputContext *aContext);

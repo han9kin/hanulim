@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.osxdev.inputmethod.Hanulim</string>
+	<string>org.cocomelo.inputmethod.${PRODUCT_NAME}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -22,10 +22,10 @@
 	<dict>
 		<key>tsInputModeListKey</key>
 		<dict>
-			<key>org.osxdev.inputmethod.Hanulim.2archaic</key>
+			<key>org.cocomelo.inputmethod.Hanulim.2archaic</key>
 			<dict>
 				<key>TISInputSourceID</key>
-				<string>org.osxdev.inputmethod.Hanulim.2archaic</string>
+				<string>org.cocomelo.inputmethod.Hanulim.2archaic</string>
 				<key>TISIntendedLanguage</key>
 				<string>ko</string>
 				<key>tsInputModeAlternateMenuIconFileKey</key>
@@ -43,10 +43,10 @@
 				<key>tsInputModeScriptKey</key>
 				<string>smKorean</string>
 			</dict>
-			<key>org.osxdev.inputmethod.Hanulim.2standard</key>
+			<key>org.cocomelo.inputmethod.Hanulim.2standard</key>
 			<dict>
 				<key>TISInputSourceID</key>
-				<string>org.osxdev.inputmethod.Hanulim.2standard</string>
+				<string>org.cocomelo.inputmethod.Hanulim.2standard</string>
 				<key>TISIntendedLanguage</key>
 				<string>ko</string>
 				<key>tsInputModeAlternateMenuIconFileKey</key>
@@ -64,10 +64,10 @@
 				<key>tsInputModeScriptKey</key>
 				<string>smKorean</string>
 			</dict>
-			<key>org.osxdev.inputmethod.Hanulim.390</key>
+			<key>org.cocomelo.inputmethod.Hanulim.390</key>
 			<dict>
 				<key>TISInputSourceID</key>
-				<string>org.osxdev.inputmethod.Hanulim.390</string>
+				<string>org.cocomelo.inputmethod.Hanulim.390</string>
 				<key>TISIntendedLanguage</key>
 				<string>ko</string>
 				<key>tsInputModeAlternateMenuIconFileKey</key>
@@ -85,10 +85,10 @@
 				<key>tsInputModeScriptKey</key>
 				<string>smKorean</string>
 			</dict>
-			<key>org.osxdev.inputmethod.Hanulim.393</key>
+			<key>org.cocomelo.inputmethod.Hanulim.393</key>
 			<dict>
 				<key>TISInputSourceID</key>
-				<string>org.osxdev.inputmethod.Hanulim.393</string>
+				<string>org.cocomelo.inputmethod.Hanulim.393</string>
 				<key>TISIntendedLanguage</key>
 				<string>ko</string>
 				<key>tsInputModeAlternateMenuIconFileKey</key>
@@ -106,10 +106,10 @@
 				<key>tsInputModeScriptKey</key>
 				<string>smKorean</string>
 			</dict>
-			<key>org.osxdev.inputmethod.Hanulim.3final</key>
+			<key>org.cocomelo.inputmethod.Hanulim.3final</key>
 			<dict>
 				<key>TISInputSourceID</key>
-				<string>org.osxdev.inputmethod.Hanulim.3final</string>
+				<string>org.cocomelo.inputmethod.Hanulim.3final</string>
 				<key>TISIntendedLanguage</key>
 				<string>ko</string>
 				<key>tsInputModeAlternateMenuIconFileKey</key>
@@ -127,10 +127,10 @@
 				<key>tsInputModeScriptKey</key>
 				<string>smKorean</string>
 			</dict>
-			<key>org.osxdev.inputmethod.Hanulim.3noshift</key>
+			<key>org.cocomelo.inputmethod.Hanulim.3noshift</key>
 			<dict>
 				<key>TISInputSourceID</key>
-				<string>org.osxdev.inputmethod.Hanulim.3noshift</string>
+				<string>org.cocomelo.inputmethod.Hanulim.3noshift</string>
 				<key>TISIntendedLanguage</key>
 				<string>ko</string>
 				<key>tsInputModeAlternateMenuIconFileKey</key>
@@ -151,22 +151,22 @@
 		</dict>
 		<key>tsVisibleInputModeOrderedArrayKey</key>
 		<array>
-			<string>org.osxdev.inputmethod.Hanulim.2standard</string>
-			<string>org.osxdev.inputmethod.Hanulim.2archaic</string>
-			<string>org.osxdev.inputmethod.Hanulim.3final</string>
-			<string>org.osxdev.inputmethod.Hanulim.390</string>
-			<string>org.osxdev.inputmethod.Hanulim.3noshift</string>
-			<string>org.osxdev.inputmethod.Hanulim.393</string>
+			<string>org.cocomelo.inputmethod.Hanulim.2standard</string>
+			<string>org.cocomelo.inputmethod.Hanulim.2archaic</string>
+			<string>org.cocomelo.inputmethod.Hanulim.3final</string>
+			<string>org.cocomelo.inputmethod.Hanulim.390</string>
+			<string>org.cocomelo.inputmethod.Hanulim.3noshift</string>
+			<string>org.cocomelo.inputmethod.Hanulim.393</string>
 		</array>
 	</dict>
+	<key>LSBackgroundOnly</key>
+	<string>1</string>
 	<key>InputMethodConnectionName</key>
-	<string>Hanulim_1_Connection</string>
+	<string>Hanulim_2_Connection</string>
 	<key>InputMethodServerControllerClass</key>
 	<string>HNInputController</string>
 	<key>InputMethodServerDelegateClass</key>
 	<string>HNInputController</string>
-	<key>LSBackgroundOnly</key>
-	<string>1</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>TISIntendedLanguage</key>

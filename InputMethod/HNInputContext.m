@@ -5,8 +5,6 @@
  * http://code.google.com/p/hanulim
  */
 
-#import "HNAppController.h"
-#import "HNInputController.h"
 #import "HNInputContext.h"
 #import "HNDebug.h"
 
@@ -57,7 +55,7 @@ struct HNKeyboardLayout
 static HNKeyboardLayout HNKeyboardLayoutTable[] =
 {
     {
-        @"org.osxdev.inputmethod.Hanulim.2standard",
+        @"org.cocomelo.inputmethod.Hanulim.2standard",
         HNKeyboardLayoutTypeJamo,
         HNKeyboardLayoutScopeModern,
         {
@@ -116,7 +114,7 @@ static HNKeyboardLayout HNKeyboardLayoutTable[] =
     },
 
     {
-        @"org.osxdev.inputmethod.Hanulim.2archaic",
+        @"org.cocomelo.inputmethod.Hanulim.2archaic",
         HNKeyboardLayoutTypeJamo,
         HNKeyboardLayoutScopeArchaic,
         {
@@ -175,7 +173,7 @@ static HNKeyboardLayout HNKeyboardLayoutTable[] =
     },
 
     {
-        @"org.osxdev.inputmethod.Hanulim.3final",
+        @"org.cocomelo.inputmethod.Hanulim.3final",
         HNKeyboardLayoutTypeJaso,
         HNKeyboardLayoutScopeModern,
         {
@@ -234,7 +232,7 @@ static HNKeyboardLayout HNKeyboardLayoutTable[] =
     },
 
     {
-        @"org.osxdev.inputmethod.Hanulim.390",
+        @"org.cocomelo.inputmethod.Hanulim.390",
         HNKeyboardLayoutTypeJaso,
         HNKeyboardLayoutScopeModern,
         {
@@ -293,7 +291,7 @@ static HNKeyboardLayout HNKeyboardLayoutTable[] =
     },
 
     {
-        @"org.osxdev.inputmethod.Hanulim.3noshift",
+        @"org.cocomelo.inputmethod.Hanulim.3noshift",
         HNKeyboardLayoutTypeJaso,
         HNKeyboardLayoutScopeModern,
         {
@@ -352,7 +350,7 @@ static HNKeyboardLayout HNKeyboardLayoutTable[] =
     },
 
     {
-        @"org.osxdev.inputmethod.Hanulim.393",
+        @"org.cocomelo.inputmethod.Hanulim.393",
         HNKeyboardLayoutTypeJaso,
         HNKeyboardLayoutScopeArchaic,
         {
@@ -1271,7 +1269,7 @@ static BOOL HNCouldHandleKey(NSUInteger aModifiers)
     return (aModifiers & sMask) ? NO : YES;
 }
 
-static unsigned short HNKeyboardGetCode(HNInputContext *aContext, unsigned short aKeyCode, NSUInteger aModifiers)
+static unsigned short HNKeyboardGetCode(HNInputContext *aContext, NSInteger aKeyCode, NSUInteger aModifiers)
 {
     unsigned int   sShift;
     unsigned short sKeyConv;
@@ -1287,7 +1285,7 @@ static unsigned short HNKeyboardGetCode(HNInputContext *aContext, unsigned short
         sShift = 0;
     }
 
-    if (aKeyCode < HNKeyCodeMax)
+    if ((aKeyCode >= 0) && (aKeyCode < HNKeyCodeMax))
     {
         sKeyConv = aContext->mKeyboardLayout->mValue[aKeyCode] >> sShift;
         sType    = HNKeyType(sKeyConv);
@@ -1490,61 +1488,32 @@ static unichar HNQuotationMark(HNInputContext *aContext, unichar aChar)
 /*
  * Composition Buffer Functions
  */
-static void HNCommit(HNInputContext *aContext, const unichar *aBuffer, NSUInteger aLength, unsigned int aKeyCount)
+static void HNCommitBuffer(HNInputContext *aContext, id<IMKTextInput> aClient, const unichar *aBuffer, NSUInteger aLength, unsigned int aProcessedKeyCount)
 {
     NSString     *sString;
     unsigned int  i;
 
-    aContext->mKeyCount -= aKeyCount;
+    aContext->mKeyCount -= aProcessedKeyCount;
 
     for (i = 0; i < aContext->mKeyCount; i++)
     {
-        aContext->mKeyBuffer[i] = aContext->mKeyBuffer[i + aKeyCount];
+        aContext->mKeyBuffer[i] = aContext->mKeyBuffer[i + aProcessedKeyCount];
     }
 
     sString = [[NSString alloc] initWithCharacters:aBuffer length:aLength];
 
-    if (aContext->mFinishedString)
-    {
-        sString = [[aContext->mFinishedString stringByAppendingString:[sString autorelease]] retain];
+    HNLog(@"HNInputContext(%p) HNCommitBuffer ## inputText:(%@)", aContext, sString);
 
-        [aContext->mFinishedString release];
-    }
+    [aClient insertText:sString replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
 
-    aContext->mFinishedString = sString;
-}
-
-static void HNFinishComposition(HNInputContext *aContext)
-{
-    if (aContext->mComposedString)
-    {
-        if (aContext->mFinishedString)
-        {
-            NSString *sString;
-
-            sString = [[aContext->mFinishedString stringByAppendingString:aContext->mComposedString] retain];
-
-            [aContext->mFinishedString release];
-            [aContext->mComposedString release];
-
-            aContext->mFinishedString = sString;
-        }
-        else
-        {
-            aContext->mFinishedString = aContext->mComposedString;
-        }
-
-        aContext->mComposedString = nil;
-    }
-
-    aContext->mKeyCount = 0;
+    [sString release];
 }
 
 
 /*
  * Hangul Composition Functions
  */
-static void HNCompose(HNInputContext *aContext)
+static void HNCompose(HNInputContext *aContext, id<IMKTextInput> aClient)
 {
     HNCharacter   sChar;
     unichar       sCharBuffer[HNBufferSize];
@@ -1634,7 +1603,7 @@ static void HNCompose(HNInputContext *aContext)
 
                 if ([aContext->mUserDefaults commitsImmediately])
                 {
-                    HNCommit(aContext, sCharBuffer, sLength, i - 1);
+                    HNCommitBuffer(aContext, aClient, sCharBuffer, sLength, i - 1);
 
                     i = 1;
                 }
@@ -1693,7 +1662,7 @@ static void HNCompose(HNInputContext *aContext)
         {
             if ([aContext->mUserDefaults commitsImmediately])
             {
-                HNCommit(aContext, sCharBuffer, sLength, i);
+                HNCommitBuffer(aContext, aClient, sCharBuffer, sLength, i);
 
                 i = 0;
             }
@@ -1727,7 +1696,6 @@ void HNICInitialize(HNInputContext *aContext)
     aContext->mUserDefaults   = nil;
 
     aContext->mComposedString = nil;
-    aContext->mFinishedString = nil;
 
     aContext->mSingleQuot     = 1;
     aContext->mDoubleQuot     = 1;
@@ -1738,7 +1706,6 @@ void HNICInitialize(HNInputContext *aContext)
 void HNICFinalize(HNInputContext *aContext)
 {
     [aContext->mComposedString release];
-    [aContext->mFinishedString release];
 }
 
 void HNICSetKeyboardLayout(HNInputContext *aContext, NSString *aName)
@@ -1760,17 +1727,17 @@ void HNICSetUserDefaults(HNInputContext *aContext, id<HNICUserDefaults> aUserDef
     aContext->mUserDefaults = aUserDefaults;
 }
 
-BOOL HNICHandleEvent(HNInputContext *aContext, NSEvent *aEvent)
+BOOL HNICHandleKey(HNInputContext *aContext, NSString *aString, NSInteger aKeyCode, NSUInteger aModifiers, id<IMKTextInput> aClient)
 {
     BOOL           sCouldHandle;
     unsigned short sKeyConv;
     unichar        sSymbol;
 
-    sCouldHandle = HNCouldHandleKey([aEvent modifierFlags]);
+    sCouldHandle = HNCouldHandleKey(aModifiers);
 
     if (sCouldHandle)
     {
-        sKeyConv = HNKeyboardGetCode(aContext, [aEvent keyCode], [aEvent modifierFlags]);
+        sKeyConv = HNKeyboardGetCode(aContext, aKeyCode, aModifiers);
     }
     else
     {
@@ -1793,15 +1760,16 @@ BOOL HNICHandleEvent(HNInputContext *aContext, NSEvent *aEvent)
                 sSymbol = 0x5c;
             }
 
-            HNFinishComposition(aContext);
-            HNCommit(aContext, &sSymbol, 1, 0);
+            HNICCommitComposition(aContext, aClient);
+            HNCommitBuffer(aContext, aClient, &sSymbol, 1, 0);
         }
         else if (aContext->mKeyCount < HNBufferSize)
         {
             aContext->mKeyBuffer[aContext->mKeyCount] = sKeyConv;
             aContext->mKeyCount++;
 
-            HNCompose(aContext);
+            HNCompose(aContext, aClient);
+            HNICUpdateComposition(aContext, aClient);
         }
         else
         {
@@ -1812,47 +1780,79 @@ BOOL HNICHandleEvent(HNInputContext *aContext, NSEvent *aEvent)
     }
     else if (sCouldHandle && aContext->mKeyCount)
     {
-        NSString *sString = [aEvent characters];
-
-        if (([sString length] > 0) && ([sString characterAtIndex:0] == 0x08)) /* delete */
+        if ([aString length] > 0)
         {
-            aContext->mKeyCount--;
+            unichar sCharacter = [aString characterAtIndex:0];
 
-            HNCompose(aContext);
-            return YES;
-        }
-        else
-        {
-            HNFinishComposition(aContext);
-            return NO;
+            switch (sCharacter)
+            {
+                case 0x08: /* delete */
+                    aContext->mKeyCount--;
+
+                    HNCompose(aContext, aClient);
+                    HNICUpdateComposition(aContext, aClient);
+
+                    return YES;
+
+                case 0x1c: /* arrow left */
+                case 0x1d: /* arrow right */
+                case 0x1e: /* arrow up */
+                case 0x1f: /* arrow down */
+                    if ([[aClient bundleIdentifier] isEqualToString:@"com.microsoft.Word"])
+                    {
+                        HNICCommitComposition(aContext, aClient);
+                        return YES;
+                    }
+                    break;
+
+                default:
+                    HNLog(@"HNInputContext(%p) HNICHandleKey character:%#x", aContext, sCharacter);
+                    break;
+            }
         }
     }
-    else
+
+    HNICCommitComposition(aContext, aClient);
+
+    return NO;
+}
+
+void HNICCommitComposition(HNInputContext *aContext, id<IMKTextInput> aClient)
+{
+    if (aContext->mComposedString)
     {
-        HNFinishComposition(aContext);
-        return NO;
+        HNLog(@"HNInputContext(%p) HNICCommitComposition ## inputText:(%@)", aContext, aContext->mComposedString);
+
+        [aClient insertText:aContext->mComposedString replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
+
+        [aContext->mComposedString release];
+
+        aContext->mComposedString = nil;
+        aContext->mKeyCount       = 0;
     }
 }
 
-void HNICClear(HNInputContext *aContext)
+void HNICUpdateComposition(HNInputContext *aContext, id<IMKTextInput> aClient)
+{
+    NSString *sString = aContext->mComposedString;
+
+    if (sString)
+    {
+        HNLog(@"HNInputContext(%p) HNICUpdateComposition ## setMarkedText:(%@)", aContext, sString);
+
+        [aClient setMarkedText:sString selectionRange:NSMakeRange([sString length], 0) replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
+    }
+}
+
+void HNICCancelComposition(HNInputContext *aContext)
 {
     [aContext->mComposedString release];
-    [aContext->mFinishedString release];
+
     aContext->mComposedString = nil;
-    aContext->mFinishedString = nil;
     aContext->mKeyCount       = 0;
 }
 
 NSString *HNICComposedString(HNInputContext *aContext)
 {
     return aContext->mComposedString;
-}
-
-NSString *HNICFinishedString(HNInputContext *aContext)
-{
-    NSString *sRet = [aContext->mFinishedString autorelease];
-
-    aContext->mFinishedString = nil;
-
-    return sRet;
 }
