@@ -105,7 +105,7 @@
         sEventMask = NSKeyDownMask;
     }
 
-    HNLog(@"HNInputController(%@) <IMKStateSetting>-recognizedEvents:(%@) => %lx", self, sender, sEventMask);
+    HNLog(@"HNInputController(%@) <IMKStateSetting>-recognizedEvents:(%@) => %lx", self, sender, (unsigned long)sEventMask);
 
     return sEventMask;
 }
@@ -130,7 +130,7 @@
     BOOL      sShowCandidates = NO;
     NSString *sString;
 
-    HNLog(@"HNInputController(%@) <IMKServerInput>-inputText:(%@) key:(%ld) modifiers:(%lu) client:(%@) [%@]", self, string, keyCode, flags, sender, [sender bundleIdentifier]);
+    HNLog(@"HNInputController(%@) <IMKServerInput>-inputText:(%@) key:(%ld) modifiers:(%lu) client:(%@) [%@]", self, string, (long)keyCode, (unsigned long)flags, sender, [sender bundleIdentifier]);
 
     if (((flags & NSDeviceIndependentModifierFlagsMask) == NSAlternateKeyMask) && ([string characterAtIndex:0] == 0x0d))
     {

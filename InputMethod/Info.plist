@@ -7,17 +7,19 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.cocomelo.inputmethod.${PRODUCT_NAME}</string>
+	<string>org.cocomelo.inputmethod.Hanulim</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>2.3</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>2.3</string>
+	<string>44</string>
 	<key>ComponentInputModeDict</key>
 	<dict>
 		<key>tsInputModeListKey</key>
@@ -159,14 +161,16 @@
 			<string>org.cocomelo.inputmethod.Hanulim.393</string>
 		</array>
 	</dict>
-	<key>LSBackgroundOnly</key>
-	<string>1</string>
 	<key>InputMethodConnectionName</key>
 	<string>Hanulim_2_Connection</string>
 	<key>InputMethodServerControllerClass</key>
 	<string>HNInputController</string>
 	<key>InputMethodServerDelegateClass</key>
 	<string>HNInputController</string>
+	<key>LSBackgroundOnly</key>
+	<string>1</string>
+	<key>LSHasLocalizedDisplayName</key>
+	<true/>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>TISIntendedLanguage</key>

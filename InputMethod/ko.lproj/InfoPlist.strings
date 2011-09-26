@@ -1,0 +1,13 @@
+﻿/* Localized versions of Info.plist keys */
+
+NSHumanReadableCopyright = "© COCOMELO.ORG, 2008";
+
+"org.cocomelo.inputmethod.Hanulim.2standard" = "두벌식";
+"org.cocomelo.inputmethod.Hanulim.2archaic" = "두벌식 옛한글";
+"org.cocomelo.inputmethod.Hanulim.3final" = "세벌식 최종";
+"org.cocomelo.inputmethod.Hanulim.390" = "세벌식 390";
+"org.cocomelo.inputmethod.Hanulim.3noshift" = "세벌식 Noshift";
+"org.cocomelo.inputmethod.Hanulim.393" = "세벌식 옛한글";
+
+CFBundleName = "하늘입력기";
+CFBundleDisplayName = "하늘입력기";

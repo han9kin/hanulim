@@ -1,0 +1,13 @@
+﻿/* Localized versions of Info.plist keys */
+
+NSHumanReadableCopyright = "© COCOMELO.ORG, 2008";
+
+"org.cocomelo.inputmethod.Hanulim.2standard" = "Dubeol";
+"org.cocomelo.inputmethod.Hanulim.2archaic" = "Dubeol Archaic";
+"org.cocomelo.inputmethod.Hanulim.3final" = "Sebeol Final";
+"org.cocomelo.inputmethod.Hanulim.390" = "Sebeol 390";
+"org.cocomelo.inputmethod.Hanulim.3noshift" = "Sebeol Noshift";
+"org.cocomelo.inputmethod.Hanulim.393" = "Sebeol Archaic";
+
+CFBundleName = "Hanulim";
+CFBundleDisplayName = "Hanulim";
