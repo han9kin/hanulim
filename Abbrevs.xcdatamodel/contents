@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="untitled.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="562" systemVersion="11B26" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Abbrev" representedClassName="NSManagedObject">
+        <attribute name="abbrev" attributeType="String" indexed="YES"/>
+        <relationship name="expansions" optional="YES" toMany="YES" deletionRule="Deny" destinationEntity="Expansion" inverseName="abbrev" inverseEntity="Expansion" indexed="YES"/>
+    </entity>
+    <entity name="Category" representedClassName="NSManagedObject">
+        <attribute name="category" attributeType="String" indexed="YES"/>
+        <relationship name="expansions" optional="YES" toMany="YES" deletionRule="Deny" destinationEntity="Expansion" inverseName="category" inverseEntity="Expansion" indexed="YES"/>
+    </entity>
+    <entity name="Expansion" representedClassName="NSManagedObject">
+        <attribute name="annotation" optional="YES" attributeType="String"/>
+        <attribute name="expansion" attributeType="String"/>
+        <relationship name="abbrev" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Abbrev" inverseName="expansions" inverseEntity="Abbrev" indexed="YES"/>
+        <relationship name="category" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="expansions" inverseEntity="Category" indexed="YES"/>
+    </entity>
+    <elements>
+        <element name="Abbrev" positionX="108" positionY="43" width="128" height="83"/>
+        <element name="Expansion" positionX="430" positionY="54" width="128" height="113"/>
+        <element name="Category" positionX="108" positionY="153" width="128" height="83"/>
+    </elements>
+</model>

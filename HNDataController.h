@@ -17,7 +17,7 @@
 
 + (HNDataController *)sharedInstance;
 
-- (NSError *)addPersistentStoresInDomains:(NSSearchPathDomainMask)aDomainMask;
+- (void)addPersistentStoresInDomains:(NSSearchPathDomainMask)aDomainMask;
 - (NSError *)addPersistentStoreAtPath:(NSString *)aPath;
 
 - (NSManagedObjectContext *)managedObjectContext;

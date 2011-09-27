@@ -18,10 +18,9 @@
 		CF3E864D0E0BE63100F1116F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF3E864B0E0BE63100F1116F /* InfoPlist.strings */; };
 		CF3E86510E0BE67600F1116F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF3E864F0E0BE67600F1116F /* MainMenu.xib */; };
 		CF3E86540E0BE69500F1116F /* AEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3E86530E0BE69500F1116F /* AEAppDelegate.m */; };
-		CF3E86630E0BEE8000F1116F /* AbbrevEdit.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = CF3E85ED0E0BDE2F00F1116F /* AbbrevEdit.app */; };
+		CF3E86630E0BEE8000F1116F /* AbbrevEdit.app in Copy Files */ = {isa = PBXBuildFile; fileRef = CF3E85ED0E0BDE2F00F1116F /* AbbrevEdit.app */; };
 		CF4198760E1048DC00A2BE4A /* Abbrevs.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = CF0576FA0E103B7400F8DA39 /* Abbrevs.xcdatamodel */; };
 		CF4198B30E12B45600A2BE4A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4198B20E12B45600A2BE4A /* main.m */; };
-		CF4198B50E12B4ED00A2BE4A /* abbrevtool in CopyFiles */ = {isa = PBXBuildFile; fileRef = CF4198950E12ADDF00A2BE4A /* abbrevtool */; };
 		CF4198B80E14576C00A2BE4A /* Abbrevs.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = CF0576FA0E103B7400F8DA39 /* Abbrevs.xcdatamodel */; };
 		CF4198B90E14577E00A2BE4A /* HNDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE976370E0E07C0000061D6 /* HNDataController.m */; };
 		CF4198C10E14584500A2BE4A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13E42FB307B3F0F600E4EEF1 /* CoreData.framework */; };
@@ -31,6 +30,7 @@
 		CF4CD5E20CD50F9700E2A2F5 /* InputMethodKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4CD5E10CD50F9700E2A2F5 /* InputMethodKit.framework */; };
 		CF571FE80E1A56F20075397A /* HNCandidates.m in Sources */ = {isa = PBXBuildFile; fileRef = CF571FE70E1A56F20075397A /* HNCandidates.m */; };
 		CF63059F0E34F7C8009E6A72 /* HNUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = CF63059E0E34F7C8009E6A72 /* HNUserDefaults.m */; };
+		CF675A4B143223D500295A97 /* abbrevtool in Resources */ = {isa = PBXBuildFile; fileRef = CF4198950E12ADDF00A2BE4A /* abbrevtool */; };
 		CFA3DEDC0E03BD5A00BF8CD5 /* HNCandidatesController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA3DEDB0E03BD5A00BF8CD5 /* HNCandidatesController.m */; };
 		CFCD185F0CD613DA00213F4E /* HNAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCD185E0CD613DA00213F4E /* HNAppController.m */; };
 		CFCD19C60CDA333A00213F4E /* HNInputContext.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCD19C50CDA333A00213F4E /* HNInputContext.m */; };
@@ -57,15 +57,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		CF3E86660E0BEEA600F1116F /* CopyFiles */ = {
+		CF3E86660E0BEEA600F1116F /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 12;
 			files = (
-				CF4198B50E12B4ED00A2BE4A /* abbrevtool in CopyFiles */,
-				CF3E86630E0BEE8000F1116F /* AbbrevEdit.app in CopyFiles */,
+				CF3E86630E0BEE8000F1116F /* AbbrevEdit.app in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -343,7 +343,7 @@
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
-				CF3E86660E0BEEA600F1116F /* CopyFiles */,
+				CF3E86660E0BEEA600F1116F /* Copy Files */,
 			);
 			buildRules = (
 			);
@@ -424,6 +424,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF675A4B143223D500295A97 /* abbrevtool in Resources */,
 				74BEAC190E4AA00A001AA535 /* InfoPlist.strings in Resources */,
 				CF4CD5DD0CD50F4900E2A2F5 /* Hanulim.tif in Resources */,
 				74BEAC140E4A9FEA001AA535 /* MainMenu.xib in Resources */,

@@ -64,53 +64,33 @@ static HNDataController *HNDataControllerInstance = nil;
     [super dealloc];
 }
 
-- (NSError *)addPersistentStoresInDomains:(NSSearchPathDomainMask)aDomainMask
+- (void)addPersistentStoresInDomains:(NSSearchPathDomainMask)aDomainMask
 {
     NSFileManager *sFileManager;
-    NSArray       *sBasePaths;
     NSString      *sBasePath;
-    NSString      *sPath;
-    NSArray       *sFiles;
-    NSString      *sFile;
-    NSURL         *sURL;
-    NSError       *sError;
 
-    sFileManager = [NSFileManager defaultManager];
-    sBasePaths   = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, aDomainMask, YES);
+    sFileManager = [[NSFileManager alloc] init];
 
-    for (sBasePath in sBasePaths)
+    for (sBasePath in NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, aDomainMask, YES))
     {
-        sPath = [sBasePath stringByAppendingPathComponent:@"Hanulim"];
+        NSString *sPath = [[sBasePath stringByAppendingPathComponent:@"Hanulim"] stringByAppendingPathComponent:@"Abbrevs"];
 
-        if (![sFileManager fileExistsAtPath:sPath isDirectory:NULL])
-        {
-            [sFileManager createDirectoryAtPath:sPath attributes:nil];
-        }
+        [sFileManager createDirectoryAtPath:sPath withIntermediateDirectories:YES attributes:nil error:NULL];
 
-        sPath = [sPath stringByAppendingPathComponent:@"Abbrevs"];
-
-        if (![sFileManager fileExistsAtPath:sPath isDirectory:NULL])
-        {
-            [sFileManager createDirectoryAtPath:sPath attributes:nil];
-        }
-
-        sFiles = [sFileManager directoryContentsAtPath:sPath];
-
-        for (sFile in sFiles)
+        for (NSString *sFile in [sFileManager contentsOfDirectoryAtPath:sPath error:NULL])
         {
             if ([[sFile pathExtension] isEqualToString:@"db"])
             {
-                sURL = [NSURL fileURLWithPath:[sPath stringByAppendingPathComponent:sFile]];
+                NSURL   *sURL = [NSURL fileURLWithPath:[sPath stringByAppendingPathComponent:sFile]];
+                NSError *sError;
 
                 if (![mPersistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:sURL options:nil error:&sError])
                 {
-                    return sError;
+                    NSLog(@"adding database file failed at (%@) error: %@", [sURL path], sError);
                 }
             }
         }
     }
-
-    return nil;
 }
 
 - (NSError *)addPersistentStoreAtPath:(NSString *)aPath

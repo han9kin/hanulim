@@ -29,14 +29,8 @@ static HNCandidatesController *HNCandidatesControllerInstance = nil;
     {
         NSSortDescriptor *sSortDesc;
         NSArray          *sSortDescs;
-        NSError          *sError;
 
-        sError = [[HNDataController sharedInstance] addPersistentStoresInDomains:NSUserDomainMask];
-
-        if (sError)
-        {
-            [[NSApplication sharedApplication] presentError:sError];
-        }
+        [[HNDataController sharedInstance] addPersistentStoresInDomains:NSUserDomainMask];
 
         mPredicate    = [[NSPredicate predicateWithFormat:@"abbrev.abbrev == $ABBREV"] retain];
         mFetchRequest = [[NSFetchRequest alloc] init];

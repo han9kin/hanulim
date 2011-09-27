@@ -13,14 +13,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    NSError *sError;
-
-    sError = [[HNDataController sharedInstance] addPersistentStoresInDomains:NSUserDomainMask];
-
-    if (sError)
-    {
-        [[NSApplication sharedApplication] presentError:sError];
-    }
+    [[HNDataController sharedInstance] addPersistentStoresInDomains:NSUserDomainMask];
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
