@@ -1384,7 +1384,10 @@ static NSUInteger HNCharacterCompose(HNInputContext *aContext, HNCharacter *aCha
          */
         if (sLength == 1)
         {
-            sLength = 2;
+            /*
+             * 터미널 사용시 초성입력후 Tab키를 이용한 자동완성을 위해 초성만 있을경우의 중성 채움을 넣지 않음 by gulbee
+             */
+//            sLength = 2;
         }
 
         if (aChar->CH_BANG != CH_NIL)
