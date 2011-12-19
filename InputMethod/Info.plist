@@ -6,6 +6,8 @@
 	<string>ko</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleIconFile</key>
+	<string>appIcon.png</string>
 	<key>CFBundleIdentifier</key>
 	<string>org.cocomelo.inputmethod.Hanulim</string>
 	<key>CFBundleInfoDictionaryVersion</key>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		604A60CD149FD49400C8EED6 /* appIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 604A60CC149FD49400C8EED6 /* appIcon.png */; };
 		74BEAC0E0E4A9FB5001AA535 /* preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74BEAC0D0E4A9FB5001AA535 /* preferences.xib */; };
 		74BEAC140E4A9FEA001AA535 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74BEAC130E4A9FEA001AA535 /* MainMenu.xib */; };
 		74BEAC190E4AA00A001AA535 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 74BEAC180E4AA00A001AA535 /* InfoPlist.strings */; };
@@ -78,6 +79,7 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* Hanulim_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Hanulim_Prefix.pch; path = InputMethod/Hanulim_Prefix.pch; sourceTree = "<group>"; };
+		604A60CC149FD49400C8EED6 /* appIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appIcon.png; sourceTree = "<group>"; };
 		74BEAC100E4A9FD6001AA535 /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = InputMethod/ko.lproj/preferences.xib; sourceTree = "<group>"; };
 		74BEAC150E4A9FEF001AA535 /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = InputMethod/ko.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		74BEAC1A0E4AA010001AA535 /* ko */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = ko; path = InputMethod/ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				604A60CC149FD49400C8EED6 /* appIcon.png */,
 				CF4CD5DC0CD50F4900E2A2F5 /* Hanulim.tif */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				74BEAC180E4AA00A001AA535 /* InfoPlist.strings */,
@@ -429,6 +432,7 @@
 				CF4CD5DD0CD50F4900E2A2F5 /* Hanulim.tif in Resources */,
 				74BEAC140E4A9FEA001AA535 /* MainMenu.xib in Resources */,
 				74BEAC0E0E4A9FB5001AA535 /* preferences.xib in Resources */,
+				604A60CD149FD49400C8EED6 /* appIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
