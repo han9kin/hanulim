@@ -146,6 +146,14 @@
                 sShowCandidates = YES;
                 sHandled        = YES;
             }
+            else 
+            {
+                /*
+                 * 사전에서 검색이 안되었을 경우 처리 하지 않도록 함
+                 */
+                sShowCandidates = NO;
+                sHandled        = YES;
+            }
         }
     }
     else
