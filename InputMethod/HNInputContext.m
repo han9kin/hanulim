@@ -53,7 +53,7 @@ struct HNKeyboardLayout
 };
 
 static HNKeyboardLayout HNKeyboardLayoutTable[] =
-{
+{    
     {
         @"org.cocomelo.inputmethod.Hanulim.2standard",
         HNKeyboardLayoutTypeJamo,
@@ -1737,7 +1737,7 @@ BOOL HNICHandleKey(HNInputContext *aContext, NSString *aString, NSInteger aKeyCo
     unichar        sSymbol;
 
     sCouldHandle = HNCouldHandleKey(aModifiers);
-
+    
     if (sCouldHandle)
     {
         sKeyConv = HNKeyboardGetCode(aContext, aKeyCode, aModifiers);
@@ -1778,7 +1778,7 @@ BOOL HNICHandleKey(HNInputContext *aContext, NSString *aString, NSInteger aKeyCo
         {
             fprintf(stderr, "HANULIM ERROR: Buffer overflow. Key ignored.\n");
         }
-
+        
         return YES;
     }
     else if (sCouldHandle && aContext->mKeyCount)
@@ -1786,7 +1786,7 @@ BOOL HNICHandleKey(HNInputContext *aContext, NSString *aString, NSInteger aKeyCo
         if ([aString length] > 0)
         {
             unichar sCharacter = [aString characterAtIndex:0];
-
+            
             switch (sCharacter)
             {
                 case 0x08: /* delete */
@@ -1796,7 +1796,12 @@ BOOL HNICHandleKey(HNInputContext *aContext, NSString *aString, NSInteger aKeyCo
                     HNICUpdateComposition(aContext, aClient);
 
                     return YES;
-
+                case 0x09: /* tab key */
+                    if ([[aClient bundleIdentifier] isEqualToString:@"com.apple.Terminal"]) {
+                        HNLog(@"Terminal Tab");
+                        HNICCommitComposition(aContext, aClient);
+                        return NO;
+                    }
                 case 0x1c: /* arrow left */
                 case 0x1d: /* arrow right */
                 case 0x1e: /* arrow up */

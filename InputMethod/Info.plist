@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string>appIcon.png</string>
+	<string>hanulim.icns</string>
 	<key>CFBundleIdentifier</key>
 	<string>org.cocomelo.inputmethod.Hanulim</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -21,7 +21,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>g01</string>
+	<string>g02</string>
 	<key>ComponentInputModeDict</key>
 	<dict>
 		<key>tsInputModeListKey</key>
@@ -33,15 +33,15 @@
 				<key>TISIntendedLanguage</key>
 				<string>ko</string>
 				<key>tsInputModeAlternateMenuIconFileKey</key>
-				<string>Hanulim.tif</string>
+				<string>hanulim2a.png</string>
 				<key>tsInputModeDefaultStateKey</key>
 				<false/>
 				<key>tsInputModeIsVisibleKey</key>
 				<true/>
 				<key>tsInputModeMenuIconFileKey</key>
-				<string>Hanulim.tif</string>
+				<string>hanulim2a.png</string>
 				<key>tsInputModePaletteIconFileKey</key>
-				<string>Hanulim.tif</string>
+				<string>hanulim2a.png</string>
 				<key>tsInputModePrimaryInScriptKey</key>
 				<false/>
 				<key>tsInputModeScriptKey</key>
@@ -54,15 +54,15 @@
 				<key>TISIntendedLanguage</key>
 				<string>ko</string>
 				<key>tsInputModeAlternateMenuIconFileKey</key>
-				<string>Hanulim.tif</string>
+				<string>hanulim2.png</string>
 				<key>tsInputModeDefaultStateKey</key>
 				<true/>
 				<key>tsInputModeIsVisibleKey</key>
 				<true/>
 				<key>tsInputModeMenuIconFileKey</key>
-				<string>Hanulim.tif</string>
+				<string>hanulim2.png</string>
 				<key>tsInputModePaletteIconFileKey</key>
-				<string>Hanulim.tif</string>
+				<string>hanulim2.png</string>
 				<key>tsInputModePrimaryInScriptKey</key>
 				<true/>
 				<key>tsInputModeScriptKey</key>
@@ -75,15 +75,15 @@
 				<key>TISIntendedLanguage</key>
 				<string>ko</string>
 				<key>tsInputModeAlternateMenuIconFileKey</key>
-				<string>Hanulim.tif</string>
+				<string>hanulim3o.png</string>
 				<key>tsInputModeDefaultStateKey</key>
 				<true/>
 				<key>tsInputModeIsVisibleKey</key>
 				<true/>
 				<key>tsInputModeMenuIconFileKey</key>
-				<string>Hanulim.tif</string>
+				<string>hanulim3o.png</string>
 				<key>tsInputModePaletteIconFileKey</key>
-				<string>Hanulim.tif</string>
+				<string>hanulim3o.png</string>
 				<key>tsInputModePrimaryInScriptKey</key>
 				<false/>
 				<key>tsInputModeScriptKey</key>
@@ -96,15 +96,15 @@
 				<key>TISIntendedLanguage</key>
 				<string>ko</string>
 				<key>tsInputModeAlternateMenuIconFileKey</key>
-				<string>Hanulim.tif</string>
+				<string>hanulim3a.png</string>
 				<key>tsInputModeDefaultStateKey</key>
 				<false/>
 				<key>tsInputModeIsVisibleKey</key>
 				<true/>
 				<key>tsInputModeMenuIconFileKey</key>
-				<string>Hanulim.tif</string>
+				<string>hanulim3a.png</string>
 				<key>tsInputModePaletteIconFileKey</key>
-				<string>Hanulim.tif</string>
+				<string>hanulim3a.png</string>
 				<key>tsInputModePrimaryInScriptKey</key>
 				<false/>
 				<key>tsInputModeScriptKey</key>
@@ -117,15 +117,15 @@
 				<key>TISIntendedLanguage</key>
 				<string>ko</string>
 				<key>tsInputModeAlternateMenuIconFileKey</key>
-				<string>Hanulim.tif</string>
+				<string>hanulim3.png</string>
 				<key>tsInputModeDefaultStateKey</key>
 				<true/>
 				<key>tsInputModeIsVisibleKey</key>
 				<true/>
 				<key>tsInputModeMenuIconFileKey</key>
-				<string>Hanulim.tif</string>
+				<string>hanulim3.png</string>
 				<key>tsInputModePaletteIconFileKey</key>
-				<string>Hanulim.tif</string>
+				<string>hanulim3.png</string>
 				<key>tsInputModePrimaryInScriptKey</key>
 				<false/>
 				<key>tsInputModeScriptKey</key>
@@ -138,15 +138,15 @@
 				<key>TISIntendedLanguage</key>
 				<string>ko</string>
 				<key>tsInputModeAlternateMenuIconFileKey</key>
-				<string>Hanulim.tif</string>
+				<string>hanulim3n.png</string>
 				<key>tsInputModeDefaultStateKey</key>
 				<false/>
 				<key>tsInputModeIsVisibleKey</key>
 				<true/>
 				<key>tsInputModeMenuIconFileKey</key>
-				<string>Hanulim.tif</string>
+				<string>hanulim3n.png</string>
 				<key>tsInputModePaletteIconFileKey</key>
-				<string>Hanulim.tif</string>
+				<string>hanulim3n.png</string>
 				<key>tsInputModePrimaryInScriptKey</key>
 				<false/>
 				<key>tsInputModeScriptKey</key>
@@ -161,6 +161,7 @@
 			<string>org.cocomelo.inputmethod.Hanulim.390</string>
 			<string>org.cocomelo.inputmethod.Hanulim.3noshift</string>
 			<string>org.cocomelo.inputmethod.Hanulim.393</string>
+			<string>org.cocomelo.inputmethod.Hanulim.Roman</string>
 		</array>
 	</dict>
 	<key>InputMethodConnectionName</key>
@@ -184,6 +185,6 @@
 		<string>Latn</string>
 	</array>
 	<key>tsInputMethodIconFileKey</key>
-	<string>Hanulim.tif</string>
+	<string>hanulim.png</string>
 </dict>
 </plist>

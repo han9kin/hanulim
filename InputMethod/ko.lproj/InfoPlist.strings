@@ -8,6 +8,7 @@ NSHumanReadableCopyright = "© COCOMELO.ORG, 2008";
 "org.cocomelo.inputmethod.Hanulim.390" = "세벌식 390";
 "org.cocomelo.inputmethod.Hanulim.3noshift" = "세벌식 Noshift";
 "org.cocomelo.inputmethod.Hanulim.393" = "세벌식 옛한글";
+"org.cocomelo.inputmethod.Hanulim.Roman" = "영어 로마자";
 
 CFBundleName = "하늘입력기";
 CFBundleDisplayName = "하늘입력기";

@@ -7,7 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		604A60CD149FD49400C8EED6 /* appIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 604A60CC149FD49400C8EED6 /* appIcon.png */; };
+		6014B57E14A3BEC000E2A10D /* hanulim2a.png in Resources */ = {isa = PBXBuildFile; fileRef = 6014B57714A3BEC000E2A10D /* hanulim2a.png */; };
+		6014B57F14A3BEC000E2A10D /* hanulim3.png in Resources */ = {isa = PBXBuildFile; fileRef = 6014B57814A3BEC000E2A10D /* hanulim3.png */; };
+		6014B58014A3BEC000E2A10D /* hanulim3a.png in Resources */ = {isa = PBXBuildFile; fileRef = 6014B57914A3BEC000E2A10D /* hanulim3a.png */; };
+		6014B58114A3BEC000E2A10D /* hanulim3n.png in Resources */ = {isa = PBXBuildFile; fileRef = 6014B57A14A3BEC000E2A10D /* hanulim3n.png */; };
+		6014B58214A3BEC000E2A10D /* hanulim3o.png in Resources */ = {isa = PBXBuildFile; fileRef = 6014B57B14A3BEC000E2A10D /* hanulim3o.png */; };
+		602B177114D20FF300C60301 /* hanulim2.png in Resources */ = {isa = PBXBuildFile; fileRef = 602B176514D20FF300C60301 /* hanulim2.png */; };
+		602B177214D20FF300C60301 /* hanulim2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 602B176614D20FF300C60301 /* hanulim2@2x.png */; };
+		602B177314D20FF300C60301 /* hanulim2a.png in Resources */ = {isa = PBXBuildFile; fileRef = 602B176714D20FF300C60301 /* hanulim2a.png */; };
+		602B177414D20FF300C60301 /* hanulim2a@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 602B176814D20FF300C60301 /* hanulim2a@2x.png */; };
+		602B177514D20FF300C60301 /* hanulim3.png in Resources */ = {isa = PBXBuildFile; fileRef = 602B176914D20FF300C60301 /* hanulim3.png */; };
+		602B177614D20FF300C60301 /* hanulim3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 602B176A14D20FF300C60301 /* hanulim3@2x.png */; };
+		602B177714D20FF300C60301 /* hanulim3a.png in Resources */ = {isa = PBXBuildFile; fileRef = 602B176B14D20FF300C60301 /* hanulim3a.png */; };
+		602B177814D20FF300C60301 /* hanulim3a@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 602B176C14D20FF300C60301 /* hanulim3a@2x.png */; };
+		602B177914D20FF300C60301 /* hanulim3n.png in Resources */ = {isa = PBXBuildFile; fileRef = 602B176D14D20FF300C60301 /* hanulim3n.png */; };
+		602B177A14D20FF300C60301 /* hanulim3n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 602B176E14D20FF300C60301 /* hanulim3n@2x.png */; };
+		602B177B14D20FF300C60301 /* hanulim3o.png in Resources */ = {isa = PBXBuildFile; fileRef = 602B176F14D20FF300C60301 /* hanulim3o.png */; };
+		602B177C14D20FF300C60301 /* hanulim3o@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 602B177014D20FF300C60301 /* hanulim3o@2x.png */; };
+		60A1C37E14B70EAE001507C2 /* hanulim.png in Resources */ = {isa = PBXBuildFile; fileRef = 60A1C37C14B70EAE001507C2 /* hanulim.png */; };
+		60A1C38114B70EB8001507C2 /* hanulim.icns in Resources */ = {isa = PBXBuildFile; fileRef = 60A1C38014B70EB8001507C2 /* hanulim.icns */; };
 		74BEAC0E0E4A9FB5001AA535 /* preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74BEAC0D0E4A9FB5001AA535 /* preferences.xib */; };
 		74BEAC140E4A9FEA001AA535 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74BEAC130E4A9FEA001AA535 /* MainMenu.xib */; };
 		74BEAC190E4AA00A001AA535 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 74BEAC180E4AA00A001AA535 /* InfoPlist.strings */; };
@@ -27,7 +45,6 @@
 		CF4198C10E14584500A2BE4A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13E42FB307B3F0F600E4EEF1 /* CoreData.framework */; };
 		CF4198C40E1459F200A2BE4A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B97325FDCFA39411CA2CEA /* Foundation.framework */; };
 		CF4CD5DA0CD50F3E00E2A2F5 /* HNInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4CD5D70CD50F3E00E2A2F5 /* HNInputController.m */; };
-		CF4CD5DD0CD50F4900E2A2F5 /* Hanulim.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF4CD5DC0CD50F4900E2A2F5 /* Hanulim.tif */; };
 		CF4CD5E20CD50F9700E2A2F5 /* InputMethodKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4CD5E10CD50F9700E2A2F5 /* InputMethodKit.framework */; };
 		CF571FE80E1A56F20075397A /* HNCandidates.m in Sources */ = {isa = PBXBuildFile; fileRef = CF571FE70E1A56F20075397A /* HNCandidates.m */; };
 		CF63059F0E34F7C8009E6A72 /* HNUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = CF63059E0E34F7C8009E6A72 /* HNUserDefaults.m */; };
@@ -79,7 +96,25 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* Hanulim_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Hanulim_Prefix.pch; path = InputMethod/Hanulim_Prefix.pch; sourceTree = "<group>"; };
-		604A60CC149FD49400C8EED6 /* appIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appIcon.png; sourceTree = "<group>"; };
+		6014B57714A3BEC000E2A10D /* hanulim2a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hanulim2a.png; path = InputMethod/hanulim2a.png; sourceTree = "<group>"; };
+		6014B57814A3BEC000E2A10D /* hanulim3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hanulim3.png; path = InputMethod/hanulim3.png; sourceTree = "<group>"; };
+		6014B57914A3BEC000E2A10D /* hanulim3a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hanulim3a.png; path = InputMethod/hanulim3a.png; sourceTree = "<group>"; };
+		6014B57A14A3BEC000E2A10D /* hanulim3n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hanulim3n.png; path = InputMethod/hanulim3n.png; sourceTree = "<group>"; };
+		6014B57B14A3BEC000E2A10D /* hanulim3o.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hanulim3o.png; path = InputMethod/hanulim3o.png; sourceTree = "<group>"; };
+		602B176514D20FF300C60301 /* hanulim2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hanulim2.png; path = InputMethod/hanulim2.png; sourceTree = "<group>"; };
+		602B176614D20FF300C60301 /* hanulim2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hanulim2@2x.png"; path = "InputMethod/hanulim2@2x.png"; sourceTree = "<group>"; };
+		602B176714D20FF300C60301 /* hanulim2a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hanulim2a.png; path = InputMethod/hanulim2a.png; sourceTree = "<group>"; };
+		602B176814D20FF300C60301 /* hanulim2a@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hanulim2a@2x.png"; path = "InputMethod/hanulim2a@2x.png"; sourceTree = "<group>"; };
+		602B176914D20FF300C60301 /* hanulim3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hanulim3.png; path = InputMethod/hanulim3.png; sourceTree = "<group>"; };
+		602B176A14D20FF300C60301 /* hanulim3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hanulim3@2x.png"; path = "InputMethod/hanulim3@2x.png"; sourceTree = "<group>"; };
+		602B176B14D20FF300C60301 /* hanulim3a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hanulim3a.png; path = InputMethod/hanulim3a.png; sourceTree = "<group>"; };
+		602B176C14D20FF300C60301 /* hanulim3a@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hanulim3a@2x.png"; path = "InputMethod/hanulim3a@2x.png"; sourceTree = "<group>"; };
+		602B176D14D20FF300C60301 /* hanulim3n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hanulim3n.png; path = InputMethod/hanulim3n.png; sourceTree = "<group>"; };
+		602B176E14D20FF300C60301 /* hanulim3n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hanulim3n@2x.png"; path = "InputMethod/hanulim3n@2x.png"; sourceTree = "<group>"; };
+		602B176F14D20FF300C60301 /* hanulim3o.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hanulim3o.png; path = InputMethod/hanulim3o.png; sourceTree = "<group>"; };
+		602B177014D20FF300C60301 /* hanulim3o@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hanulim3o@2x.png"; path = "InputMethod/hanulim3o@2x.png"; sourceTree = "<group>"; };
+		60A1C37C14B70EAE001507C2 /* hanulim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hanulim.png; sourceTree = "<group>"; };
+		60A1C38014B70EB8001507C2 /* hanulim.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = hanulim.icns; sourceTree = "<group>"; };
 		74BEAC100E4A9FD6001AA535 /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = InputMethod/ko.lproj/preferences.xib; sourceTree = "<group>"; };
 		74BEAC150E4A9FEF001AA535 /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = InputMethod/ko.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		74BEAC1A0E4AA010001AA535 /* ko */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = ko; path = InputMethod/ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -101,7 +136,6 @@
 		CF45B4950DF2896B00109833 /* HNDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNDebug.h; sourceTree = "<group>"; };
 		CF4CD5D60CD50F3E00E2A2F5 /* HNInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNInputController.h; path = InputMethod/HNInputController.h; sourceTree = "<group>"; };
 		CF4CD5D70CD50F3E00E2A2F5 /* HNInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNInputController.m; path = InputMethod/HNInputController.m; sourceTree = "<group>"; };
-		CF4CD5DC0CD50F4900E2A2F5 /* Hanulim.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = Hanulim.tif; path = InputMethod/Hanulim.tif; sourceTree = "<group>"; };
 		CF4CD5E10CD50F9700E2A2F5 /* InputMethodKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InputMethodKit.framework; path = /System/Library/Frameworks/InputMethodKit.framework; sourceTree = "<absolute>"; };
 		CF571FE60E1A56F20075397A /* HNCandidates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HNCandidates.h; path = InputMethod/HNCandidates.h; sourceTree = "<group>"; };
 		CF571FE70E1A56F20075397A /* HNCandidates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HNCandidates.m; path = InputMethod/HNCandidates.m; sourceTree = "<group>"; };
@@ -224,8 +258,25 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				604A60CC149FD49400C8EED6 /* appIcon.png */,
-				CF4CD5DC0CD50F4900E2A2F5 /* Hanulim.tif */,
+				60A1C37C14B70EAE001507C2 /* hanulim.png */,
+				60A1C38014B70EB8001507C2 /* hanulim.icns */,
+				602B176514D20FF300C60301 /* hanulim2.png */,
+				602B176614D20FF300C60301 /* hanulim2@2x.png */,
+				602B176714D20FF300C60301 /* hanulim2a.png */,
+				602B176814D20FF300C60301 /* hanulim2a@2x.png */,
+				602B176914D20FF300C60301 /* hanulim3.png */,
+				602B176A14D20FF300C60301 /* hanulim3@2x.png */,
+				602B176B14D20FF300C60301 /* hanulim3a.png */,
+				602B176C14D20FF300C60301 /* hanulim3a@2x.png */,
+				602B176D14D20FF300C60301 /* hanulim3n.png */,
+				602B176E14D20FF300C60301 /* hanulim3n@2x.png */,
+				602B176F14D20FF300C60301 /* hanulim3o.png */,
+				602B177014D20FF300C60301 /* hanulim3o@2x.png */,
+				6014B57714A3BEC000E2A10D /* hanulim2a.png */,
+				6014B57814A3BEC000E2A10D /* hanulim3.png */,
+				6014B57914A3BEC000E2A10D /* hanulim3a.png */,
+				6014B57A14A3BEC000E2A10D /* hanulim3n.png */,
+				6014B57B14A3BEC000E2A10D /* hanulim3o.png */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				74BEAC180E4AA00A001AA535 /* InfoPlist.strings */,
 				74BEAC130E4A9FEA001AA535 /* MainMenu.xib */,
@@ -429,10 +480,27 @@
 			files = (
 				CF675A4B143223D500295A97 /* abbrevtool in Resources */,
 				74BEAC190E4AA00A001AA535 /* InfoPlist.strings in Resources */,
-				CF4CD5DD0CD50F4900E2A2F5 /* Hanulim.tif in Resources */,
 				74BEAC140E4A9FEA001AA535 /* MainMenu.xib in Resources */,
 				74BEAC0E0E4A9FB5001AA535 /* preferences.xib in Resources */,
-				604A60CD149FD49400C8EED6 /* appIcon.png in Resources */,
+				6014B57E14A3BEC000E2A10D /* hanulim2a.png in Resources */,
+				6014B57F14A3BEC000E2A10D /* hanulim3.png in Resources */,
+				6014B58014A3BEC000E2A10D /* hanulim3a.png in Resources */,
+				6014B58114A3BEC000E2A10D /* hanulim3n.png in Resources */,
+				6014B58214A3BEC000E2A10D /* hanulim3o.png in Resources */,
+				60A1C37E14B70EAE001507C2 /* hanulim.png in Resources */,
+				60A1C38114B70EB8001507C2 /* hanulim.icns in Resources */,
+				602B177114D20FF300C60301 /* hanulim2.png in Resources */,
+				602B177214D20FF300C60301 /* hanulim2@2x.png in Resources */,
+				602B177314D20FF300C60301 /* hanulim2a.png in Resources */,
+				602B177414D20FF300C60301 /* hanulim2a@2x.png in Resources */,
+				602B177514D20FF300C60301 /* hanulim3.png in Resources */,
+				602B177614D20FF300C60301 /* hanulim3@2x.png in Resources */,
+				602B177714D20FF300C60301 /* hanulim3a.png in Resources */,
+				602B177814D20FF300C60301 /* hanulim3a@2x.png in Resources */,
+				602B177914D20FF300C60301 /* hanulim3n.png in Resources */,
+				602B177A14D20FF300C60301 /* hanulim3n@2x.png in Resources */,
+				602B177B14D20FF300C60301 /* hanulim3o.png in Resources */,
+				602B177C14D20FF300C60301 /* hanulim3o@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

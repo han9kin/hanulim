@@ -8,6 +8,7 @@ NSHumanReadableCopyright = "© COCOMELO.ORG, 2008";
 "org.cocomelo.inputmethod.Hanulim.390" = "Sebeol 390";
 "org.cocomelo.inputmethod.Hanulim.3noshift" = "Sebeol Noshift";
 "org.cocomelo.inputmethod.Hanulim.393" = "Sebeol Archaic";
+"org.cocomelo.inputmethod.Hanulim.Roman" = "Roman";
 
 CFBundleName = "Hanulim";
 CFBundleDisplayName = "Hanulim";
