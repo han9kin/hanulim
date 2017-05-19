@@ -9,6 +9,9 @@
 #import <InputMethodKit/InputMethodKit.h>
 
 
+@class HNCandidates;
+
+
 @interface HNCandidatesController : NSObject
 {
     NSPredicate    *mPredicate;
@@ -20,7 +23,7 @@
 
 - (id)initWithServer:(IMKServer *)aServer;
 
-- (NSArray *)candidatesForString:(NSString *)aString;
+- (HNCandidates *)candidatesForString:(NSString *)aString;
 
 - (void)show;
 - (void)hide;
