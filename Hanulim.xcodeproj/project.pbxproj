@@ -629,7 +629,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = InputMethod/Hanulim_Prefix.pch;
 				INFOPLIST_FILE = InputMethod/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
+				INSTALL_PATH = "/Library/Input Methods";
 				PRODUCT_NAME = Hanulim;
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
@@ -644,7 +644,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = InputMethod/Hanulim_Prefix.pch;
 				INFOPLIST_FILE = InputMethod/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
+				INSTALL_PATH = "/Library/Input Methods";
 				PRODUCT_NAME = Hanulim;
 				WRAPPER_EXTENSION = app;
 			};
@@ -691,9 +691,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AbbrevEdit/AbbrevEdit_Prefix.pch;
 				INFOPLIST_FILE = AbbrevEdit/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				PREBINDING = NO;
 				PRODUCT_NAME = AbbrevEdit;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -708,9 +708,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AbbrevEdit/AbbrevEdit_Prefix.pch;
 				INFOPLIST_FILE = AbbrevEdit/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
 				PREBINDING = NO;
 				PRODUCT_NAME = AbbrevEdit;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
